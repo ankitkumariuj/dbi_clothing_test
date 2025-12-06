@@ -1,0 +1,309 @@
+.mobile-header {
+    width: 100%;
+    padding: var(--pad);
+    position: relative;
+}
+
+.mobile-header h4 {
+    font-size: 19px;
+    font-weight: 600;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--main-clr);
+}
+
+.back i {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+
+.profile-title h3{ 
+    font-family: var(--font-fm2);
+    font-size: 30px;
+    font-weight: 400;
+}
+  
+
+.main {
+    width: 100%;
+    padding: var(--pad2);
+    
+}
+
+
+
+.user-details{
+    width: 100%;
+    padding: var(--pad2);
+    margin-top: var(--mt);
+    margin-bottom: 34px;
+}
+
+.uer-img{
+    width: 50px;
+    height: 50px;
+    background: var(--normal-txt-color);
+    border-radius: 50%;
+}
+.uer-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.uer-img i{
+    font-size: 35px;
+    color: #FFFBF2;
+}
+.user-info h3{
+    font-size: 17px;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 5px;
+    text-transform: capitalize;
+
+}
+.user-info i{
+    color: #000;
+}
+.user-info p{
+    font-size: 14px;
+    font-weight: 400;
+    text-align: center;
+}
+
+.box-section{
+    width: 100%;
+    /* padding: var(--pad2); */
+    /* border: 0.77px solid #E2E2E2; */
+    margin-top: var(--mt);
+     /* box-shadow: 0 0 10px 5px rgb(192 182 182 / 20%); */
+    border-radius: 10px;
+}
+
+.box{
+        width: 100%;
+    padding: 11px 5%;
+    /* border-bottom: 0.77px solid #E2E2E2; */
+    cursor: pointer;
+    margin-bottom: 11px;
+    /* background: #f2f1f0; */
+    border-radius: 36px;
+}
+.box-icon{
+    width: 30px;
+    height: 30px;
+    background: white;
+    border-radius: 50px;
+}
+.box p{
+    font-size: 15px;
+    font-weight: 600;
+}
+.box i{
+    font-size: 18px;
+            color: var(--normal-txt-color);
+}
+
+.log-out-btn{
+    width: 100%;
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 40px;
+    padding: 12px;
+    background: var(--normal-txt-color);
+    border-radius: 8px;
+    color: #000;
+    cursor: pointer;
+}
+.log-out-btn button{
+    font-size: 15px;
+    font-weight: 600;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #000;
+}
+.log-out-btn i{
+    font-weight: 600;
+    transform: rotate(90deg);
+}
+
+
+
+/* ===== edit profile page ===== */
+
+.edit-profile-img{
+    width: 100%;
+    padding: var(--pad2);
+    margin-top: var(--mt);
+}
+
+.edit-profile-img-box{
+    width: 80px;
+    margin: 0px auto;
+    position: relative;
+}
+.edit-profile-img img{
+    width: 100%;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.camera{
+    width: 25px;
+    height: 25px;
+    background: #FFC63A;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -5px;
+    border-radius: 50%;
+}
+.camera i{
+    font-size: 18px;
+}
+.name h3{
+    font-size: 18px;
+    font-weight: 400;
+    margin-top: var(--mt);
+    text-align: center;
+}
+
+.edit-field{
+    width: 100%;
+    padding: var(--pad2);
+    margin-top: var(--mt);
+}
+.edit-field label{
+    font-size: 15px;
+    font-weight: 400;
+    display: block;
+    margin-bottom: 10px;
+}
+.edit-field input{
+    width: 100%;
+    border: none;
+    outline: none;
+    background: #FFFBF2;
+    padding: 10px;
+    font-size: 13px;
+    font-weight: 400;
+    border-radius: 100vw;
+}
+.edit-field input[type="email"]{
+    text-transform: lowercase;
+}
+
+.save-btn{
+    width: 90%;
+    margin: 50px auto;
+    padding: 10px;
+    background: linear-gradient(90deg, #FFE57B 0%, #FFC63A 100%);
+     ;
+     border-radius: 100vw;
+ }
+ .save-btn button{
+     font-size: 15px;
+     font-weight: 600;
+     border: none;
+     outline: none;
+     background: transparent;
+ }
+
+
+
+
+
+/* == responsive  === */
+
+
+
+
+.marginTop {
+  margin-top: 150px;
+}
+
+ .showOnWebsite{
+    display: none;
+ }
+
+            .website-mobile-header {
+        top: 104px;
+    }
+
+    .mobile-header h4 {
+        position: unset;
+        transform: translate(0);
+    }
+    .main {
+        max-width: 600px;
+        margin-inline: auto;
+         padding-inline: 2%;
+    }
+    .log-out-btn {
+        max-width:450px;
+        margin-inline: auto;
+        position: unset;
+        transform: translate(0);
+        margin-block: 20px;
+    }
+
+    .log-out-btn button {
+        color: #FFFBF2;
+    }
+    .log-out-btn i {
+        color: #fff;
+    }
+    
+
+    .showOnWebsite {
+        display: block;
+    }
+    .my-profile-text h3 {
+        font-size: 25px;
+    }
+
+ @media (min-width:1280px){
+    .main {
+        max-width: 450px;
+    }
+
+    #page_title{
+        display: none;
+    }
+
+    
+ }
+
+
+ @media screen and (max-width: 430px) {
+    .marginTop{
+        margin-top: 80px;
+    }
+.logo img{
+    display: none;
+}
+/* .logo{
+margin: 0px !important;
+} */
+
+.page_title{
+    display: flex;
+}
+#phone_hide{
+    display: none;
+}
+
+/* .icon-btn {
+    display: none;
+} */
+    .profile-title h3{
+        font-size: var(--txt-font-mobile);
+    }
+ }

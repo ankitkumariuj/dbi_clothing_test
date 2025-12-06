@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/bill.css">
+
+    <!-- ========= ye header css sb me comman hoga navbar ke liye ========= -->
+    <link rel="stylesheet" href="../assets/css/header.css" />
+
+    <link rel="stylesheet" href="../assets/css/home.css" />
+    <link rel="stylesheet" href="../assets/css/k_style.css" />
+    <link rel="stylesheet" href="../assets/css/rating-popup.css">
+
+    <!-- ========= ye supportandfooter css sb me comman hoga footer part ke liye ========= -->
+    <link rel="stylesheet" href="../assets/css/supportandfooter.css" />
+
+    <link rel="stylesheet" href="../assets/css/wishlist.css" />
+    <link rel="stylesheet" href="../assets/css/track-order.css" />
+    <link rel="stylesheet" href="../assets/css/checkout.css" />
+    <link rel="stylesheet" href="../assets/css/checkout-2.css" />
+    <link rel="stylesheet" href="../assets/css/prev-page-link.css" />
+    <link rel="stylesheet" href="../assets/css/bd-cart-drawer.css" />
+    <link rel="stylesheet" href="../assets/css/order.css" />
+<link rel="stylesheet" href="../assets/css/profile.css">
+    <link rel="stylesheet" href="../assets/css/mobileFooter.css" />
+      <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link
+      rel="shortcut icon"
+      href="../assets/images/logo.png"
+      type="image/x-icon"
+    />
+
+<style>
+
+
+ @media screen and (min-width: 501px) {
+body{
+  display: none;
+}
+ }
+
+ @media screen and (max-width: 500px) {
+  
+
+        .receipt-container {
+            width: 100%;
+
+            background-color: #ffffff;
+            padding: 20px;
+            box-sizing: border-box;
+            color: #333;
+            border-radius: 10px; /* Optional, makes it look a bit cleaner */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* --- Header Section --- */
+        .receipt-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .order-number {
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #000;
+        }
+
+        .status-delivered {
+            color: #4CAF50; /* Green color for delivered */
+            font-weight: bold;
+            font-size: 0.9em;
+            text-transform: capitalize;
+        }
+
+        /* --- Details Section --- */
+        .receipt-details {
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee; /* Subtle separator */
+        }
+
+        .detail-line {
+            margin-bottom: 8px;
+            font-size: 0.95em;
+            line-height: 1.3;
+        }
+
+        .detail-line:last-child {
+            margin-bottom: 0;
+        }
+
+        .detail-label {
+            color: #888;
+            font-weight: normal;
+            display: block; /* Ensures label is on its own line */
+        }
+
+        .detail-value {
+            color: #000;
+            font-weight: bold;
+            display: block;
+            text-transform: capitalize;
+        }
+        
+        /* Make Payment Method line look like the image */
+        .payment-method {
+            font-weight: bold;
+            color: #000;
+        }
+
+
+        /* --- Item List Section --- */
+        .item-list {
+            margin-bottom: 20px;
+        }
+
+        .item-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 15px;
+                width: 100%;
+        }
+
+        .item-name {
+            font-weight: bold;
+            font-size: 0.95em;
+        }
+
+        .item-subtext {
+            display: block;
+            font-size: 0.85em;
+            color: #888;
+            font-weight: normal;
+            margin-top: 2px;
+        }
+
+        .item-price {
+            font-weight: bold;
+            color: #c70039; /* Reddish price color */
+            font-size: 0.95em;
+        }
+        
+        /* The Paid amount is black in the image */
+        .total-paid .item-price {
+            color: #000;
+        }
+
+        /* --- Total Summary Section --- */
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+            font-size: 0.95em;
+        }
+
+        .summary-label {
+            color: #333;
+        }
+        
+        /* Specific formatting for the paid row */
+        .total-paid {
+            font-weight: bold;
+            font-size: 1.1em;
+            padding-top: 10px;
+            border-top: 1px solid #eee;
+        }
+        
+        /* Price styling for the summary section */
+        .summary-row .item-price {
+            font-weight: normal; /* Prices are less bold in this section */
+        }
+        
+        .total-paid .item-price {
+            font-weight: bold;
+        }
+
+
+        /* --- Support Button Section --- */
+        .support-container {
+            margin-top: 30px;
+            background-color: #ffeccf; /* Light yellowish background */
+            border-radius: 8px;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .support-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .support-icon {
+            font-size: 1.5em; /* Icon size */
+            color: #c70039; /* Reddish icon color */
+            margin-right: 10px;
+        }
+
+        .support-text .main {
+            font-weight: bold;
+            font-size: 1.05em;
+        }
+
+        .support-text .sub {
+            font-size: 0.85em;
+            color: #777;
+        }
+
+        .support-chat-btn {
+            background-color: #f7a977; /* Orangey-peach button background */
+            color: #fff;
+            padding: 8px 18px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.2s;
+        }
+
+        .support-chat-btn:hover {
+            background-color: #f29656;
+        }
+
+        .item-row img{
+                height: 100px;
+    width: 100px;
+    /* aspect-ratio: 2 / 13; */
+    object-fit: cover;
+    object-position: top;
+    border-radius: 5px;
+        }
+
+        .btn_grp{
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding-inline: 2%;
+          gap: 70px;
+        }
+
+        .img_box{
+                display: flex;
+    flex-direction: column;
+    gap: 10px;
+        }
+
+        .item-list h6{
+                font-size: 19px;
+    line-height: 41px;
+    font-weight: 700;
+        }
+
+        .status-box {
+    padding: 6px 12px;
+    border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  width: fit-content;
+  text-transform: capitalize;
+}
+
+/* Delivered */
+.status-delivered {
+  background: #d4f8d4;
+  color: #0c8b0c;
+}
+
+/* Pending */
+.status-pending {
+  background: #ffe4b2;
+  color: #d48a00;
+}
+
+/* Cancelled */
+.status-cancelled {
+  background: #ffd2d2;
+  color: #d80000;
+}
+
+/* Processing */
+.status-processing {
+  background: #bde0ff;
+  color: #005b9a;
+}
+
+/* Shipped */
+.status-shipped {
+  background: #e7d4ff;
+  color: #5a00aa;
+}
+.status-onway {
+  background: #d4f1ff;
+  color: #0077c2;
+}
+
+#preview{
+        width: 295px;
+    margin-top: 0px;
+    display: block;
+    position: absolute;
+}
+
+.upload-container {
+    width: 350px;
+    padding: 20px;
+    background-color: #1a1a1a; /* Very dark gray container */
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1); /* Subtle white shadow */
+    text-align: center;
+}
+
+/* Upload Box Styling (The main drop area) */
+.upload-box {
+    border: 3px dashed #444444; /* Dark gray dashed border */
+    border-radius: 8px;
+    padding: 30px 20px;
+    cursor: pointer;
+    transition: border-color 0.3s, background-color 0.3s;
+    margin-bottom: 20px;
+    min-height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+    background-color: #0d0d0d; /* Even darker interior background */
+}
+
+.upload-box:hover {
+    border-color: #ffffff; /* White border on hover */
+}
+
+/* Upload Message */
+.upload-message p {
+    margin: 5px 0;
+}
+
+.upload-message .file-type {
+    font-size: 0.9em;
+    color: #aaaaaa; /* Lighter gray for secondary text */
+}
+
+/* Image Preview Styling */
+#imagePreview {
+    max-width: 100%;
+    max-height: 150px;
+    border-radius: 6px;
+    object-fit: contain;
+    display: block; /* Ensure it's treated as a block element when visible */
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Custom Browse Button */
+.upload-button {
+    background-color: #333333; /* Dark gray button */
+    color: #ffffff;
+    border: 1px solid #555555;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.3s, border-color 0.3s;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.upload-button:hover {
+    background-color: #555555; /* Slightly lighter on hover */
+    border-color: #ffffff;
+}
+ }
+
+</style>
+
+  </head>
+</head>
+<body>
+<div class="wrapper-overlay"></div>
+
+    <div class="loader">
+      <img src="../assets/images/logo.png" class="loader-logo" />
+      <p>Fetching the latest trends...</p>
+    </div>
+
+    <!-- ========= header part start here ============== -->
+
+    <div class="header_section">
+      <div class="svg_menuicon" onclick="gotoback()">
+      <svg width="26" height="24" viewBox="0 0 26 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M10.0293 5.92993L3.66797 11.9999L10.0293 18.0699" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M21.484 12H3.84619" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+
+ <h2>Order Details</h2>
+      </div>
+</div>
+
+      <div class="order-details">
+        
+        <div class="receipt-container">
+
+    <div class="receipt-header">
+        <div class="order-number">#5689045678</div>
+        <div class="status-delivered">Delivered</div>
+    </div>
+    
+    <div class="receipt-details">
+        <div class="detail-line">27 May, 2020</div>
+        <div class="detail-line">
+            <span class="detail-label">Delivered to</span>
+            <span class="detail-value">1633 Hampton Meadows, Lexington</span>
+        </div>
+        <div class="detail-line payment-method">Payment Method</div>
+        <div class="detail-line detail-value">Apple Pay</div>
+    </div>
+    
+    <div class="item-list">
+    <h6>Product:</h6>
+        <div class="item-row">
+            <div class="img_box">
+                <span class="item-name">Ocean Reach Oatmeal Stout x 2</span>
+         <img src="../assets/images/women 2.png" alt="">
+            </div>
+            <div class="item-price">$ 19.00</div>
+        </div>
+
+        <div class="item-row">
+            <div>
+                <span class="item-name">Stone Peak Conditions x 1</span>
+                <span class="item-subtext">Single</span>
+            </div>
+            <div class="item-price">$ 2.33</div>
+        </div>
+        
+        <div class="item-row">
+            <div>
+                <span class="item-name">Budweiser x 1</span>
+                <span class="item-subtext">Single</span>
+            </div>
+            <div class="item-price">$ 1.73</div>
+        </div>
+    </div>
+    
+    <div class="summary-list">
+        <div class="summary-row">
+            <div class="summary-label">Item Total</div>
+            <div class="item-price">$ 23.06</div>
+        </div>
+        
+       
+        
+        <div class="summary-row total-paid">
+            <div class="summary-label">Paid</div>
+            <div class="item-price">$ 26.06</div>
+        </div>
+    </div>
+    
+   <button class="btn view-btn" >   
+            <i class="fa-solid fa-file-invoice"></i> View Invoice
+          </button>
+
+</div>
+
+      </div>
+
+      
+      <div class="bill-modal">
+  <div class="binvoice" id="binvoice">
+    <div class="bheader">
+      <img src="../assets/images/logo.png" alt="GroFresh Logo">
+      <h1>LeDove</h1>
+      <p>West Champaran, Sikta, Bihar 845307<br>Phone: ************<br>GST No: 123456</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="details">
+      <p>Order ID: <span class="billOrderId"></span></p>
+      <p class="billOrderDate"></p>
+    </div>
+
+    <table class="bill-table">
+      <thead>
+        <tr>
+          <th>QTY</th>
+          <th>DESCRIPTION</th>
+          <th class="bprice">PRICE</th>
+        </tr>
+      </thead>
+      <tbody class="bill-items">
+        <tr><td colspan="3">Loading...</td></tr>
+      </tbody>
+    </table>
+
+    <div class="btotals">
+      <table class="btotals-table">
+        <tr><td>Item Price:</td><td class="bprice billtotalItesPrice">₹0.00</td></tr>
+        <tr><td>Product Discount:</td><td class="bprice billtotalDiscount"> ₹0.00</td></tr>
+        <tr><td>Subtotal:</td><td class="bprice billsubTotal">₹0.00</td></tr>
+        <tr><td>Handling Charge:</td><td class="bprice handlingCharge">₹0.00</td></tr>
+        <tr><td>Delivery Fee:</td><td class="bprice billdelCharege">₹0.00</td></tr>
+        <tr><td>Total:</td><td class="bprice billgrandTotal"><strong>₹0.00</strong></td></tr>
+      </table>
+    </div>
+
+    <div class="bfooter">
+      <p>** THANK YOU **</p>
+      <p>Copyright © 2025, DBI Mart</p>
+    </div>
+
+    <div class="no-print flex gap-10">
+      <button onclick="closeBillModel()">Back</button>
+    </div>
+  </div>
+</div>
+   
+    
+
+
+
+       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../assets/js/script.js"></script>
+    <script src="../assets/js/header.js"></script>
+    <script src="../assets/js/order_detail.js"></script>
+    <script src="../assets/js/bd-cart-drawer.js"></script>
+    <script src="../assets/js/ratingPopup.js"></script>
+
+
+    <script>
+      async function initializeApp() {
+        $(".loader").show().fadeIn(300);
+
+        try {
+          await fetchAllOrders();
+          await fetchOrderHistory();
+        } catch (error) {
+          console.error("Error loading data:", error);
+        } finally {
+          $(".loader").fadeOut(300); // Hide the loader after everything
+        }
+      }
+
+      $(document).ready(function () {
+        initializeApp();
+        searchcategory();
+      });
+
+     
+    </script>
+</body>
+</html>

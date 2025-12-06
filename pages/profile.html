@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <meta name="theme-color" content="#ffff">
+    <title>My Profile</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="../assets/css/style.css" />
+
+    <!-- == ye header css sb me comman hoga navbar ke liye == -->
+    <link rel="stylesheet" href="../assets/css/header.css" />
+
+    <link rel="stylesheet" href="../assets/css/home.css" />
+    <link rel="stylesheet" href="../assets/css/k_style.css" />
+
+    <!-- == ye supportandfooter css sb me comman hoga footer part ke liye == -->
+    <link rel="stylesheet" href="../assets/css/supportandfooter.css" />
+
+    <!-- <link rel="stylesheet" href="../assets/css/wishlist.css"> -->
+    <link rel="stylesheet" href="../assets/css/profile.css" />
+    <link rel="stylesheet" href="../assets/css/prev-page-link.css" />
+    <link rel="stylesheet" href="../assets/css/bd-cart-drawer.css" />
+
+    <link rel="stylesheet" href="../assets/css/mobileFooter.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="shortcut icon"
+      href="../assets/images/logo.png"
+      type="image/x-icon"
+    />
+  </head>
+
+  <body>
+    <div class="wrapper-overlay"></div>
+
+
+    <div class="loader">
+      <img src="../assets/images/logo.png" class="loader-logo"/>
+      <p>Fetching the latest trends...</p>
+    </div>
+
+    <!-- == header part start here  -->
+  <div class="header_section">
+      <div class="svg_menuicon" onclick="gotoback()">
+      <svg width="26" height="24" viewBox="0 0 26 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M10.0293 5.92993L3.66797 11.9999L10.0293 18.0699" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M21.484 12H3.84619" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+
+</div>
+<div class="svg_menuicon">
+<h2>My Profile</h2>
+</div>
+<div class="svg_menuicon">
+<h2>  </h2>
+</div>
+
+
+
+    </div>
+
+    <!-- NOTE : isme mtlb header me cart wala model bhi open hoga -->
+
+    <!-- == header part end here  -->
+
+
+    <!-- wishlist section start  -->
+
+    <div class="main">
+      <div class="user-details k_flex k_flex_col k_gap_10">
+        <div class="my-profile-text profile-title">
+          <h3 id="phone_hide">My Profile</h3>
+        </div>
+        <div class="uer-img k_flex">
+          <i class="bi bi-person-fill"></i>
+          <!-- <img src="../assets/images/icon/user-img.png" alt=""> -->
+        </div>
+        <div class="user-info">
+          <h3 class="full_name">Name</h3>
+
+          <div class="k_flex k_gap_5">
+            <i class="ri-phone-line"></i>
+            <p class="mobile_number">+91</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="box-section">
+        <!-- <div class="box k_flex k_space_between" onclick="warningAlert('coming Soon')">
+                <div class="k_flex flex-start k_gap_10">
+                    <div class="box-icon k_flex">
+                        <i class="bi bi-person"></i>
+                    </div>
+                    <p>Edit Profile</p>
+                </div>
+                <i class="bi bi-chevron-right"></i>
+            </div> -->
+
+        <!-- <div class="box flex space-between" onclick="warningAlert('coming Soon')">
+                        <div class="flex flex-start gap-10">
+                            <div class="box-icon flex">
+                               <i class="ri-key-2-fill"></i>
+                            </div>
+                            <p>Change Password</p>
+                        </div>
+                        <i class="bi bi-chevron-right"></i>
+                    </div> -->
+
+        <div
+          class="box k_flex space-between"
+          onclick="location.href='order.html'"
+        >
+          <div class="k_flex flex-start k_gap_10">
+            <div class="box-icon k_flex">
+         <i class="fa-solid fa-bag-shopping"></i>
+            </div>
+            <p>Order</p>
+          </div>
+          <i class="bi bi-chevron-right"></i>
+        </div>
+
+
+         <a href="../pages/wishlist.html">
+      <div class="box-section">
+        <div class="box k_flex k_space_between">
+                <div class="k_flex flex-start k_gap_10">
+                    <div class="box-icon k_flex">
+                        <i class="bi bi-heart-fill" style="margin-top: 2px;"></i>
+                    </div>
+                    <p>My Wishlist</p>
+                </div>
+                <i class="bi bi-chevron-right"></i>
+              </div> 
+            </a>
+
+        <!-- <div
+          class="box k_flex space-between"
+          onclick="warningAlert('coming Soon')"
+        >
+          <div class="k_flex flex-start k_gap_10">
+            <div class="box-icon k_flex">
+              <i class="ri-wallet-fill"></i>
+            </div>
+            <p>Wallet</p>
+          </div>
+          <i class="bi bi-chevron-right"></i>
+        </div> -->
+
+        <!-- <div
+          class="box k_flex space-between"
+          onclick="warningAlert('coming Soon')"
+        >
+          <div class="k_flex flex-start k_gap_10">
+            <div class="box-icon k_flex">
+              <i class="bi bi-google-play"></i>
+            </div>
+
+            <p>Download App for Best Deals &amp; Big Savings</p>
+          </div>
+          <i class="bi bi-chevron-right"></i>
+        </div> -->
+
+        <!-- <div
+          class="box k_flex space-between"
+          onclick="warningAlert('coming Soon')"
+        >
+          <div class="k_flex flex-start k_gap_10">
+            <div class="box-icon k_flex">
+              <i class="ri-question-line"></i>
+            </div>
+            <p>About us</p>
+          </div>
+          <i class="bi bi-chevron-right"></i>
+        </div> -->
+
+        <div
+          class="box k_flex space-between"
+          onclick="warningAlert('coming Soon')"
+        >
+          <div class="k_flex flex-start k_gap_10">
+            <div class="box-icon k_flex">
+              <i class="fa-solid fa-address-book"></i>
+            </div>
+            <p>Contact us</p>
+          </div>
+          <i class="bi bi-chevron-right"></i>
+        </div>
+        <div
+          class="box k_flex space-between"
+          onclick="location.href='refund-returns.html'"
+        >
+          <div class="k_flex flex-start k_gap_10">
+            <div class="box-icon k_flex">
+              <i class="fa-solid fa-circle-info"></i>
+            </div>
+            <p>Refund &amp; Cancellation Policy</p>
+          </div>
+          <i class="bi bi-chevron-right"></i>
+        </div>
+        <div
+          class="box k_flex space-between"
+          onclick="location.href='shipping-policy.html'"
+        >
+          <div class="k_flex flex-start k_gap_10">
+            <div class="box-icon k_flex">
+              <i class="fa-solid fa-truck"></i>
+            </div>
+            <p>Shipping and Delivery Policy</p>
+          </div>
+          <i class="bi bi-chevron-right"></i>
+        </div>
+        <div
+          class="box k_flex space-between"
+          onclick="location.href='privacy.html'"
+        >
+          <div class="k_flex flex-start k_gap_10">
+            <div class="box-icon k_flex">
+           <svg xmlns="http://www.w3.org/2000/svg" fill="#000" viewBox="0 0 24 24" stroke-width="1.5" stroke="white" class="size-6" style="    height: 27px;">
+  <path stroke-linecap="round" stroke-linecap-color = "8a1344" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
+</svg>
+
+            </div>
+            <p>Privacy Policy</p>
+          </div>
+          <i class="bi bi-chevron-right"></i>
+        </div>
+
+        <div
+          class="box k_flex space-between"
+          onclick="location.href='terms-condition.html'"
+        >
+          <div class="k_flex flex-start k_gap_10">
+            <div class="box-icon k_flex">
+     <i class="fa-solid fa-file-contract"></i> 
+            </div>
+            <p>Terms and Conditions</p>
+          </div>
+          <i class="bi bi-chevron-right"></i>
+        </div>
+        <!-- <div
+          class="box k_flex space-between"
+          onclick="warningAlert('coming Soon')"
+         >
+          <div class="k_flex flex-start k_gap_10">
+            <div class="box-icon k_flex">
+              <i class="ri-questionnaire-line"></i>
+            </div>
+            <p>Help &amp; Support</p>
+          </div>
+          <i class="bi bi-chevron-right"></i>
+        </div> -->
+      </div>
+    </div>
+
+    <div class="log-out-btn k_flex k_gap_10" onclick="logout()">
+      <i class="ri-shut-down-line"></i>
+      <button>Log Out</button>
+    </div>
+  </div>
+
+    <!-- support section  -->
+    <div class="support">
+      <div class="info-strip-section">
+        <div class="info-strip-container">
+          <div class="info-item">
+            <i class="fas fa-box info-icon"></i>
+            <div class="info-text">
+              Fast, free delivery &<span>assembly</span>
+            </div>
+          </div>
+          <div class="info-item">
+            <!-- <i class="fas fa-dollar-sign info-icon"></i> -->
+            <div class="info-item-logo-img">
+              <img src="../assets/images/megamog_box_02.png" alt="" />
+            </div>
+            <div class="info-text">
+              Money guarantee within<span>30 days</span>
+            </div>
+          </div>
+          <div class="info-item">
+            <i class="fas fa-headset info-icon"></i>
+            <div class="info-text">
+              Online support available<span>24/7</span>
+            </div>
+          </div>
+          <div class="info-item">
+            <i class="fas fa-credit-card info-icon"></i>
+            <div class="info-text">Pay with<span>Multiple Cards</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== Footer Start ===== -->
+    <footer class="bs-footer">
+      <div class="bs-footer-container">
+        <!-- Logo & Social -->
+        <div class="bs-footer-logo">
+          <img src="../assets/images/logo.png" alt="Street Pulse Logo" />
+          <h2>Follow Us</h2>
+          <div class="bs-social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="bs-footer-links">
+          <h2>Quick Links</h2>
+          <ul>
+            <!--<li><a href="track-order.html">Track Order</a></li>-->
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="shipping-policy.html">Shipping Policy</a></li>
+            <li><a href="refund-returns.html">Return & Refund Policy</a></li>
+            <li><a href="terms-condition.html">Terms & Conditions</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div class="bs-footer-contact">
+          <h2>Contact</h2>
+          <p>
+            <a href="mailto:mayza@gmail.com" class="bs-email-link">
+              <i class="fas fa-envelope"></i> mayza@gmail.com
+            </a>
+          </p>
+        </div>
+      </div>
+    </footer>
+    <!-- ===== Footer End ===== -->
+
+    <section class="cprt-footer">
+      <!-- footer  -->
+      <div class="footer">
+        <div class="leftfooter">© 2024 Mayza. All Rights Reserved.</div>
+
+        <div class="rightfooter">
+          <!-- <img src="../assets/images/amex - Google Search_files/amex-card-logo-6D352AA0A4-seeklogo.com.png" alt="">
+                        <img src="../assets/images/amex - Google Search_files/24px.svg" alt="">
+                        <img src="../assets/images/amex - Google Search_files/faviconV2(2)" alt="">
+                        <img src="../assets/images/amex - Google Search_files/faviconV2(12)" alt=""> -->
+          <img src="../assets/images/payment.png" alt="" />
+        </div>
+      </div>
+    </section>
+
+ 
+
+    <script>
+        
+      function copyToClipboard() {
+        const text = document.getElementById("wishlistLink").textContent.trim();
+        navigator.clipboard.writeText(text).then(() => {
+          alert("Link copied to clipboard!");
+        });
+      }
+
+      const loginStatus = localStorage.getItem("login_status");
+
+      if (loginStatus !== "true") {
+        location.href = "home.html";
+      }
+    </script>
+
+    <!-- jQuery FIRST -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../assets/js/script.js"></script>
+    <script src="../assets/js/header.js"></script>
+    <script src="../assets/js/header.js"></script>
+    <script src="../assets/js/login.js"></script>
+    <script src="../assets/js/api.js"></script>
+    <script src="../assets/js/profile.js"></script>
+    <script src="../assets/js/bd-cart-drawer.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+      async function initializeApp() {
+        $(".loader").show().fadeIn(300);
+
+        try {
+          await loadBanner();
+          await fetchTodayBestDeal();
+          await loadProductCart();
+          await fetchCategory();
+          await fetchCategoryPriority();
+           loadProductsByCategory();
+           await loadProductsByCategorys();
+           await banner();
+           await fetchProductRating();
+           await banners();
+           await bannerkids();
+           await loadProductsByCategorykids();
+        } catch (error) {
+          console.error("Error loading data:", error);
+        } finally {
+          $(".loader").fadeOut(300); // Hide the loader after everything
+        }
+      }
+
+      $(document).ready(function () {
+        initializeApp();
+         searchcategory();
+      });
+
+// ✅ Run automatically when the home page loads
+$(document).ready(function () {
+  fetchUserData();
+});
+
+
+$(document).ready(function(){
+  $(".owl-carousel").owlCarousel({
+    loop: true,            // infinite loop
+    margin: 10 ,            // gap between items
+    nav: false,             // next/prev buttons
+    autoplay: true,        // auto scroll
+    autoplayTimeout: 3000, // delay between scrolls
+    responsive: {
+      0: { items: 1 },     // mobile view
+      700: { items: 2 },   // tablet view
+      1000: { items: 3 }   // desktop view
+    }
+  });
+});
+</script>
+  </body>
+</html>

@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <meta name="theme-color" content="#ffff">
+    <title>Checkout</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+<link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/profile.css">
+    <link rel="stylesheet" href="../assets/css/style.css" />
+
+    <!-- == ye header css sb me comman hoga navbar ke liye == -->
+    <link rel="stylesheet" href="../assets/css/header.css" />
+
+    <!-- <link rel="stylesheet" href="../assets/css/home.css" /> -->
+    <link rel="stylesheet" href="../assets/css/k_style.css" />
+
+    <!-- == ye supportandfooter css sb me comman hoga footer part ke liye == -->
+    <link rel="stylesheet" href="../assets/css/supportandfooter.css" />
+
+    <link rel="stylesheet" href="../assets/css/wishlist.css" />
+    <link rel="stylesheet" href="../assets/css/track-order.css" />
+    <link rel="stylesheet" href="../assets/css/checkout.css" />
+    <link rel="stylesheet" href="../assets/css/prev-page-link.css" />
+    <link rel="stylesheet" href="../assets/css/bd-cart-drawer.css" />
+
+    <link rel="stylesheet" href="../assets/css/mobileFooter.css" />
+    <link
+      rel="shortcut icon"
+      href="../assets/images/logo.png"
+      type="image/x-icon"
+    />
+  </head>
+
+
+
+
+    <body>
+    <div class="wrapper-overlay"></div>
+
+    <!-- == header part start here  -->
+  <div class="header_section">
+      <div class="svg_menuicon" onclick="gotoback()">
+      <svg width="26" height="24" viewBox="0 0 26 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M10.0293 5.92993L3.66797 11.9999L10.0293 18.0699" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M21.484 12H3.84619" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+
+ <h2>Checkout</h2>
+      </div>
+
+      
+
+      <div class="icon-top">
+
+        <div class="icons">
+          <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M18.81 24H4.39611C3.91976 24.003 3.4482 23.9003 3.01242 23.6987C2.57664 23.497 2.1865 23.201 1.86766 22.83C1.54882 22.459 1.3085 22.0215 1.16249 21.5462C1.01648 21.0709 0.968084 20.5686 1.02049 20.0723L2.15132 9.65155C2.19721 9.21681 2.3951 8.81531 2.70679 8.52452C3.01848 8.23374 3.42188 8.07428 3.83913 8.07694H19.367C19.7842 8.07428 20.1876 8.23374 20.4993 8.52452C20.811 8.81531 21.0089 9.21681 21.0548 9.65155L22.1518 20.0723C22.2039 20.5656 22.1564 21.0649 22.0124 21.5378C21.8684 22.0106 21.6311 22.4464 21.3159 22.8168C21.0007 23.1872 20.6148 23.484 20.183 23.6878C19.7513 23.8917 19.2835 23.998 18.81 24Z" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M4.85205 8.0769C4.85205 6.19999 5.56334 4.39995 6.82944 3.07278C8.09554 1.7456 9.81274 1 11.6033 1C13.3938 1 15.111 1.7456 16.3771 3.07278C17.6432 4.39995 18.3545 6.19999 18.3545 8.0769M7.38376 13.3846H15.8228" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+        </div>
+
+        <div class="icons">
+       <svg width="27" height="33" viewBox="0 0 27 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M13.125 2.1875C10.2242 2.1875 7.4422 3.33984 5.39102 5.39102C3.33984 7.4422 2.1875 10.2242 2.1875 13.125V15.3125H4.375C4.95516 15.3125 5.51156 15.543 5.9218 15.9532C6.33203 16.3634 6.5625 16.9198 6.5625 17.5V24.0625C6.5625 24.6427 6.33203 25.1991 5.9218 25.6093C5.51156 26.0195 4.95516 26.25 4.375 26.25H2.1875C1.60734 26.25 1.05094 26.0195 0.640704 25.6093C0.230468 25.1991 0 24.6427 0 24.0625V13.125C-2.56836e-08 11.4014 0.339488 9.69468 0.999081 8.10228C1.65867 6.50988 2.62545 5.06299 3.84422 3.84422C5.06299 2.62545 6.50988 1.65867 8.10228 0.999081C9.69468 0.339488 11.4014 0 13.125 0C14.8486 0 16.5553 0.339488 18.1477 0.999081C19.7401 1.65867 21.187 2.62545 22.4058 3.84422C23.6245 5.06299 24.5913 6.50988 25.2509 8.10228C25.9105 9.69468 26.25 11.4014 26.25 13.125V26.25C26.25 27.7004 25.6738 29.0914 24.6482 30.117C23.6227 31.1426 22.2317 31.7188 20.7812 31.7188H16.1131C15.9211 32.0513 15.645 32.3274 15.3125 32.5194C14.9799 32.7114 14.6027 32.8125 14.2188 32.8125H12.0312C11.4511 32.8125 10.8947 32.582 10.4845 32.1718C10.0742 31.7616 9.84375 31.2052 9.84375 30.625C9.84375 30.0448 10.0742 29.4884 10.4845 29.0782C10.8947 28.668 11.4511 28.4375 12.0312 28.4375H14.2188C14.6027 28.4375 14.9799 28.5386 15.3125 28.7306C15.645 28.9226 15.9211 29.1987 16.1131 29.5312H20.7812C21.6515 29.5312 22.4861 29.1855 23.1014 28.5702C23.7168 27.9548 24.0625 27.1202 24.0625 26.25H21.875C21.2948 26.25 20.7384 26.0195 20.3282 25.6093C19.918 25.1991 19.6875 24.6427 19.6875 24.0625V17.5C19.6875 16.9198 19.918 16.3634 20.3282 15.9532C20.7384 15.543 21.2948 15.3125 21.875 15.3125H24.0625V13.125C24.0625 11.6887 23.7796 10.2664 23.2299 8.9394C22.6803 7.6124 21.8746 6.40666 20.859 5.39102C19.8433 4.37538 18.6376 3.56973 17.3106 3.02007C15.9836 2.47041 14.5613 2.1875 13.125 2.1875Z" fill="white"/>
+</svg>
+</div>
+
+
+
+
+      </div>
+    </div>
+
+    <!-- NOTE : isme mtlb header me cart wala model bhi open hoga -->
+
+    <!-- == header part end here  -->
+
+ <div class="dv">
+  <h5>Delivery Address</h5>
+ </div>
+
+
+
+
+
+    <div class="checkout-main-container">
+            <!--deliver to address-->
+    <section class="checkout-container">
+  <div class="address-card selected">
+    <div class="address-top">
+      <div class="address-info">
+        <h4></h4>
+        <p></p>
+        <p></p>
+        <p>Mobile: <strong></strong></p>
+      </div>
+      <div class="address-actions">
+        <button class="btn-outline edit-btn-forcheckout">Edit</button>
+      </div>
+    </div>
+    <div class="address-bottom">
+      <label>
+        Deliver to this address: <h4></h4>
+      </label>
+    </div>
+  </div>
+   </section>
+                      <!-- Manage Addresses Button -->
+  <!-- <button id="manageAddressBtn" class="btn-primary">Manage Addresses</button> -->
+       
+<div class="location_section">
+<div class="l_box" id="addNewAddressBtn">
+  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+<foreignObject x="-4" y="-4" width="21.9199" height="21.568"><div xmlns="http://www.w3.org/1999/xhtml" style="backdrop-filter:blur(2px);clip-path:url(#bgblur_0_1_2315_clip_path);height:100%;width:100%"></div></foreignObject><path data-figma-bg-blur-radius="4" d="M5.95177 13.568V7.62939e-06H7.96777V13.568H5.95177ZM-0.000234365 7.74401V5.85601H13.9198V7.74401H-0.000234365Z" fill="#1F88E2"/>
+<defs>
+<clipPath id="bgblur_0_1_2315_clip_path" transform="translate(4 4)"><path d="M5.95177 13.568V7.62939e-06H7.96777V13.568H5.95177ZM-0.000234365 7.74401V5.85601H13.9198V7.74401H-0.000234365Z"/>
+</clipPath></defs>
+</svg>
+<p>Add new address</p>
+</div>
+
+<div class="l_line"></div>
+
+<div class="l_box">
+  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_1_2318)">
+<path d="M10.8335 0.833344L10.8343 3.38502C13.8495 3.76139 16.2392 6.15137 16.6152 9.16668H19.1668V10.8333L16.6152 10.8342C16.2388 13.8491 13.8492 16.2387 10.8343 16.615L10.8335 19.1667H9.16683V16.6151C6.15152 16.2391 3.76154 13.8493 3.38517 10.8342L0.833496 10.8333V9.16668H3.38507C3.7611 6.15109 6.15124 3.76094 9.16683 3.38492V0.833344H10.8335ZM10.0002 5.00001C7.23874 5.00001 5.00016 7.23859 5.00016 10C5.00016 12.7614 7.23874 15 10.0002 15C12.7616 15 15.0002 12.7614 15.0002 10C15.0002 7.23859 12.7616 5.00001 10.0002 5.00001ZM10.0002 8.33334C10.9207 8.33334 11.6668 9.07951 11.6668 10C11.6668 10.9205 10.9207 11.6667 10.0002 11.6667C9.07966 11.6667 8.3335 10.9205 8.3335 10C8.3335 9.07951 9.07966 8.33334 10.0002 8.33334Z" fill="#1F88E2"/>
+</g>
+<defs>
+<clipPath id="clip0_1_2318">
+<rect width="20" height="20" fill="white"/>
+</clipPath>
+</defs>
+</svg>
+<P>Use current location</P>
+</div>
+</div>
+
+<!-- Address List Modal -->
+<div id="addressListModal" class="addressmodal">
+  <div class="modal-content">
+    <span class="close-btn" id="closeAddressList">&times;</span>
+    <h2>Saved Addresses</h2>
+
+    <div id="addressContainer" class="address-list">
+      <!-- Example address cards -->
+      <div class="address-card">
+        <h4>Alham ansari</h4>
+        <p>Near amin general store, Ranchi, Jharkhand, 456789</p>
+      </div>
+      <div class="address-card">
+        <h4>Hadiqa Kiani</h4>
+        <p>456 Corporate Park, City, State, 123456</p>
+      </div>
+    </div>
+
+    <button id="addNewAddressBtn" class="btn-secondary">+ Add New Address</button>
+  </div>
+</div>
+
+<!-- Add New Address Modal -->
+<div id="addAddressModal" class="addressmodal">
+  <div class="modal-content">
+    <span class="close-btn" id="closeAddAddress">&times;</span>
+    <h2>Add New Address</h2>
+
+    <form id="addAddressForm" onsubmit="addnew(event)">
+      <label>Full Name</label>
+      <input type="text" id="fullname" placeholder="Enter full name" >
+
+      <label>Address</label>
+      <textarea id="address" placeholder="Enter your full address" ></textarea>
+      
+        <label>Landmark</label>
+      <input type="text" id="landmark" placeholder="At apartment, suite, optional.." >
+      
+         <label>Phone</label>
+      <input type="text" id="phone" placeholder="phone-no" maxlength="10">
+
+      <label>City</label>
+      <input type="text" id="city" placeholder="Enter city" >
+
+      <label>State</label>
+      <input type="text" id="state" placeholder="Enter state" >
+
+      <label>Pincode</label>
+      <input type="text" id="pincode" placeholder="Enter pincode" maxlength="6">
+
+      <button type="submit" class="btn-secondary">Save Address</button>
+    </form>
+  </div>
+</div>
+
+      
+      <form class="checkout-form">
+        <div class="checkout-form-title">
+          <h2>Delivery Address</h2>
+        </div>
+        <div class="checkout_form_row k_gap_20">
+          <div class="k_form_col order_track_input_content k_gap_8">
+            <label for="first-name"
+              >First Name
+              <abbr class="required" title="required">*</abbr>
+            </label>
+            <input type="text" id="first-name" name="first_name" />
+          </div>
+          <div class="k_form_col order_track_input_content k_gap_8">
+            <label for="last-name"
+              >Last name
+              <abbr class="required" title="required">*</abbr>
+            </label>
+            <input type="text" id="last-name" name="last_name" />
+          </div>
+        </div>
+       
+
+        <div class="billing_country_text">
+          <h3>Country / Region *</h3>
+          <strong>India</strong>
+        </div>
+
+        <div class="checkout_form_row k_gap_20">
+          <div class="k_form_col order_track_input_content k_gap_8">
+            <label for="street-address-1a"
+              >Street address
+              <abbr class="required" title="required">*</abbr>
+            </label>
+            <input
+              type="text"
+              id="street-address-1a"
+              name="street_address-1a"
+              placeholder="House number and street name"
+            />
+          </div>
+        </div>
+        <div class="checkout_form_row k_gap_20">
+          <div class="k_form_col order_track_input_content k_gap_8">
+            <input
+              type="text"
+              id="street-address-1b"
+              name="street_address-1b"
+              placeholder="Apartment, suite, unit, etc. (optional)"
+            />
+          </div>
+        </div>
+        <div class="checkout_form_row k_gap_20">
+          <div class="k_form_col order_track_input_content k_gap_8">
+            <label for="town-city"
+              >Town / City
+              <abbr class="required" title="required">*</abbr>
+            </label>
+            <input type="text" id="town-city" name="town-city" />
+          </div>
+        </div>
+        <div class="checkout_form_row k_gap_20">
+          <div class="k_form_col order_track_input_content k_gap_8">
+            <label for="select-state"
+              >State
+              <abbr class="required" title="required">*</abbr>
+            </label>
+            <select name="select_state" id="select-state">
+              <option value="Jharkhand">Jharkhand</option>
+              <option value="Arunachal Pradesh">Arunachal Pradesh</option>
+              <option value="Assam">Assam</option>
+              <option value="Bihar">Bihar</option>
+              <option value="Chhattisgarh">Chhattisgarh</option>
+            </select>
+          </div>
+        </div>
+        <div class="checkout_form_row k_gap_20">
+          <div class="k_form_col order_track_input_content k_gap_8">
+            <label for="pin-Code"
+              >PIN Code
+              <abbr class="required" title="required">*</abbr>
+            </label>
+            <input type="number" id="pin-Code" name="pin_Code" />
+          </div>
+        </div>
+        <div class="checkout_form_row k_gap_20">
+          <div class="k_form_col order_track_input_content k_gap_8">
+            <label for="phone-no"
+              >Phone
+              <abbr class="required" title="required">*</abbr>
+            </label>
+            <input type="number" id="phone-no" name="phone_no" />
+          </div>
+          <div class="k_form_col order_track_input_content k_gap_8">
+            <label for="email-address"
+              >Email address
+              <abbr class="required" title="required">*</abbr>
+            </label>
+            <input type="email" id="email-address" name="email_address" />
+          </div>
+        </div>
+      </form>
+      <div class="right-checkout-content" id="right-checkout-content">
+        <div class="checkout-right-title">
+          <h2>Order summary</h2>
+        </div>
+        <div id="order-product-wrapper">
+          <div class="order-product-wrapper">
+            <div class="order-img-box">
+              <img src="../assets/images/shirt-1.webp" alt="" />
+            </div>
+            <div class="order-product-name">
+              <h3>Men Color Block Polo T-Shirt <span> x2</span></h3>
+            </div>
+            <div class="order-product-price">
+              <h3>₹980.00</h3>
+            </div>
+          </div>
+        </div>
+     
+        <div class="k-cart-row k-cart-subtotal">
+          <h3>Subtotal</h3>
+          <h4>₹1,997.00</h4>
+        </div>
+        <div class="k-cart-row k-cart-shipping">
+          <h3>Shipping</h3>
+          <h4>Free shipping</h4>
+        </div>
+        <div class="k-cart-row k-cart-total-price">
+          <h3>Total</h3>
+          <h2><span>₹</span>998</h2>
+        </div>
+        <div class="paytment-info-box">
+          <div class="checkout-payment-info-heading">
+            <h3>Choose Payment Options</h3>
+          </div>
+    
+   <div class="input_select">
+  <input type="radio" name="payment" id="cod" value="Cash On Delivery">
+  <label for="cod">Cash On Delivery</label>
+</div>
+
+<div class="input_select">
+  <input type="radio" name="payment" id="prepaid" value="Pre Paid">
+  <label for="prepaid">Pre Paid</label>
+</div>
+
+        
+        </div>
+       <div class="order_track_submit_btn place-order-submit-btn" id="place-order-submit-btn">
+                    <button class="k_flex" onclick="placeOrder()">Place Order</button>
+                </div>
+      </div>
+    </div>
+
+    <!-- support section  -->
+    <div class="support">
+      <div class="info-strip-section">
+        <div class="info-strip-container">
+          <div class="info-item">
+            <i class="fas fa-box info-icon"></i>
+            <div class="info-text">
+              Fast, free delivery &<span>assembly</span>
+            </div>
+          </div>
+          <div class="info-item">
+            <!-- <i class="fas fa-dollar-sign info-icon"></i> -->
+            <div class="info-item-logo-img">
+              <img src="../assets/images/megamog_box_02.png" alt="" />
+            </div>
+            <div class="info-text">
+              Money guarantee within<span>30 days</span>
+            </div>
+          </div>
+          <div class="info-item">
+            <i class="fas fa-headset info-icon"></i>
+            <div class="info-text">
+              Online support available<span>24/7</span>
+            </div>
+          </div>
+          <div class="info-item">
+            <i class="fas fa-credit-card info-icon"></i>
+            <div class="info-text">Pay with<span>Multiple Cards</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== Footer Start ===== -->
+    <footer class="bs-footer">
+      <div class="bs-footer-container">
+        <!-- Logo & Social -->
+        <div class="bs-footer-logo">
+          <img src="../assets/images/logo.png" alt="Street Pulse Logo" />
+        </div>
+
+        <!-- Quick Links -->
+        <div class="bs-footer-links">
+          <h2>Quick Links</h2>
+          <ul>
+            <li><a href="track-order.html">Track Order</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="shipping-policy.html">Shipping Policy</a></li>
+            <li><a href="refund-returns.html">Return & Refund Policy</a></li>
+            <li><a href="terms-condition.html">Terms & Conditions</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div class="bs-footer-contact">
+          <h2>Contact</h2>
+          <p>
+            <a href="mailto:Ledove@gmail.com" class="bs-email-link">
+              <i class="fas fa-envelope"></i> Ledove@gmail.com
+            </a>
+          </p>
+        </div>
+        
+        <div class="bs-footer-logo">
+             <h2>Follow Us</h2>
+          <div class="bs-social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- ===== Footer End ===== -->
+
+    <section class="cprt-footer">
+      <!-- footer  -->
+      <div class="footer">
+        <div class="leftfooter">© 2024 Ledove. All Rights Reserved.</div>
+
+        <div class="rightfooter">
+          <!-- <img src="../assets/images/amex - Google Search_files/amex-card-logo-6D352AA0A4-seeklogo.com.png" alt="">
+                        <img src="../assets/images/amex - Google Search_files/24px.svg" alt="">
+                        <img src="../assets/images/amex - Google Search_files/faviconV2(2)" alt="">
+                        <img src="../assets/images/amex - Google Search_files/faviconV2(12)" alt=""> -->
+          <img src="../assets/images/payment.png" alt="" />
+        </div>
+      </div>
+    </section>
+
+    <!-- <div id="page-mobile-tabs" class="k-mobile-footer">
+      <div class="mobile-footer-link-content">
+        <a href="home.html" class="mobile-tab-link" aria-label="Home">
+          <div
+            class="mobile-tab-icon"
+            aria-hidden="true"
+            focusable="false"
+            role="presentation"
+          >
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 22 22"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M21.779 10.6767L12.369 2.94569C11.9843 2.62539 11.4995 2.45 10.999 2.45C10.4984 2.45 10.0136 2.62539 9.62892 2.94569L0.218899 10.6767C0.157352 10.7282 0.106553 10.7913 0.0694048 10.8625C0.0322563 10.9336 0.00948516 11.0114 0.00239165 11.0913C-0.00470186 11.1712 0.00402122 11.2518 0.0280628 11.3284C0.0521044 11.405 0.0909935 11.476 0.14251 11.5376L0.533623 12.0074C0.637642 12.1316 0.786713 12.2094 0.948074 12.2237C1.10943 12.238 1.26988 12.1877 1.39415 12.0838L2.44336 11.2221V18.3381C2.44426 18.662 2.57333 18.9724 2.80234 19.2014C3.03136 19.4304 3.34171 19.5595 3.66559 19.5604H8.55451C8.87838 19.5595 9.18873 19.4304 9.41775 19.2014C9.64677 18.9724 9.77583 18.662 9.77674 18.3381V14.3659H12.2212V18.3381C12.2221 18.662 12.3512 18.9724 12.5802 19.2014C12.8092 19.4304 13.1195 19.5595 13.4434 19.5604H18.3323C18.6547 19.5597 18.9638 19.4319 19.1926 19.2049C19.4214 18.9778 19.5515 18.6697 19.5546 18.3473V11.2213L20.6061 12.0853C20.7303 12.1892 20.8908 12.2395 21.0521 12.2252C21.2135 12.2109 21.3626 12.1331 21.4666 12.0089L21.8573 11.5395C21.909 11.4778 21.948 11.4065 21.9721 11.3296C21.9961 11.2528 22.0048 11.172 21.9975 11.0918C21.9902 11.0116 21.9672 10.9337 21.9297 10.8624C21.8922 10.7912 21.841 10.7281 21.779 10.6767V10.6767ZM17.7155 17.727H14.0545V13.7548C14.0536 13.4309 13.9246 13.1206 13.6956 12.8915C13.4665 12.6625 13.1562 12.5335 12.8323 12.5326H9.16562C8.84174 12.5335 8.53139 12.6625 8.30238 12.8915C8.07336 13.1206 7.9443 13.4309 7.94339 13.7548V17.727H4.2767V9.71646L10.999 4.19274L17.7212 9.71417L17.7155 17.727Z"
+                fill="black"
+              ></path>
+            </svg>
+          </div>
+        </a>
+        <a href="category.html" class="mobile-tab-link" aria-label="Shop">
+          <div
+            class="mobile-tab-icon"
+            aria-hidden="true"
+            focusable="false"
+            role="presentation"
+          >
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 22 22"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1 4.125V17.875C1 18.3958 1.18229 18.8385 1.54688 19.2031C1.91146 19.5677 2.35417 19.75 2.875 19.75H19.125C19.6458 19.75 20.0885 19.5677 20.4531 19.2031C20.8177 18.8385 21 18.3958 21 17.875V4.125C21 3.60417 20.8177 3.16146 20.4531 2.79688C20.0885 2.43229 19.6458 2.25 19.125 2.25H2.875C2.35417 2.25 1.91146 2.43229 1.54688 2.79688C1.18229 3.16146 1 3.60417 1 4.125ZM10.0625 4.125V10.0625H2.875V4.35938C2.875 4.30729 2.90104 4.25521 2.95312 4.20312C3.00521 4.15104 3.05729 4.125 3.10938 4.125H10.0625ZM2.875 11.9375H10.0625V17.875H3.10938C3.05729 17.875 3.00521 17.849 2.95312 17.7969C2.90104 17.7448 2.875 17.6927 2.875 17.6406V11.9375ZM11.9375 17.875V11.9375H19.125V17.6406C19.125 17.6927 19.099 17.7448 19.0469 17.7969C18.9948 17.849 18.9427 17.875 18.8906 17.875H11.9375ZM19.125 10.0625H11.9375V4.125H18.8906C18.9427 4.125 18.9948 4.15104 19.0469 4.20312C19.099 4.25521 19.125 4.30729 19.125 4.35938V10.0625Z"
+                fill="black"
+              ></path>
+            </svg>
+          </div>
+        </a>
+        <div
+          class="mobile-tab-link login-link open-modal-login"
+          onclick="openModal()"
+          aria-label="Log in"
+        >
+          <div
+            class="mobile-tab-icon"
+            aria-hidden="true"
+            focusable="false"
+            role="presentation"
+          >
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 22 22"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M14.5156 12.875C15.9479 12.875 17.1719 13.3958 18.1875 14.4375C19.2292 15.4531 19.75 16.6771 19.75 18.1094V19.125C19.75 19.6458 19.5677 20.0885 19.2031 20.4531C18.8385 20.8177 18.3958 21 17.875 21H4.125C3.60417 21 3.16146 20.8177 2.79688 20.4531C2.43229 20.0885 2.25 19.6458 2.25 19.125V18.1094C2.25 16.6771 2.75781 15.4531 3.77344 14.4375C4.8151 13.3958 6.05208 12.875 7.48438 12.875C7.82292 12.875 8.31771 12.9792 8.96875 13.1875C9.64583 13.3958 10.3229 13.5 11 13.5C11.6771 13.5 12.3542 13.3958 13.0312 13.1875C13.7083 12.9792 14.2031 12.875 14.5156 12.875ZM17.875 19.125V18.1094C17.875 17.1979 17.5365 16.4167 16.8594 15.7656C16.2083 15.0885 15.4271 14.75 14.5156 14.75C14.4375 14.75 14.0208 14.8542 13.2656 15.0625C12.5365 15.2708 11.7812 15.375 11 15.375C10.2188 15.375 9.45052 15.2708 8.69531 15.0625C7.96615 14.8542 7.5625 14.75 7.48438 14.75C6.57292 14.75 5.77865 15.0885 5.10156 15.7656C4.45052 16.4167 4.125 17.1979 4.125 18.1094V19.125H17.875ZM14.9844 10.6094C13.8906 11.7031 12.5625 12.25 11 12.25C9.4375 12.25 8.10938 11.7031 7.01562 10.6094C5.92188 9.51562 5.375 8.1875 5.375 6.625C5.375 5.0625 5.92188 3.73438 7.01562 2.64062C8.10938 1.54688 9.4375 1 11 1C12.5625 1 13.8906 1.54688 14.9844 2.64062C16.0781 3.73438 16.625 5.0625 16.625 6.625C16.625 8.1875 16.0781 9.51562 14.9844 10.6094ZM13.6562 3.96875C12.9271 3.23958 12.0417 2.875 11 2.875C9.95833 2.875 9.07292 3.23958 8.34375 3.96875C7.61458 4.69792 7.25 5.58333 7.25 6.625C7.25 7.66667 7.61458 8.55208 8.34375 9.28125C9.07292 10.0104 9.95833 10.375 11 10.375C12.0417 10.375 12.9271 10.0104 13.6562 9.28125C14.3854 8.55208 14.75 7.66667 14.75 6.625C14.75 5.58333 14.3854 4.69792 13.6562 3.96875Z"
+                fill="#000000"
+              ></path>
+            </svg>
+          </div>
+        </div>
+       
+        <div
+          class="mini-cart__button has-badge mobile-tab-link"
+          onclick="openCart()"
+          aria-label="Cart"
+        >
+          <div
+            class="mobile-tab-icon"
+            aria-hidden="true"
+            focusable="false"
+            role="presentation"
+          >
+            <svg
+              width="22"
+              height="22"
+              viewBox="0 0 22 22"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M15.95 6H19.7V17.875C19.7 18.7344 19.3875 19.4635 18.7625 20.0625C18.1635 20.6875 17.4344 21 16.575 21H5.325C4.46563 21 3.72344 20.6875 3.09844 20.0625C2.49948 19.4635 2.2 18.7344 2.2 17.875V6H5.95C5.95 4.61979 6.43177 3.44792 7.39531 2.48438C8.3849 1.49479 9.56979 1 10.95 1C12.3302 1 13.5021 1.49479 14.4656 2.48438C15.4552 3.44792 15.95 4.61979 15.95 6ZM13.1375 3.8125C12.5385 3.1875 11.8094 2.875 10.95 2.875C10.0906 2.875 9.34844 3.1875 8.72344 3.8125C8.12448 4.41146 7.825 5.14062 7.825 6H14.075C14.075 5.14062 13.7625 4.41146 13.1375 3.8125ZM17.825 17.875V7.875H15.95V9.4375C15.95 9.69792 15.8589 9.91927 15.6766 10.1016C15.4943 10.2839 15.2729 10.375 15.0125 10.375C14.7521 10.375 14.5307 10.2839 14.3484 10.1016C14.1661 9.91927 14.075 9.69792 14.075 9.4375V7.875H7.825V9.4375C7.825 9.69792 7.73385 9.91927 7.55156 10.1016C7.36927 10.2839 7.14792 10.375 6.8875 10.375C6.62708 10.375 6.40573 10.2839 6.22344 10.1016C6.04115 9.91927 5.95 9.69792 5.95 9.4375V7.875H4.075V17.875C4.075 18.2135 4.19219 18.5 4.42656 18.7344C4.68698 18.9948 4.98646 19.125 5.325 19.125H16.575C16.9135 19.125 17.2 18.9948 17.4344 18.7344C17.6948 18.5 17.825 18.2135 17.825 17.875Z"
+                fill="#000000"
+              ></path>
+            </svg>
+            <div
+              class="mobile-footer-icon-badge mini-cart-badge"
+              data-count="0"
+            >
+              0
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+    
+    
+   <!--edit address modal-->
+<div class="deliver-modal" id="editdeliverModal">
+  <div class="modal-content">
+    <span class="close-btn-deliver-modal">&times;</span>
+    <h3>Edit Delivery Address</h3>
+    <form id="editAddressForm">
+      <label>Name</label>
+      <input type="text" name="name" placeholder="John Doe" required>
+      
+      <label>Street Address</label>
+      <textarea name="address" placeholder="Enter address" required></textarea>
+      
+      <!--<label>*optional</label>-->
+      <!--<input type="text" name="address2" placeholder="Apartment , Unit , Suite etc." required>-->
+      
+      <label>State</label>
+      <input type="text" name="state" placeholder="state" required>
+      
+      <label>City</label>
+      <input type="text" name="city" placeholder="New Delhi" required>
+      
+      <label>Pincode</label>
+      <input type="text" name="pincode" placeholder="110016" required>
+      
+      <label>Mobile</label>
+      <input type="number" name="mobile" placeholder="98765..." required>
+      
+      <button type="submit" class="btn-save" onclick="savedeliverto()">Save</button>
+    </form>
+  </div>
+</div>
+
+    
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+      function copyToClipboard() {
+        const text = document.getElementById("wishlistLink").textContent.trim();
+        navigator.clipboard.writeText(text).then(() => {
+          alert("Link copied to clipboard!");
+        });
+      }
+
+
+    
+    </script>
+
+    <!-- jQuery FIRST -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script src="../assets/js/script.js"></script>
+    <script src="../assets/js/header.js"></script>
+    <script src="../assets/js/checkout.js"></script>
+
+    <script src="../assets/js/bd-cart-drawer.js"></script>
+    <script>
+        $(document).ready(function(){
+            searchcategory();
+            fillform();
+        });
+
+          $('input[name="payment"]').on('change', function () {
+       
+    let selectedValue = $(this).val();
+    localStorage.setItem("paymentMethod", selectedValue);
+});
+    </script>
+<script>
+$(document).ready(function(){
+
+  // Open Address List Modal
+  $("#manageAddressBtn").on("click", function(){
+    $("#addressListModal").css("display", "flex");
+  });
+
+  // Close Address List Modal
+  $("#closeAddressList").on("click", function(){
+    $("#addressListModal").hide();
+  });
+
+  // Open Add New Address Modal
+  $("#addNewAddressBtn").on("click", function(){
+    $("#addressListModal").hide();
+    $("#addAddressModal").css("display", "flex");
+  });
+
+  // Close Add New Address Modal
+  $("#closeAddAddress").on("click", function(){
+    $("#addAddressModal").hide();
+  });
+
+  // Close Modals on Outside Click
+  $(window).on("click", function(e){
+    if ($(e.target).is("#addressListModal")) {
+      $("#addressListModal").hide();
+    }
+    if ($(e.target).is("#addAddressModal")) {
+      $("#addAddressModal").hide();
+    }
+  });
+
+});
+</script>
+
+  </body>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+   <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  <link rel="stylesheet" href="/assets/css/login.css">
+</head>
+<body>
+
+  <div class="container">
+
+    <div class="top-shape">
+        <img src="/assets/images/bubble 02.png" alt="">
+        <img src="/assets/images/bubble 01.png" alt="" class="bubble2">
+    </div>
+    <div class="side-shape">
+        <img src="/assets/images/bubblle 03.png" alt="">
+    </div>
+<div class="login">
+    <h1>Login</h1>
+    <p class="subtitle">Good to see you back! <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M11.6427 0C11.6312 0 11.6159 0 11.6044 0C10.084 0 8.73968 0.804265 7.96605 1.99151C7.19243 0.804265 5.84816 0 4.32771 0C4.31622 0 4.3009 0 4.28941 0C1.91875 0.022979 0 1.94938 0 4.32771C0 5.74475 0.620433 7.75541 1.83066 9.4099C4.13622 12.5619 7.96605 15.3193 7.96605 15.3193C7.96605 15.3193 11.7959 12.5619 14.1014 9.4099C15.3117 7.75541 15.9321 5.74475 15.9321 4.32771C15.9321 1.94938 14.0134 0.022979 11.6427 0Z" fill="black"/>
+</svg>
+</p>
+
+    <div class="input-box">
+      <select id="country-code">
+        <option value="+91">+91</option>
+        <option value="+1">+1</option>
+        <option value="+44">+44</option>
+      </select>
+
+      <input type="number" id="username" placeholder="Phone Number" onKeyPress="if(this.value.length==10) return false;">
+
+    </div>
+
+
+    <div class="input-box">
+      <input type="password" name=""  id="login_password_input" placeholder="Password">
+        <div class="k_eye_icon k_flex" id="eye">
+              <i class="fa-solid fa-eye"></i>
+            </div>
+    </div>
+
+  
+<div class="action_button">
+    <button class="next-btn" onclick="signin(event)">  <p class="btn-submit-text">Log In</p></button>
+    <div class="login_sc" onclick="window.location.href='../pages/signup.html'">
+          <p>Don't have an account login?</p>
+          <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M15 30C23.2843 30 30 23.2843 30 15C30 6.71573 23.2843 0 15 0C6.71573 0 0 6.71573 0 15C0 23.2843 6.71573 30 15 30Z" fill="black"/>
+<path d="M16.6716 9.29498L15.4919 10.4987L19.2476 14.146H8.08899V15.8313H19.2476L15.4919 19.4786L16.6716 20.6823L22.5458 14.9886L16.6716 9.29498Z" fill="white"/>
+</svg>
+</div>
+  </div>
+</div>
+  
+
+
+
+
+ <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- Owl Carousel JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+  <script src="../assets/js/login.js"></script>
+ <script src="../assets/js/script.js"></script>
+     <script src="../assets/js/header.js"></script>
+    <script src="../assets/js/api.js"></script>
+    <script src="../assets/js/home.js"></script>
+    <script src="../assets/js/h_product_quick_view.js"></script>
+    <script src="../assets/js/bd-cart-drawer.js"></script>
+    <script src="../assets/js/ratingPopup.js"></script>
+    <script src="../assets/js/shopping_other.js"></script>
+    <script src="../assets/js/give-star-rating.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+</body>
+</html>

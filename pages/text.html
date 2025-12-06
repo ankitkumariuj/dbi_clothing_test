@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Black Image Upload UI</title>
+   <style>
+    /* Basic Reset and Black Background */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #000000; /* Pure Black Background */
+    color: #ffffff; /* White text for contrast */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.upload-container {
+    width: 350px;
+    padding: 20px;
+    background-color: #1a1a1a; /* Very dark gray container */
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1); /* Subtle white shadow */
+    text-align: center;
+}
+
+/* Upload Box Styling (The main drop area) */
+.upload-box {
+    border: 3px dashed #444444; /* Dark gray dashed border */
+    border-radius: 8px;
+    padding: 30px 20px;
+    cursor: pointer;
+    transition: border-color 0.3s, background-color 0.3s;
+    margin-bottom: 20px;
+    min-height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
+    background-color: #0d0d0d; /* Even darker interior background */
+}
+
+.upload-box:hover {
+    border-color: #ffffff; /* White border on hover */
+}
+
+/* Upload Message */
+.upload-message p {
+    margin: 5px 0;
+}
+
+.upload-message .file-type {
+    font-size: 0.9em;
+    color: #aaaaaa; /* Lighter gray for secondary text */
+}
+
+/* Image Preview Styling */
+#imagePreview {
+    max-width: 100%;
+    max-height: 150px;
+    border-radius: 6px;
+    object-fit: contain;
+    display: block; /* Ensure it's treated as a block element when visible */
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Custom Browse Button */
+.upload-button {
+    background-color: #333333; /* Dark gray button */
+    color: #ffffff;
+    border: 1px solid #555555;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.3s, border-color 0.3s;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.upload-button:hover {
+    background-color: #555555; /* Slightly lighter on hover */
+    border-color: #ffffff;
+}
+   </style>
+</head>
+<body>
+    <div class="upload-container">
+        <div class="upload-box" id="uploadBox">
+            <input type="file" id="fileInput" accept="image/*" hidden>
+            <div class="upload-message">
+                <p>Drag & Drop or **Click to Upload**</p>
+                <p class="file-type">Supported: JPG, PNG, GIF</p>
+            </div>
+            <img id="imagePreview" src="#" alt="Image Preview" class="hidden">
+        </div>
+        <button onclick="document.getElementById('fileInput').click()" class="upload-button">
+            Browse File
+        </button>
+    </div>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+    const fileInput = document.getElementById('fileInput');
+    const imagePreview = document.getElementById('imagePreview');
+    const uploadMessage = document.querySelector('.upload-message');
+    const uploadBox = document.getElementById('uploadBox');
+
+    // Handle file selection (when the hidden input changes)
+    fileInput.addEventListener('change', function() {
+        if (this.files && this.files[0]) {
+            const file = this.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                // Display the image
+                imagePreview.src = e.target.result;
+                imagePreview.classList.remove('hidden');
+                uploadMessage.classList.add('hidden'); // Hide the message
+                
+                // Optional: Update box styling to center image better
+                uploadBox.style.padding = '10px'; 
+                uploadBox.style.minHeight = 'auto';
+            };
+
+            // Read the image file as a Data URL
+            reader.readAsDataURL(file);
+        }
+    });
+
+    // --- Optional: Drag and Drop Functionality ---
+
+    // Prevent default drag behaviors
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+        uploadBox.addEventListener(eventName, preventDefaults, false);
+    });
+
+    function preventDefaults(e) {
+        e.preventDefault();
+        e.stopPropagation();
+    }
+
+    // Highlight drop area when item is dragged over it
+    ['dragenter', 'dragover'].forEach(eventName => {
+        uploadBox.addEventListener(eventName, highlight, false);
+    });
+
+    ['dragleave', 'drop'].forEach(eventName => {
+        uploadBox.addEventListener(eventName, unhighlight, false);
+    });
+
+    function highlight() {
+        uploadBox.style.borderColor = '#ffffff'; // White highlight
+    }
+
+    function unhighlight() {
+        uploadBox.style.borderColor = '#444444'; // Reset border color
+    }
+
+    // Handle dropped files
+    uploadBox.addEventListener('drop', handleDrop, false);
+
+    function handleDrop(e) {
+        const dt = e.dataTransfer;
+        const files = dt.files;
+
+        // Set the files to the file input element to trigger its 'change' event
+        fileInput.files = files; 
+        
+        // Manual trigger change event if needed for cross-browser consistency
+        fileInput.dispatchEvent(new Event('change'));
+    }
+});
+</script>
+</body>
+</html>

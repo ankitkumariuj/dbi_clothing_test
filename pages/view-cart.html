@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <meta name="theme-color" content="#000">
+    <title>Cart</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="../assets/css/style.css" />
+
+    <!-- == ye header css sb me comman hoga navbar ke liye == -->
+    <link rel="stylesheet" href="../assets/css/header.css" />
+
+    <link rel="stylesheet" href="../assets/css/home.css" />
+    <link rel="stylesheet" href="../assets/css/k_style.css" />
+
+<link rel="stylesheet" href="../assets/css/product-card.css">
+    <link rel="stylesheet" href="../assets/css/view-cart.css" />
+<link rel="stylesheet" href="../assets/css/profile.css">
+    <link rel="stylesheet" href="../assets/css/mobileFooter.css" />
+    <link
+      rel="shortcut icon"
+      href="../assets/images/logo.png"
+      type="image/x-icon"
+    />
+  </head>
+
+  <body>
+    <!-- <div class="wrapper-overlay"></div>
+   <div class="loader">
+      <img src="../assets/images/logo.png" class="loader-logo" />
+      <p>Fetching the latest trends...</p>
+    </div> -->
+
+    <!-- == header part start here  -->
+
+  
+
+    <div class="header_section">
+      <div class="svg_menuicon" onclick="gotoback()">
+      <svg width="26" height="24" viewBox="0 0 26 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M10.0293 5.92993L3.66797 11.9999L10.0293 18.0699" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M21.484 12H3.84619" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+
+ <h2>My Cart</h2>
+      </div>
+
+      
+
+      <div class="icon-top">
+        <div class="icons">
+       <svg width="27" height="33" viewBox="0 0 27 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M13.125 2.1875C10.2242 2.1875 7.4422 3.33984 5.39102 5.39102C3.33984 7.4422 2.1875 10.2242 2.1875 13.125V15.3125H4.375C4.95516 15.3125 5.51156 15.543 5.9218 15.9532C6.33203 16.3634 6.5625 16.9198 6.5625 17.5V24.0625C6.5625 24.6427 6.33203 25.1991 5.9218 25.6093C5.51156 26.0195 4.95516 26.25 4.375 26.25H2.1875C1.60734 26.25 1.05094 26.0195 0.640704 25.6093C0.230468 25.1991 0 24.6427 0 24.0625V13.125C-2.56836e-08 11.4014 0.339488 9.69468 0.999081 8.10228C1.65867 6.50988 2.62545 5.06299 3.84422 3.84422C5.06299 2.62545 6.50988 1.65867 8.10228 0.999081C9.69468 0.339488 11.4014 0 13.125 0C14.8486 0 16.5553 0.339488 18.1477 0.999081C19.7401 1.65867 21.187 2.62545 22.4058 3.84422C23.6245 5.06299 24.5913 6.50988 25.2509 8.10228C25.9105 9.69468 26.25 11.4014 26.25 13.125V26.25C26.25 27.7004 25.6738 29.0914 24.6482 30.117C23.6227 31.1426 22.2317 31.7188 20.7812 31.7188H16.1131C15.9211 32.0513 15.645 32.3274 15.3125 32.5194C14.9799 32.7114 14.6027 32.8125 14.2188 32.8125H12.0312C11.4511 32.8125 10.8947 32.582 10.4845 32.1718C10.0742 31.7616 9.84375 31.2052 9.84375 30.625C9.84375 30.0448 10.0742 29.4884 10.4845 29.0782C10.8947 28.668 11.4511 28.4375 12.0312 28.4375H14.2188C14.6027 28.4375 14.9799 28.5386 15.3125 28.7306C15.645 28.9226 15.9211 29.1987 16.1131 29.5312H20.7812C21.6515 29.5312 22.4861 29.1855 23.1014 28.5702C23.7168 27.9548 24.0625 27.1202 24.0625 26.25H21.875C21.2948 26.25 20.7384 26.0195 20.3282 25.6093C19.918 25.1991 19.6875 24.6427 19.6875 24.0625V17.5C19.6875 16.9198 19.918 16.3634 20.3282 15.9532C20.7384 15.543 21.2948 15.3125 21.875 15.3125H24.0625V13.125C24.0625 11.6887 23.7796 10.2664 23.2299 8.9394C22.6803 7.6124 21.8746 6.40666 20.859 5.39102C19.8433 4.37538 18.6376 3.56973 17.3106 3.02007C15.9836 2.47041 14.5613 2.1875 13.125 2.1875Z" fill="white"/>
+</svg>
+</div>
+
+
+
+
+      </div>
+    </div>
+
+   
+    <!-- NOTE : isme mtlb header me cart wala model bhi open hoga -->
+
+    <!-- == header part end here  -->
+
+ 
+    <!-- wishlist section start  -->
+<div class="cart_section">
+   
+ 
+
+
+       <div class="cart-container" id="cart-container">
+      <div class="cart_product_title">
+    <h4>Claudette corest shirt dress in white. STI 135</h4>
+    <svg width="2" height="25" viewBox="0 0 2 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+<line x1="1" y1="24.02" x2="1" y2="3.8147e-06" stroke="#7E7979" stroke-width="2"/>
+</svg>
+<svg width="22" height="22" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M8.9375 1.375H13.0625C13.2448 1.375 13.4197 1.44743 13.5486 1.57636C13.6776 1.7053 13.75 1.88016 13.75 2.0625V3.4375H8.25V2.0625C8.25 1.88016 8.32243 1.7053 8.45136 1.57636C8.5803 1.44743 8.75516 1.375 8.9375 1.375ZM15.125 3.4375V2.0625C15.125 1.51549 14.9077 0.990886 14.5209 0.604092C14.1341 0.217298 13.6095 0 13.0625 0L8.9375 0C8.39049 0 7.86589 0.217298 7.47909 0.604092C7.0923 0.990886 6.875 1.51549 6.875 2.0625V3.4375H2.0625C1.88016 3.4375 1.7053 3.50993 1.57636 3.63886C1.44743 3.7678 1.375 3.94266 1.375 4.125C1.375 4.30734 1.44743 4.4822 1.57636 4.61114C1.7053 4.74007 1.88016 4.8125 2.0625 4.8125H2.80225L3.97513 19.47C4.03043 20.1591 4.34329 20.8022 4.85138 21.271C5.35947 21.7399 6.02552 22.0001 6.71688 22H15.2831C15.9745 22.0001 16.6405 21.7399 17.1486 21.271C17.6567 20.8022 17.9696 20.1591 18.0249 19.47L19.1978 4.8125H19.9375C20.1198 4.8125 20.2947 4.74007 20.4236 4.61114C20.5526 4.4822 20.625 4.30734 20.625 4.125C20.625 3.94266 20.5526 3.7678 20.4236 3.63886C20.2947 3.50993 20.1198 3.4375 19.9375 3.4375H15.125ZM17.8172 4.8125L16.654 19.36C16.6263 19.7046 16.4699 20.0261 16.2159 20.2605C15.9618 20.4949 15.6288 20.6251 15.2831 20.625H6.71688C6.3712 20.6251 6.03817 20.4949 5.78413 20.2605C5.53008 20.0261 5.37365 19.7046 5.346 19.36L4.18275 4.8125H17.8172ZM7.52263 6.1875C7.70458 6.17698 7.88327 6.23915 8.01941 6.36033C8.15555 6.48152 8.23799 6.6518 8.24863 6.83375L8.93613 18.5212C8.94335 18.7011 8.87977 18.8766 8.75905 19.01C8.63833 19.1435 8.47008 19.2243 8.29044 19.2351C8.11079 19.2459 7.93408 19.1858 7.79823 19.0678C7.66239 18.9497 7.57825 18.7831 7.56387 18.6038L6.875 6.91625C6.86942 6.82593 6.88172 6.7354 6.9112 6.64984C6.94069 6.56429 6.98677 6.4854 7.04681 6.41769C7.10685 6.34999 7.17967 6.2948 7.26108 6.2553C7.3425 6.2158 7.43091 6.19276 7.52125 6.1875H7.52263ZM14.4774 6.1875C14.5677 6.19276 14.6561 6.2158 14.7375 6.2553C14.819 6.2948 14.8918 6.34999 14.9518 6.41769C15.0119 6.4854 15.0579 6.56429 15.0874 6.64984C15.1169 6.7354 15.1292 6.82593 15.1236 6.91625L14.4361 18.6038C14.4325 18.6951 14.4106 18.7848 14.3718 18.8676C14.3331 18.9504 14.2782 19.0247 14.2104 19.086C14.1426 19.1474 14.0632 19.1946 13.9769 19.2248C13.8906 19.2551 13.7992 19.2679 13.7079 19.2624C13.6166 19.2569 13.5274 19.2333 13.4454 19.1929C13.3633 19.1525 13.2902 19.0961 13.2302 19.0271C13.1703 18.9581 13.1247 18.8778 13.0961 18.7909C13.0675 18.7041 13.0566 18.6124 13.0639 18.5212L13.7514 6.83375C13.762 6.6518 13.8445 6.48152 13.9806 6.36033C14.1167 6.23915 14.2954 6.17698 14.4774 6.1875ZM11 6.1875C11.1823 6.1875 11.3572 6.25993 11.4861 6.38886C11.6151 6.5178 11.6875 6.69266 11.6875 6.875V18.5625C11.6875 18.7448 11.6151 18.9197 11.4861 19.0486C11.3572 19.1776 11.1823 19.25 11 19.25C10.8177 19.25 10.6428 19.1776 10.5139 19.0486C10.3849 18.9197 10.3125 18.7448 10.3125 18.5625V6.875C10.3125 6.69266 10.3849 6.5178 10.5139 6.38886C10.6428 6.25993 10.8177 6.1875 11 6.1875Z" fill="#FF4B4B"/>
+</svg>
+</div>
+
+<div class="image_section">
+  <div class="p_img_color">
+  <img src="../assets/images/women 2.png" alt=""/>
+  <div class="color-box"></div>
+  </div>
+  <p>Red</p>
+</div>
+
+<div class="cart_product_info">
+  <h4>4 Pcs per size set</h4>
+  <div class="size_discount">
+  <p>S/1, M/1, L/1, XL/1</p>
+   <div class="discount-label">62% Margin
+  </div>
+  </div>
+    <div class="size_discount">
+  <h3>₹188.55/Pcs</h3>
+  <h3>₹2262.6</h3>
+  </div>
+</div>
+
+    </div>
+
+
+
+   
+    
+  
+</div>
+
+
+  <div id="page-mobile-tabss" class="k-mobile-footer">
+    <div class="place_order">
+    <div class="subtotal" >
+      <h4 id="t_price">₹7,127.19</h4>
+      <p>(Price: ₹ 6,787.8 + GST 5% : ₹ 339.39)</p>
+    </div>
+    <div class="palceorderbtn" onclick="window.location.href='/pages/checkout.html'">
+    <h5>Place Order</h5>
+    <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M4.45508 9.96004L7.71508 6.70004C8.10008 6.31504 8.10008 5.68504 7.71508 5.30004L4.45508 2.04004" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+    </div>
+    </div>
+  </div>
+
+    <script>
+
+
+
+      function copyToClipboard() {
+        const text = document.getElementById("wishlistLink").textContent.trim();
+        navigator.clipboard.writeText(text).then(() => {
+          alert("Link copied to clipboard!");
+        });
+      }
+
+
+
+
+
+     async function initializeApp() {
+        $(".loader").show().fadeIn(300);
+
+        try {
+          await loadBanner();
+          await loadProductCart();
+
+          await fetchCategory();
+          await fetchTodayBestDeal();
+          await fetchCategoryPriority();
+        } catch (error) {
+          console.error("Error loading data:", error);
+        } finally {
+          $(".loader").fadeOut(100); // Hide the loader after everything
+        }
+      }
+
+      $(document).ready(function () {
+        initializeApp();
+         searchcategory();
+      });
+    </script>
+
+    <!-- jQuery FIRST -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+ <script src="../assets/js/script.js"></script>
+
+    <script src="../assets/js/header.js"></script>
+    <script src="../assets/js/bd-cart-drawer.js"></script>
+    <script src="../assets/js/checkout.js"></script>
+    
+  </body>
+</html>

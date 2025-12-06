@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+          <meta name="theme-color" content="#ffff">
+    <title>Mayza - Category Page</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    
+    <link rel="stylesheet" href="../assets/css/k_style.css" />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/header.css" />
+<link rel="stylesheet" href="../assets/css/product-card.css" class="css">
+    <link rel="stylesheet" href="../assets/css/category.css" />
+    <link rel="stylesheet" href="../assets/css/h_quick_view.css" />
+    <link rel="stylesheet" href="../assets/css/profile.css">
+    <link rel="stylesheet" href="../assets/css/supportandfooter.css" />
+    <link rel="stylesheet" href="../assets/css/prev-page-link.css" />
+    <link rel="stylesheet" href="../assets/css/mobileFooter.css" />
+    <link rel="stylesheet" href="../assets/css/bd-cart-drawer.css" />
+    <link rel="stylesheet" href="../assets/css/rating-popup.css" />
+    <link
+      rel="shortcut icon"
+      href="../assets/images/logo.png"
+      type="image/x-icon"
+    />
+  </head>
+
+  <body>
+    <div class="wrapper-overlay"></div>
+
+  <div class="loader">
+      <img src="../assets/images/logo.png" class="loader-logo" />
+      <p>Fetching the latest trends...</p>
+    </div>
+
+    <!-- == header part start here  -->
+
+ 
+    <div class="header">
+   <div class="back-menu-icon" onclick="gotoback()">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M9.57 5.92993L3.5 11.9999L9.57 18.0699" stroke="#272727" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M20.4999 12H3.66992" stroke="#272727" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+    </div>
+      <div class="logo">
+        <a href="home.html">
+          <img src="../assets/images/logo.png" alt="Logo" />
+
+        </a>
+        <strong id="page_title">Categories</strong>
+      </div>
+   
+
+      <div class="icons m-show">
+        <div class="icon-btn" id="icon-btn" onclick="location.href='/pages/search.html'">
+       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M21.7099 20.29L17.9999 16.61C19.44 14.8144 20.1374 12.5353 19.9487 10.2413C19.76 7.9473 18.6996 5.81278 16.9854 4.27664C15.2713 2.74051 13.0337 1.91951 10.7328 1.98247C8.43194 2.04543 6.24263 2.98756 4.61505 4.61514C2.98747 6.24272 2.04534 8.43204 1.98237 10.7329C1.91941 13.0338 2.74041 15.2714 4.27655 16.9855C5.81269 18.6997 7.94721 19.7601 10.2412 19.9488C12.5352 20.1375 14.8143 19.4401 16.6099 18L20.2899 21.68C20.3829 21.7737 20.4935 21.8481 20.6153 21.8989C20.7372 21.9497 20.8679 21.9758 20.9999 21.9758C21.1319 21.9758 21.2626 21.9497 21.3845 21.8989C21.5063 21.8481 21.6169 21.7737 21.7099 21.68C21.8901 21.4935 21.9909 21.2443 21.9909 20.985C21.9909 20.7257 21.8901 20.4765 21.7099 20.29ZM10.9999 18C9.61544 18 8.26206 17.5895 7.11091 16.8203C5.95977 16.0511 5.06256 14.9579 4.53275 13.6788C4.00293 12.3997 3.86431 10.9922 4.13441 9.63437C4.4045 8.2765 5.07119 7.02922 6.05016 6.05025C7.02912 5.07128 8.27641 4.4046 9.63427 4.1345C10.9921 3.86441 12.3996 4.00303 13.6787 4.53284C14.9578 5.06266 16.051 5.95986 16.8202 7.11101C17.5894 8.26215 17.9999 9.61553 17.9999 11C17.9999 12.8565 17.2624 14.637 15.9497 15.9497C14.6369 17.2625 12.8564 18 10.9999 18Z" fill="#3E3E40"/>
+</svg>
+
+        </div>
+   
+      
+      
+      </div>
+      
+    </div>
+
+
+    <!-- NOTE : isme mtlb header me cart wala model bhi open hoga -->
+
+    <!-- == header part end here  -->
+
+    <div class="marginTop"></div>
+
+    <div class="prev-page-link-container">
+      <div class="prev-page-link-content">
+        <a href="home.html" class="prev-page-link-item">
+          <h3>Home</h3>
+        </a>
+        <div class="k_flex">
+          <i class="fa-solid fa-greater-than k_tY_2"></i>
+        </div>
+        <a class="prev-page-link-item">
+          <h3>Products</h3>
+        </a>
+      </div>
+    </div>
+
+    <header class="category-header">
+      <div class="Subcategory-list">
+        <div class="subcate_container" id="PrintSubCate"></div>
+      </div>
+    </header>
+
+
+    <div class="sidebar-filter-open">
+      <div class="filter_btn">
+        <svg width="26" height="24" viewBox="0 0 26 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M23.0559 3H2.09595L10.4799 12.46V19L14.6719 21V12.46L23.0559 3Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+      <h3>Filters</h3>
+      </div>
+
+      <div class="line_throught"></div>
+        <div class="filter_btn">
+          <svg width="21" height="18" viewBox="0 0 21 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M17.518 10.75C18.6756 10.75 19.614 9.85457 19.614 8.75C19.614 7.64543 18.6756 6.75 17.518 6.75M17.518 10.75C16.3604 10.75 15.422 9.85457 15.422 8.75C15.422 7.64543 16.3604 6.75 17.518 6.75M17.518 10.75V16.75M17.518 6.75C17.518 6.75 17.518 3.09315 17.518 0.75M10.182 12.75C9.02441 12.75 8.086 13.6454 8.086 14.75C8.086 15.8546 9.02441 16.75 10.182 16.75C11.3396 16.75 12.278 15.8546 12.278 14.75C12.278 13.6454 11.3396 12.75 10.182 12.75ZM10.182 12.75V0.75M2.846 4.75C4.00359 4.75 4.942 3.85457 4.942 2.75C4.942 1.64543 4.00359 0.75 2.846 0.75C1.68841 0.75 0.75 1.64543 0.75 2.75C0.75 3.85457 1.68841 4.75 2.846 4.75ZM2.846 4.75V16.75" stroke="#090A0A" stroke-width="1.5" stroke-linecap="square"/>
+</svg>
+
+        <h3>Popular</h3>
+      </div>
+    </div>
+
+    <div class="main-container">
+      <aside class="sidebar">
+        <div class="close-filter-sidebar">
+          <i class="fa-solid fa-xmark"></i>
+        </div>
+
+        <h2>Filters</h2>
+        <div class="filter-container">
+          <!-- Categories -->
+          <div class="filter-group">
+            <h3 onclick="toggleCategory()">
+              Categories
+              <span id="category-toggle"><i class="fa-solid fa-plus"></i></span>
+            </h3>
+            <ul id="category-list" style="display: none">
+              <!-- <li>Shirts</li>
+            <li>Oversized T-Shirts</li>
+            <li>POLO T-Shirts</li>
+            <li>T-Shirts</li> -->
+            </ul>
+          </div>
+
+          <!-- Colors -->
+          <div class="filter-section" id="color-options">
+            <h3 class="toggle-header">
+              Colors
+              <span class="toggle-icon"><i class="fa-solid fa-minus"></i></span>
+            </h3>
+            <div class="filter-options active">
+              <span
+                class="color-circle"
+                style="background-color: #a07b5c"
+              ></span>
+              <span
+                class="color-circle"
+                style="background-color: #2d333b"
+                data-color="Dark"
+              ></span>
+            </div>
+          </div>
+
+          <!-- Sizes -->
+          <div class="filter-section" id="filter_size_option">
+            <h3 class="toggle-header">
+              Sizes
+              <span class="toggle-icon"><i class="fa-solid fa-minus"></i></span>
+            </h3>
+            <div class="filter-options active">
+              <button class="filter-button" onclick="cat_filter('size' , 'm')">
+                M
+              </button>
+              <button class="filter-button" onclick="cat_filter('size' , 's')">
+                S
+              </button>
+            </div>
+          </div>
+
+          <!-- Price -->
+          <div class="filter-section">
+            <h3 class="toggle-header">
+              Price
+              <span class="toggle-icon"><i class="fa-solid fa-minus"></i></span>
+            </h3>
+            <div class="filter-options price-filter-option active">
+              <div onclick="cat_filter('all')" class="active">All</div>
+              <div onclick="cat_filter('under' , '500')">Under ₹500</div>
+              <div onclick="cat_filter('500' , '1000')">₹500 - ₹1000</div>
+              <div onclick="cat_filter('above' , '1000')">Above ₹1000</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Selected Filters -->
+        <div class="selected-filters" id="selected-filters">
+          <strong>Selected Filters:</strong>
+          <div id="filters-list">None</div>
+        </div>
+      </aside>
+
+      <div class="content">
+     
+        <div class="products-grid" id="products"></div>
+      </div>
+    </div>
+
+
+    <div class="rating_review_popup_container">
+      <div class="rating_review_popup_content">
+        <div class="popup_title">
+          <h2>Help us improve!</h2>
+          <div class="close-share-modal-svg" onclick="closeRatingPopup()">
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 18 18"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M1 1L17 17M1 17L17 1"
+                stroke="#828282"
+                stroke-width="1.5"
+              ></path>
+            </svg>
+          </div>
+        </div>
+        <div class="star-modal-top-title">
+          <h2>How many stars would you give to us?</h2>
+        </div>
+        <div class="star-modal-star-svg-container">
+          <div class="star-modal-star-svg-content">
+            <svg
+              class="svg-star"
+              data-index="1"
+              width="32"
+              height="30"
+              viewBox="0 0 32 30"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M16 0.5L20.2321 10.6751L31.2169 11.5557L22.8476 18.7249L25.4046 29.4443L16 23.7L6.59544 29.4443L9.15239 18.7249L0.783095 11.5557L11.7679 10.6751L16 0.5Z"
+              ></path>
+            </svg>
+          </div>
+          <div class="star-modal-star-svg-content">
+            <svg
+              class="svg-star"
+              data-index="2"
+              width="32"
+              height="30"
+              viewBox="0 0 32 30"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M16 0.5L20.2321 10.6751L31.2169 11.5557L22.8476 18.7249L25.4046 29.4443L16 23.7L6.59544 29.4443L9.15239 18.7249L0.783095 11.5557L11.7679 10.6751L16 0.5Z"
+              ></path>
+            </svg>
+          </div>
+          <div class="star-modal-star-svg-content">
+            <svg
+              class="svg-star"
+              data-index="3"
+              width="32"
+              height="30"
+              viewBox="0 0 32 30"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M16 0.5L20.2321 10.6751L31.2169 11.5557L22.8476 18.7249L25.4046 29.4443L16 23.7L6.59544 29.4443L9.15239 18.7249L0.783095 11.5557L11.7679 10.6751L16 0.5Z"
+              ></path>
+            </svg>
+          </div>
+          <div class="star-modal-star-svg-content">
+            <svg
+              class="svg-star"
+              data-index="4"
+              width="32"
+              height="30"
+              viewBox="0 0 32 30"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M16 0.5L20.2321 10.6751L31.2169 11.5557L22.8476 18.7249L25.4046 29.4443L16 23.7L6.59544 29.4443L9.15239 18.7249L0.783095 11.5557L11.7679 10.6751L16 0.5Z"
+              ></path>
+            </svg>
+          </div>
+          <div class="star-modal-star-svg-content">
+            <svg
+              class="svg-star"
+              data-index="5"
+              width="32"
+              height="30"
+              viewBox="0 0 32 30"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M16 0.5L20.2321 10.6751L31.2169 11.5557L22.8476 18.7249L25.4046 29.4443L16 23.7L6.59544 29.4443L9.15239 18.7249L0.783095 11.5557L11.7679 10.6751L16 0.5Z"
+              ></path>
+            </svg>
+          </div>
+        </div>
+        <div class="star-modal-textarea-content">
+          <textarea
+            class="star-modal-textarea-input"
+            placeholder="Add Comment"
+          ></textarea>
+        </div>
+        <div class="give-star-submit">
+          <button class="give-star-submit-btn" onclick="addRating()">
+            <h2>Submit Review</h2>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- support section  -->
+    <div class="support">
+      <div class="info-strip-section">
+        <div class="info-strip-container">
+          <div class="info-item">
+            <i class="fas fa-box info-icon"></i>
+            <div class="info-text">
+              Fast, free delivery &<span>assembly</span>
+            </div>
+          </div>
+          <div class="info-item">
+            <!-- <i class="fas fa-dollar-sign info-icon"></i> -->
+            <div class="info-item-logo-img">
+              <img src="../assets/images/megamog_box_02.png" alt="" />
+            </div>
+            <div class="info-text">
+              Money guarantee within<span>30 days</span>
+            </div>
+          </div>
+          <div class="info-item">
+            <i class="fas fa-headset info-icon"></i>
+            <div class="info-text">
+              Online support available<span>24/7</span>
+            </div>
+          </div>
+          <div class="info-item">
+            <i class="fas fa-credit-card info-icon"></i>
+            <div class="info-text">Pay with<span>Multiple Cards</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== Footer Start ===== -->
+    <footer class="bs-footer">
+      <div class="bs-footer-container">
+        <!-- Logo & Social -->
+        <div class="bs-footer-logo">
+          <a href="home.html">
+            <img src="../assets/images/logo.png" alt="Logo" />
+          </a>
+          <h2>Follow Us</h2>
+          <div class="bs-social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="bs-footer-links">
+          <h2>Quick Links</h2>
+          <ul>
+            <!--<li><a href="track-order.html">Track Order</a></li>-->
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="shipping-policy.html">Shipping Policy</a></li>
+            <li><a href="refund-returns.html">Return & Refund Policy</a></li>
+            <li><a href="terms-condition.html">Terms & Conditions</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact -->
+        <div class="bs-footer-contact">
+          <h2>Contact</h2>
+          <div class="bs-footer-mail">
+            <a href="mailto:Street Pulse@gmail.com" class="bs-email-link">
+              <i class="fas fa-envelope"></i>
+              <p>mayza@gmail.com</p>
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <section class="cprt-footer">
+      <!-- footer  -->
+      <div class="footer">
+        <div class="leftfooter">© 2024 Mayza. All Rights Reserved.</div>
+
+        <div class="rightfooter">
+          <!-- <img src="../assets/images/amex - Google Search_files/amex-card-logo-6D352AA0A4-seeklogo.com.png" alt="">
+                        <img src="../assets/images/amex - Google Search_files/24px.svg" alt="">
+                        <img src="../assets/images/amex - Google Search_files/faviconV2(2)" alt="">
+                        <img src="../assets/images/amex - Google Search_files/faviconV2(12)" alt=""> -->
+          <img src="../assets/images/payment.png" alt="" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Footer End ===== -->
+
+    <!-- ===== k_mobile End ===== -->
+
+    <div id="page-mobile-tabs" class="k-mobile-footer">
+      <div class="mobile-footer-link-content">
+        <a href="home.html" class="mobile-tab-link active" aria-label="Home">
+          <div
+            class="mobile-tab-icon active"
+            aria-hidden="true"
+            focusable="false"
+            role="presentation"
+          >
+       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M3 9L12 2L21 9V20C21 20.5304 20.7893 21.0391 20.4142 21.4142C20.0391 21.7893 19.5304 22 19 22H5C4.46957 22 3.96086 21.7893 3.58579 21.4142C3.21071 21.0391 3 20.5304 3 20V9Z" stroke="#979C9E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+          </div>
+
+        </a>
+        <a href="category.html" class="mobile-tab-link" aria-label="Shop">
+          <div
+            class="mobile-tab-icon"
+            aria-hidden="true"
+            focusable="false"
+            role="presentation"
+          >
+           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M3 12H21M3 6H21M3 18H21" stroke="#090A0A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+
+          </div>
+       
+
+
+          
+        </a>
+
+
+        <div
+          class="mini-cart__button has-badge mobile-tab-link"
+         onclick="window.location.href='/pages/view-cart.html'"
+          aria-label="Cart"
+        >
+          <div
+            class="mobile-tab-icon"
+            aria-hidden="true"
+            focusable="false"
+            role="presentation"
+          >
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_814_331)">
+<path d="M20 22C20.5523 22 21 21.5523 21 21C21 20.4477 20.5523 20 20 20C19.4477 20 19 20.4477 19 21C19 21.5523 19.4477 22 20 22Z" stroke="#979C9E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M9 22C9.55228 22 10 21.5523 10 21C10 20.4477 9.55228 20 9 20C8.44772 20 8 20.4477 8 21C8 21.5523 8.44772 22 9 22Z" stroke="#979C9E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M1 1H5L7.68 14.39C7.77144 14.8504 8.02191 15.264 8.38755 15.5583C8.75318 15.8526 9.2107 16.009 9.68 16H19.4C19.8693 16.009 20.3268 15.8526 20.6925 15.5583C21.0581 15.264 21.3086 14.8504 21.4 14.39L23 6H6" stroke="#979C9E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<defs>
+<clipPath id="clip0_814_331">
+<rect width="24" height="24" fill="white"/>
+</clipPath>
+</defs>
+</svg>
+
+      <div
+              class="mobile-footer-icon-badge mini-cart-badge"
+              data-count="0"
+            >
+              0
+            </div>   
+            </div>
+   
+          </div>
+     
+
+
+        
+        <a
+          href="wishlist.html"
+          class="mobile-tab-link has-badge wishlist-link"
+          aria-label="Wishlist"
+        >
+          <div
+            class="mobile-tab-icon"
+            aria-hidden="true"
+            focusable="false"
+            role="presentation"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_814_338)">
+<path d="M20.8401 4.60987C20.3294 4.09888 19.7229 3.69352 19.0555 3.41696C18.388 3.14039 17.6726 2.99805 16.9501 2.99805C16.2276 2.99805 15.5122 3.14039 14.8448 3.41696C14.1773 3.69352 13.5709 4.09888 13.0601 4.60987L12.0001 5.66987L10.9401 4.60987C9.90843 3.57818 8.50915 2.99858 7.05012 2.99858C5.59109 2.99858 4.19181 3.57818 3.16012 4.60987C2.12843 5.64156 1.54883 7.04084 1.54883 8.49987C1.54883 9.95891 2.12843 11.3582 3.16012 12.3899L4.22012 13.4499L12.0001 21.2299L19.7801 13.4499L20.8401 12.3899C21.3511 11.8791 21.7565 11.2727 22.033 10.6052C22.3096 9.93777 22.4519 9.22236 22.4519 8.49987C22.4519 7.77738 22.3096 7.06198 22.033 6.39452C21.7565 5.72706 21.3511 5.12063 20.8401 4.60987V4.60987Z" stroke="#979C9E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<defs>
+<clipPath id="clip0_814_338">
+<rect width="24" height="24" fill="white"/>
+</clipPath>
+</defs>
+</svg>
+
+           
+          </div>
+        </a>
+
+
+
+
+
+        <div
+          class="mobile-tab-link login-link open-modal-login"
+         onclick="openModal()"
+          aria-label="Log in"
+        >
+          <div
+            class="mobile-tab-icon"
+            aria-hidden="true"
+            focusable="false"
+            role="presentation"
+          >
+           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_814_341)">
+<path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21" stroke="#979C9E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z" stroke="#979C9E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<defs>
+<clipPath id="clip0_814_341">
+<rect width="24" height="24" fill="white"/>
+</clipPath>
+</defs>
+</svg>
+
+          </div>
+     
+        </div>
+
+
+</div>
+
+    
+
+    <div class="bd-overlay" id="bd-cartOverlay" onclick="closeCart()"></div>
+
+    <!-- Cart Drawer -->
+    <div class="bd-cart-drawer" id="bd-cartDrawer">
+      <div class="bd-cart-header">
+        <h2>Shopping Cart</h2>
+        <span
+          class="bd-cart-close"
+          onclick="closeCart()"
+          style="cursor: pointer"
+          >&times;</span
+        >
+        <div class="cart-countdown-message">
+          <h3></h3>
+          <div class="cart-countdown-timer"></div>
+        </div>
+      </div>
+
+      <!-- Cart Body -->
+      <div class="bd-cart-body" id="bd-cartBody">
+        <div class="cart-container" id="cart-container">
+          <div class="cart-content-box">
+            <div class="cart-item-img">
+              <img src="../assets/images/shirt-1.webp" alt="" />
+            </div>
+            <div class="cart-item-info">
+              <h3>Shirt</h3>
+              <h3>₹599.00</h3>
+              <div class="cart-item-quantity">
+                <div class="cart-quantity-input-box">
+                  <button class="decrease">
+                    <i class="fa-solid fa-minus"></i>
+                  </button>
+                  <button class="increase">
+                    <i class="fa-solid fa-plus"></i>
+                  </button>
+                  <input
+                    type="number"
+                    class="quantity-input"
+                    value="1"
+                    readonly
+                  />
+                </div>
+                <div class="cart-item-remove">
+                  <h3>Remove</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="cart-content-box">
+            <div class="cart-item-img">
+              <img src="../assets/images/shirt-1.webp" alt="" />
+            </div>
+            <div class="cart-item-info">
+              <h3>Shirt</h3>
+              <h3>₹599.00</h3>
+              <div class="cart-item-quantity">
+                <div class="cart-quantity-input-box">
+                  <button class="decrease">
+                    <i class="fa-solid fa-minus"></i>
+                  </button>
+                  <button class="increase">
+                    <i class="fa-solid fa-plus"></i>
+                  </button>
+                  <input type="number" class="quantity-input" value="2" />
+                </div>
+                <div class="cart-item-remove">
+                  <h3>Raemove</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="cart-content-box">
+            <div class="cart-item-img">
+              <img src="../assets/images/shirt-1.webp" alt="" />
+            </div>
+            <div class="cart-item-info">
+              <h3>Shirt</h3>
+              <h3>₹599.00</h3>
+              <div class="cart-item-quantity">
+                <div class="cart-quantity-input-box">
+                  <button class="decrease">
+                    <i class="fa-solid fa-minus"></i>
+                  </button>
+                  <button class="increase">
+                    <i class="fa-solid fa-plus"></i>
+                  </button>
+                  <input type="number" class="quantity-input" value="2" />
+                </div>
+                <div class="cart-item-remove">
+                  <h3>Remove</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="cart-content-box">
+            <div class="cart-item-img">
+              <img src="../assets/images/shirt-1.webp" alt="" />
+            </div>
+            <div class="cart-item-info">
+              <h3>Shirt</h3>
+              <h3>₹599.00</h3>
+              <div class="cart-item-quantity">
+                <div class="cart-quantity-input-box">
+                  <button class="decrease">
+                    <i class="fa-solid fa-minus"></i>
+                  </button>
+                  <button class="increase">
+                    <i class="fa-solid fa-plus"></i>
+                  </button>
+                  <input type="number" class="quantity-input" value="2" />
+                </div>
+                <div class="cart-item-remove">
+                  <h3>Remove</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="cart-content-box">
+            <div class="cart-item-img">
+              <img src="../assets/images/shirt-1.webp" alt="" />
+            </div>
+            <div class="cart-item-info">
+              <h3>Shirt</h3>
+              <h3>₹5aaa99.00</h3>
+              <div class="cart-item-quantity">
+                <div class="cart-quantity-input-box">
+                  <button class="decrease">
+                    <i class="fa-solid fa-minus"></i>
+                  </button>
+                  <button class="increase">
+                    <i class="fa-solid fa-plus"></i>
+                  </button>
+                  <input type="number" class="quantity-input" value="2" />
+                </div>
+                <div class="cart-item-remove">
+                  <h3>Remove</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <h3>Your cart is currently empty.</h3>
+            <p>You may check out all the available products and buy some in the shop.</p>
+            <button onclick="window.location.href='shop.html'" class="bd-cart-btn">Return to shop</button> -->
+      </div>
+
+      <div class="k-cart-footer">
+        <div class="k-cart-footer-top">
+       
+          <!--<div class="k-footer-cart-addon right-line">-->
+          <!--  <div class="k-footer-cart-addon-icon">-->
+          <!--    <i class="fa-solid fa-truck-fast"></i>-->
+          <!--  </div>-->
+          <!--  <h3>Shipping</h3>-->
+          <!--</div>-->
+
+        </div>
+        <div class="k-cart-total-container">
+          <div class="k-cart-row k-cart-subtotal">
+            <h3>Subtotal</h3>
+            <h4></h4>
+          </div>
+          <div class="k-cart-row k-cart-shipping">
+            <h3>Shipping</h3>
+            <h4>Free shipping</h4>
+          </div>
+        </div>
+        <div class="k-cart-row k-cart-total-price">
+          <h3>Total</h3>
+          <h4></h4>
+        </div>
+        <div class="k-cart-footer-btns">
+          <a href="checkout.html" class="k-cart-checkout-btn">Checkout</a>
+          <a href="view-cart.html" class="k-cart-view-btn">View cart</a>
+        </div>
+      </div>
+      <!-- <div class="bd-cart-body" id="bd-cartBody">
+            <img src="https://cdn-icons-png.flaticon.com/512/2038/2038854.png" alt="Empty Cart"
+                class="bd-empty-cart-img" />
+            <h3>Your cart is currently empty.</h3>
+            <p>You may check out all the available products and buy some in the shop.</p>
+            <button onclick="window.location.href='shop.html'" class="bd-cart-btn">Return to shop</button>
+        </div> -->
+
+      <!-- Cart Footer (Only visible when cart has items) -->
+      <!-- <div id="bd-cartFooter" style="display:none; border-top:1px solid #ccc; padding:15px;">
+            <div class="bd-cart-note">
+                <i class="fas fa-sticky-note"></i> Add a note to your order
+            </div>
+            <div class="bd-cart-shipping">
+                <i class="fas fa-truck"></i> Shipping & taxes calculated at checkout
+            </div>
+            <div class="bd-cart-coupon">
+                <i class="fas fa-tag"></i> Apply Coupon
+            </div>
+            <div class="bd-cart-summary">
+                <p>Subtotal: <span id="bd-subtotal">₹0.00</span></p>
+                <p>Total: <strong id="bd-total">₹0.00</strong></p>
+            </div>
+            <div class="bd-cart-buttons">
+                <button onclick="window.location.href='viewcart.html'" class="bd-cart-btn">View Cart</button>
+                <button onclick="alert('Proceeding to checkout...')" class="bd-cart-btn">Checkout</button>
+            </div>
+        </div> -->
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../assets/js/script.js" ></script>
+    <script src="../assets/js/header.js"></script>
+    <script src="../assets/js/category.js"></script>
+    <script src="../assets/js/h_product_quick_view.js"></script>
+    <script src="../assets/js/ratingPopup.js"></script>
+    <script src="../assets/js/give-star-rating.js"></script>
+    <script src="../assets/js/api.js"></script>
+    <script src="../assets/js/bd-cart-drawer.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+      async function initializeApp() {
+        $(".loader").show().fadeIn(300);
+
+        try {
+          await loadProductsByCategory();
+          await SingalProduct();
+        } catch (error) {
+          console.error("Error loading data:", error);
+        } finally {
+          $(".loader").fadeOut(300); // Hide the loader after everything
+        }
+      }
+
+      $(document).ready(function () {
+        initializeApp();
+         searchcategory();
+      });
+             
+    </script>
+  </body>
+</html>

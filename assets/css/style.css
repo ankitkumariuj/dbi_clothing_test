@@ -1,0 +1,278 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+
+/* font family of work sans */
+/* @import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&display=swap'); */
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap');
+
+
+
+
+
+
+
+/* line added by hask */
+/* boiler plate of csss */
+:root {
+  --normal-txt-color: #000000;
+  --mobile-border-radius: 5px;
+  --normal-border-radius: 5px;
+  --btn-txt-color: #ffffff;
+  --normal-font-weight: 500;
+  --hover-txt-color: #f2f2f2;
+  --btn-bg-color: #8a1344;
+  --bs-footer-txt-color: #666666;
+  --info-border-color: #cfcdcd;
+  --main-font-family: "Work Sans", sans-serif;
+
+  --font-fm2: 'Lato', sans-serif;
+  --hover-txt-color: #666666;
+  --cart-modal-footer-bg: #f7f7f7;
+  --main-bg: #ffffff;
+  --para-color: #666666;
+  --input-bg: #f2f2f2;
+  --input-normal-rounded: 5px;
+  --input-placeholder-txt-color: #9b9ba6;
+  --li-txt-color: #666666;
+  --sec-txt-color: #666666;
+  --timer-txt-color: #cf1927;
+  --main-clr:#8a1344;
+  --light-color:#ffffff;
+  --dark-color:#000000;
+  --txt-font-mobile: 20px; 
+   --txt-weight-mobile: 500;
+  
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  width: 100%;
+  /* margin-top: 3%; */
+  height: 100%;
+        font-family: var(--font-fm2);
+  scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+  width: 0px;
+  height: 0px;
+  display: none;
+}
+
+.h_quick_view_overlay,
+.close-login-modal-wrapper,
+.search_wrapper_overlay,
+.wrapper-overlay {
+  transition: all .4s ease-in-out;
+}
+
+.h_quick_view_overlay.active,
+.close-login-modal-wrapper.active,
+.search_wrapper_overlay.active,
+.wrapper-overlay.active {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: .5;
+  z-index: 1003;
+  cursor: url(../images/light-close.png) 16 16, pointer;
+}
+
+
+.delivery{
+  display: none !important;
+  margin: 0px !important;
+}
+
+
+.payment-logos{
+  display: none !important;
+  margin: 0px;
+  position: absolute;
+}
+.loader {
+  width: 100%;
+  height: 100%;
+  max-height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99999999;
+  background: #ffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  animation: fadein 2s ease-in;
+  gap: 20px;
+}
+
+.item p{
+      padding: 3px;
+    clip-path: polygon(0% 0%, /* top-left */ 101% 0%, /* flat top edge */ 100% 0%, /* sharp right angle */ 84% 100%, /* flat bottom slant end */ 0% 100% /* bottom-left */);
+    background: red;
+    position: absolute;
+    bottom: 8%;
+    width: 48%;
+    border: 1px solid white;
+    color: whitesmoke;
+    text-transform: capitalize;
+    left: 21%;
+}
+
+
+.loader-logo {
+  width: 100px;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.1); opacity: 0.8; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.loader p{
+  font-size: 22px;
+}
+
+.swal-custom-icon {
+  border: 1px solid #000 !important;
+  color: #000 !important;
+}
+.swal-custom-text {
+  color: #000 !important;
+  font-size: 26px;
+  font-weight: 600;
+  font-family: var(--main-font-family);
+  text-transform: capitalize;
+}
+.my-swal-warning-container {
+  z-index: 19999 !important;
+}
+
+.empty-cart-icon img {
+  width: 100%;
+}
+
+.back-menu-icon{
+  display: none;
+}
+
+.mobile-top-img{
+  display: none;
+}
+
+@media screen and (max-width: 769px) {
+  .tabs-container
+ {
+  margin-bottom: 10px;
+ }
+.back-menu-icon{
+display: flex
+;
+        gap: 10px;
+        align-items: center;
+        justify-content: flex-start;
+}
+.mobile-top-img{
+  display: block;
+  height: auto;   
+  width: -webkit-fill-available;
+    padding: 6% 1%;
+}
+
+  .product_info{
+    padding-inline: 5%;
+    /* background: #000; */
+  }
+    /* .product img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 0px;
+        border-bottom-left-radius: 0px;
+    } */
+
+    .product{
+             padding: unset !important;
+                 border: 1px solid gainsboro !important;
+    }
+
+        .icon-container {
+        display: flex;  
+        font-family: var(--font-fm2);
+        gap: 3px !important;
+        justify-content: space-between;
+        /* margin-top: 15px; */
+        opacity: 1;
+        right: 8px !important;
+        top: 8px !important;
+    }
+
+
+    .icon-with-label i {
+    width: 30px !important;
+    height: 30px !important;
+    }
+.b1.container{
+  display: block;
+}
+
+/* .product img{
+          border-top-left-radius: 10px !important;
+        border-top-right-radius: 10px !important;
+        border-bottom-right-radius: 0px !important;
+        border-bottom-left-radius: 0px !important;
+} */
+
+
+.add-to-cart{
+          background-color: #8a1344;
+        opacity: 2;
+        color: white;
+        transform: none;
+        transition: none;
+        display: none !important
+;
+        gap: 10px;
+        align-items: center;
+        justify-content: center;
+                margin-bottom: 11px;
+}
+
+
+.product p{
+  line-height: unset !important;
+margin: 0px !important;
+}
+
+.product h2{
+  line-height: unset !important;
+  margin: 0px !important;
+        /* -webkit-line-clamp: 1 !important; */
+        display: -webkit-box;
+}
+
+
+.price-container{
+  /* margin-bottom: 10px !important; */
+  /* margin-top: 12px !important; */
+}
+
+}
+
+

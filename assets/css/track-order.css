@@ -1,0 +1,88 @@
+.track-order {
+    max-width: 1440px;
+    margin-inline: auto;
+    padding-inline: 5%;
+}
+
+.track-order p {
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--para-color);
+}
+
+.order_track_form {
+    padding-inline: 10%;
+    margin-top: 30px;
+    margin-bottom: 100px;
+}
+
+.order_track_input_content label {
+    font-size: 16px;
+}
+
+.order_track_input_content select,
+.order_track_input_content input {
+    height: 45px;
+    width: 100%;
+    padding-inline: 20px;
+    background-color: var(--input-bg);
+    border: none;
+    outline: none;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: var(--input-normal-rounded);
+    transition: 0.25s ease-in-out;
+}
+
+
+.order_track_input_content input::placeholder {
+    color: var(--input-placeholder-txt-color);
+}
+
+.order_track_input_content input:focus {
+    outline: 1px solid var(--normal-txt-color);
+    background-color: #fff;
+}
+
+.order_track_submit_btn {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.order_track_submit_btn button {
+    min-height: 45px;
+    padding-inline: 35px;
+    background-color: var(--btn-bg-color);
+    font-weight: 600;
+    letter-spacing: 1px;
+    font-size: 16px;
+    color: #fff;
+    border: none;
+    border-radius: var(--normal-border-radius);
+    transition: transform 0.25s ease-in-out;
+    cursor: pointer;
+    font-family: var(--main-font-family);
+}
+
+.order_track_submit_btn button:hover {
+    transform: scale(1, 1.22);
+}
+
+
+@media screen and (max-width: 1024px) {
+  .order_track_form {
+    padding-inline: 5%;
+  }
+
+}
+
+@media screen and (max-width: 467px) {
+ 
+    .k_form_row {
+        flex-direction: column;
+    }
+
+}
+
+
+

@@ -1,0 +1,139 @@
+@media screen and (min-width: 501px) {
+  body{
+    display: none;
+  }
+}
+
+
+  
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #fff;
+  width: 100%;
+  height: 100vh;
+}
+
+/* Centered container like mobile screen */
+.container {
+  width: 100%;
+  max-width: 100%;
+  margin: auto;
+  padding: 25px;
+  position: relative;
+}
+
+/* Background shapes */
+.top-shape {
+      position: absolute;
+    top: -80px;
+    left: -60px;
+    border-radius: 50%;
+    z-index: -1;
+}
+
+.side-shape img {
+  position: absolute;
+  top: 180px;
+  right: -1px;
+  z-index: -1;
+  /* opacity: 0.9; */
+}
+
+h1 {
+  margin-top: 160px;
+  font-size: 52px;
+  font-weight: bold;
+  color: #1a1a1a;
+}
+
+.subtitle {
+  color: #444;
+  margin: 5px 0 20px;
+  font-size: 16px;
+}
+
+/* Phone Input */
+.input-box {
+  display: flex;
+  align-items: center;
+  background: #f0f0f0;
+  padding: 12px 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.input-box select {
+  border: none;
+  background: transparent;
+  font-size: 15px;
+  outline: none;
+  margin-right: 10px;
+}
+
+.input-box input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 15px;
+}
+
+/* Buttons */
+.next-btn {
+  width: 100%;
+  padding: 15px 0;
+   background: #e6e6e6; 
+        color: rgba(128, 128, 128, 1);
+  border: none;
+  border-radius: 12px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.cancel-btn {
+  display: block;
+  margin: 15px auto 0;
+  background: none;
+  border: none;
+  color: #444;
+  font-size: 15px;
+  cursor: pointer;
+}
+.login_sc{
+    display: flex;
+    justify-content: center;
+    padding: 11px 0px;
+    align-items: center;
+    gap: 10px;
+}
+
+.bubble2{
+        position: absolute;
+    top: 0;
+    left: 0;
+}
+
+
+.login{
+    position: relative;
+    width: 100%;
+    bottom: 8%;
+        top: 106px;
+}
+
+.action_button{
+      position: relative;
+    bottom: -47px;
+    width: 100%;
+    padding: 0px 2%;
+    left: 0px;
+}
+
