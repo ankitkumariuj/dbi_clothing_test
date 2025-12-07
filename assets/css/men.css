@@ -365,6 +365,11 @@ padding-inline: 5%;
 }
 
 
+ .Category-box .images .p_img{
+        height: 115px;
+    object-fit: cover;
+    object-position: top;
+  }
 
 
 .subcate_container{

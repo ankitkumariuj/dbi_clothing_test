@@ -330,7 +330,7 @@
         width: 100%;
         font-weight: 500;
         font-family: var(--font-fm2);
-        left: 2%;
+        left: 5%;
         font-size: 12px;
         color: white;
         text-align: start;
@@ -451,7 +451,7 @@ padding-inline: 5%;
   width: 100% !important;
     height: 100%;
     display: flex;
-    gap: 20px;
+    gap: 10px;
     overflow-y: hidden;
     overflow-x: scroll;
     justify-content: start !important;
@@ -459,6 +459,11 @@ padding-inline: 5%;
     padding: 0px 5% !important;
 
 }
+ .Category-box .images .p_img{
+        height: 115px;
+    object-fit: cover;
+    object-position: top;
+  }
 
 /*  */
 

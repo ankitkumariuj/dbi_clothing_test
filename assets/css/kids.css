@@ -321,6 +321,13 @@
   }
 
 
+  .Category-box .images .p_img{
+        height: 115px;
+    object-fit: cover;
+    object-position: top;
+  }
+
+
   .tabs-container {
     padding-inline: 5%;
     flex-direction: column;

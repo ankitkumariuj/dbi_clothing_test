@@ -515,8 +515,8 @@ async function GetSubCategory(subId) {
 
       output += `
 
-<div class="faves_box" onclick="window.location.href='category.html?subCat_id=${item.id}&cate_id=${item.category_id}"'>
-            <img src="${scatei}${item.image_url}"   class="p_img"/>
+<div class="faves_box" onclick="location.href='category.html?cat_id=${item.id}'">
+            <img src="${scatei}${item.image_url}"   class="p_img"/ >
             <div class="image_overlays2"></div>
             <div class="faves_info">
                 <h3>${item.name}</h3>
@@ -572,7 +572,7 @@ const fetchTodayBestDeal = () => {
             <div class="images">
         <img src="${image_url + 'product/main/' + item.main_image}" alt="${item.banner_type}"" width="80" class="p_img">
         <div class="image_overlay"></div>
-        <b class="cate_name">${item.title}</b> 
+        <b class="cate_name">${item.name}</b> 
          <img src="../assets/images/Rectangle.png" class="label-img2">
        <p class="offer_label_text">MIN ${((item.mrp - item.selling_price) / item.mrp).toFixed(1) * 100}% OFF</p>
         </div>

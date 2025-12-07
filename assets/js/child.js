@@ -382,12 +382,12 @@ upperBanner.trigger("destroy.owl.carousel");
         <img src="${image_url + 'banner/' + item.image_url}" alt="${item.banner_type}">
 
         <div class="shape_label">
-            <img src="../assets/images/shape label1.png" alt="">
+            <img src="../assets/images/Rectangle 3463340.png" alt="">
             <h4>${item.title}</h4>
         </div>
 
         <div class="shape_label2">
-            <img src="../assets/images/shape label 2.png" alt="">
+            <img src="../assets/images/Rectangle 3463341.png" alt="">
             <h4>${item.description}</h4>
         </div>
     </div>
@@ -423,7 +423,7 @@ upperBanner.trigger("destroy.owl.carousel");
         loop: true,
         margin: 2,
         nav: true,
-        dots: false,
+        dots: true,
         autoplay: true,
         autoplayTimeout: 4000,
         navText: ["<", ">"],

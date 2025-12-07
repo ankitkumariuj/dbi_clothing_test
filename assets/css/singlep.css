@@ -397,6 +397,7 @@
             /* overflow-x: auto; */
             padding-bottom: 5px;
             height: 79%;
+                    width: 59px;
         }
 
         .color-item{
@@ -455,14 +456,15 @@
                    font-size: 12px;
         margin-top: 5px;
         position: relative;
-        top: 22px;
+      text-align: center;
+          text-wrap: pretty;
         }
 .color_container{
     overflow-x: scroll;
         overflow-y: hidden;
-        height: 106px;
         display: flex;
         align-items: center;
+                height: 117px;
 }
         .selected .check-icon {
                position: absolute;
@@ -481,6 +483,8 @@
             border: 1px solid #ccc;
             border-radius: 4px;
             font-size: 14px;
+                    text-align: center;
+        line-height: 16px;
         }
 
         .size-item.selected {

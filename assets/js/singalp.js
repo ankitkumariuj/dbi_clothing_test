@@ -174,6 +174,7 @@ const renderSinglaProduct = (response) => {
         allVariants.push({
             id: data.id, 
             color: data.color,
+            color_name : data.color_name,
             size: data.size,
             mrp: data.mrp,
             selling_price: data.selling_price,
@@ -196,7 +197,9 @@ console.log(allVariants.length)
         allVariants.forEach(v => {
         
             if (v.size) {
-                uniqueSizes.add(v.size);
+               const sizeList = v.size.split(",").map(s => s.trim());
+            sizeList.forEach(s => uniqueSizes.add(s));
+                
             }
 
            
@@ -211,6 +214,7 @@ console.log(allVariants.length)
                 }
 
                 variantHTML += `
+                <div class="color_main">
                     <div class="color-item" data-color="${v.color}" id="variant-${v.id}"onclick="loadvariant(globalResponse, ${v.id})" >
                         <div class="color-box">
                             ${imageSource
@@ -219,8 +223,11 @@ console.log(allVariants.length)
                             }
                             <i class="fas fa-check check-icon" style="display: none;"></i>
                         </div>
-                        <div class="color-name">${v.color}</div>
-                    </div>`;
+                        
+                        </div>
+                        <div class="color-name">${v.color_name ? v.color_name : v.color}</div>
+                         </div>
+                        `;
                 uniqueColors.add(v.color); 
             }
 

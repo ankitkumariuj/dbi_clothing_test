@@ -238,7 +238,7 @@ const topfetchCategory = async () => {
   
     <div class="cate_box" onclick="location.href='category.html?cat_id=${item.id}'">
 
-       <img src="${image_url + item.image_url}" alt="${item.name}" />
+       <img src="${image_url + item.image_url}" alt="${item.name}"  />
 <div class="image_overlay4"></div>
 
      
