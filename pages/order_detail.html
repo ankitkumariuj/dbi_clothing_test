@@ -243,11 +243,12 @@ body{
         }
 
         .btn_grp{
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          padding-inline: 2%;
-          gap: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-inline: 0%;
+        gap: 70px;
+        margin-block: 16px;
         }
 
         .img_box{
@@ -383,6 +384,16 @@ body{
 .upload-button:hover {
     background-color: #555555; /* Slightly lighter on hover */
     border-color: #ffffff;
+}
+
+/* rating product p */
+#rated{
+      background: #95e395;
+    padding: 11px;
+    border-radius: 31px;
+    font-size: 16px;
+    text-align: center;
+    color: green;
 }
  }
 
@@ -535,13 +546,12 @@ body{
 
 
 
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../assets/js/script.js"></script>
-    <script src="../assets/js/header.js"></script>
+<script src="../assets/js/ratingPopup.js"></script>
     <script src="../assets/js/order_detail.js"></script>
-    <script src="../assets/js/bd-cart-drawer.js"></script>
-    <script src="../assets/js/ratingPopup.js"></script>
+
 
 
     <script>
@@ -549,8 +559,9 @@ body{
         $(".loader").show().fadeIn(300);
 
         try {
-          await fetchAllOrders();
           await fetchOrderHistory();
+          // await fetchAllOrders();
+          
         } catch (error) {
           console.error("Error loading data:", error);
         } finally {
@@ -560,7 +571,7 @@ body{
 
       $(document).ready(function () {
         initializeApp();
-        searchcategory();
+        
       });
 
      

@@ -42,6 +42,48 @@
     flex-direction: column;
     gap: 5px;
 }
+.cart-quantity-input-box {
+    background-color: #f1f1f1;
+    width: 88px;
+    height: 32px;
+    border-radius: 5px;
+    overflow: hidden;
+    position: relative;
+    margin-top: 8px;
+}
+
+.cart-quantity-input-box button {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    background: none;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: calc(100% / 3);
+}
+
+.quantity-input{
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    text-align: center;
+    appearance: none;
+    background: none;
+    /* display: flex; */
+    padding-inline: calc(100% / 3);
+    
+}
+
+.cart-quantity-input-box button.decrease {
+    left: 0;
+}
+
+.cart-quantity-input-box button.increase {
+    right: 0;
+}
 
 .image_section p{
     font-size: 13px;

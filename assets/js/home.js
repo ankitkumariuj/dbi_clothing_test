@@ -1,35 +1,5 @@
 
 
-const successAlert = (msg) => {
-  Swal.fire({
-    title: "",
-    text: msg,
-    icon: "success",
-    showConfirmButton: false,
-    customClass: {
-      icon: "swal-custom-icon",
-      htmlContainer: "swal-custom-text",
-      container: "my-swal-success-container",
-    },
-    timer: 1500,
-  });
-};
-
-const warningAlert = (msg) => {
-  Swal.fire({
-    title: "",
-    text: msg,
-    icon: "warning",
-    showConfirmButton: false,
-    customClass: {
-      icon: "swal-custom-icon",
-      htmlContainer: "swal-custom-text",
-      container: "my-swal-warning-container",
-    },
-    timer: 1000,
-  });
-};
-
 const input = document.getElementById("animated-placeholder");
 const placeholders = [
   "Search for products...",
@@ -172,7 +142,7 @@ window.addEventListener("scroll", function () {
 const fetchCategory = async () => {
   const fetchCategories = $("#fetchCategories");
   fetchCategories.html(" ");
-  
+
   $.ajax({
     url: API_URL,
     method: "POST",
@@ -181,7 +151,7 @@ const fetchCategory = async () => {
       if (response.status !== false && Array.isArray(response)) {
         let categoryItemHtml = "";
 
-      //  console.log(response);
+        //  console.log(response);
 
         // ✅ Limit to only first 20 categories
         const limitedCategories = response.slice(0, 20);
@@ -215,20 +185,20 @@ const topfetchCategory = async () => {
   $.ajax({
     url: API_URL,
     method: "POST",
-    data: { type: "fetchCategory" ,  },
+    data: { type: "fetchCategory", },
     success: function (response) {
       // console.log("Raw Response:", response);
 
-      
 
 
-    if (response.status !== false && Array.isArray(response)) {
+
+      if (response.status !== false && Array.isArray(response)) {
         let categoryItemHtml = "";
 
         // ✅ Limit to only first 20 categories
         const categories = response;
 
-        const men =  response.filter((item) => item.gender === "men");
+        const men = response.filter((item) => item.gender === "men");
         console.log(men)
 
         men.forEach((item) => {
@@ -268,12 +238,12 @@ const flitercat = async () => {
     data: { type: "fetchCategory" },
     success: function (response) {
 
-    if (response.status !== false && Array.isArray(response)) {
+      if (response.status !== false && Array.isArray(response)) {
         let categoryItemHtml = "";
 
         // ✅ Limit to only first 20 categories
         const categories = response;
-const men_categories = response.filter((item)=> item.gender === "men")
+        const men_categories = response.filter((item) => item.gender === "men")
         men_categories.forEach((item) => {
           categoryItemHtml += `
 
@@ -300,7 +270,7 @@ const men_categories = response.filter((item)=> item.gender === "men")
 
 
 
-  flitercat();
+flitercat();
 
 
 
@@ -318,23 +288,23 @@ const loadBanner = async () => {
       if (response.status !== false) {
 
 
-const men_banner= response.filter((item) =>  item.gender === "men");
+        const men_banner = response.filter((item) => item.gender === "men");
 
-console.log("men all banner" , men_banner);
+        console.log("men all banner", men_banner);
 
 
         let mainData = men_banner.filter((item) => item.banner_type === "main");
         let upperData = men_banner.filter((item) => item.banner_type === "upper");
         let lowerData = men_banner.filter((item) => item.banner_type === "lower");
-      
-                  $(".Collection_name").text(response.banner_type);
 
-console.log(mainData)
+        $(".Collection_name").text(response.banner_type);
+
+        console.log(mainData)
         let bannerData = "";
         let upperHtml = "";
         let lowerHtml = "";
 
-    
+
 
         mainBannerCarousel.trigger("destroy.owl.carousel");
         mainBannerCarousel.html("");
@@ -344,9 +314,8 @@ console.log(mainData)
           bannerData += `
                     <div class="item">
                         <div class="card">
-                            <img src="${
-                              image_url + "banner/" + item.image_url
-                            }" alt="${item.banner_type}">
+                            <img src="${image_url + "banner/" + item.image_url
+            }" alt="${item.banner_type}">
                         </div>
                     </div>
                     `;
@@ -354,27 +323,26 @@ console.log(mainData)
         mainBannerCarousel.html(bannerData);
 
 
-  
 
-          upperBanner.trigger("destroy.owl.carousel");
+
+        upperBanner.trigger("destroy.owl.carousel");
         upperBanner.html("");
         upperData.map((item) => {
-          
-          upperHtml+=
-          `
+
+          upperHtml +=
+            `
                     
    <div class="item">
                         <div class="card">
-                            <img src="${
-                              image_url + "banner/" + item.image_url
-                            }" alt="${item.banner_type}">
+                            <img src="${image_url + "banner/" + item.image_url
+            }" alt="${item.banner_type}">
                         </div>
                     </div>
                     `;
         });
- upperBanner.html(upperHtml);
+        upperBanner.html(upperHtml);
 
-          lowerBanner.trigger("destroy.owl.carousel");
+        lowerBanner.trigger("destroy.owl.carousel");
         lowerBanner.html("");
         lowerData.map((item) => {
 
@@ -402,7 +370,7 @@ console.log(mainData)
       }
 
 
-      
+
 
 
 
@@ -423,7 +391,7 @@ console.log(mainData)
 
 
 
-        lowerBanner.owlCarousel({
+      lowerBanner.owlCarousel({
         loop: true,
         margin: 2,
         nav: true,
@@ -432,14 +400,14 @@ console.log(mainData)
         autoplayTimeout: 4000,
         navText: ["<", ">"],
         responsive: {
-          0: { items: 1},
-          600: { items: 1},
+          0: { items: 1 },
+          600: { items: 1 },
           1000: { items: 3 }, // always show 3 when screen is wide enough
         },
       });
 
 
-       upperBanner.owlCarousel({
+      upperBanner.owlCarousel({
         loop: true,
         margin: 2,
         nav: false,
@@ -448,42 +416,23 @@ console.log(mainData)
         autoplayTimeout: 4000,
         navText: ["<", ">"],
         responsive: {
-          0: { items: 1},
-          600: { items: 1},
+          0: { items: 1 },
+          600: { items: 1 },
           1000: { items: 3 }, // always show 3 when screen is wide enough
         },
       });
 
 
-     
-      
 
-    
+
+
+
 
     },
   });
 };
 
 
-function showResults() {
-  document.getElementById("search-results").style.display = "block";
-}
-
-
-    
-document.addEventListener('click', function(event) {
-  const input = document.getElementById('search-input');
-  const results = document.getElementById('search-popup');
-
-  if (event.target === input) {
-    // If clicked on the input → show popup
-    results.style.display = 'block';
-    input.focus();
-  } else {
-    // If clicked anywhere else → hide popup
-    results.style.display = 'none';
-  }
-});
 
 
 
@@ -508,11 +457,11 @@ async function GetSubCategory(subId) {
 
   if (res.length > 0) {
 
-const subcate_men = res.filter((item)=> item.gender === "men");
+    const subcate_men = res.filter((item) => item.gender === "men");
 
     subcate_men.forEach((item, index) => {
 
-      const categoryCount = index + 1; 
+      const categoryCount = index + 1;
 
       output += `
       <div class="Category-box" onlick="window.location.href='category.html?subCat_id=${item.id}&cate_id=${item.category_id}"'>
@@ -550,22 +499,33 @@ async function GetMainCategory() {
   let formdata = new FormData();
   formdata.append("type", "MainaregoryList");
 
-  let req = await fetch(API_URL, { 
-    method: "POST", 
-    body: formdata 
+  let req = await fetch(API_URL, {
+    method: "POST",
+    body: formdata
   });
 
   let res = await req.json();
   return res;
 }
 
+function updateRecentlyViewed(currentProductId) {
+  let viewed = JSON.parse(localStorage.getItem("recentlyViewed")) || [];
 
+  viewed = viewed.filter((id) => id !== currentProductId);
+  viewed.unshift(currentProductId);
+
+  if (viewed.length > 12) viewed.pop();
+
+  localStorage.setItem("recentlyViewed", JSON.stringify(viewed));
+}
 
 
 function fetchRecentlyViewedProducts() {
-  const viewed = JSON.parse(localStorage.getItem("recentlyViewed")) || [];
+  const viewed = JSON.parse(localStorage.getItem("recentlyViewedProduct")) || [];
 
-  
+
+
+
   $("#recent-product").hide();
   $(".product-relative").hide();
 
@@ -583,7 +543,7 @@ function fetchRecentlyViewedProducts() {
     },
 
     beforeSend: function () {
-    
+
       $("#recent-product").hide();
       $(".product-relative").hide();
     },
@@ -593,7 +553,7 @@ function fetchRecentlyViewedProducts() {
       if (!response.status) {
         console.error("Error:", response.message);
         $("#recent-product").hide();
-         $(".product-relative").hide();
+        $(".product-relative").hide();
         return;
       }
 
@@ -607,8 +567,8 @@ function fetchRecentlyViewedProducts() {
 
         html += `
 
-            <div class="product_card1" ${item.id}>
- <img src="${image_url + "/product/main/" + item.main_image}" alt="">
+            <div class="product_card1">
+ <img src="${image_url + "/product/main/" + item.main_image}" alt=""  onclick="location.href='singlep.html?pid=${item.id}'">
   <div class="product_info1">
     <h4>${item.description}</h4>
     <div class="price-con">
@@ -616,9 +576,9 @@ function fetchRecentlyViewedProducts() {
       <p class="selling-price">₹${parseInt(item.selling_price)}</p> 
 <p class="mrp">₹${parseInt(item.mrp)}</p>
 
-      <p class="discount">${((item.mrp - item.selling_price)/ item.mrp).toFixed(1) * 100}% OFF</p>
+      <p class="discount">${((item.mrp - item.selling_price) / item.mrp).toFixed(1) * 100}% OFF</p>
     </div>
-    <div class="wishlist-icons ${isWishlist}" onclick="addToWishlist(${item.id})">
+    <div class="wishlist-icons " onclick="addToWishlist(${item.id})">
     
 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_814_338)">
@@ -646,12 +606,12 @@ function fetchRecentlyViewedProducts() {
 
 
       $("#recent-product").show();
-       $(".product-relative").show();
+      $(".product-relative").show();
     },
 
     error: function (xhr, status, error) {
       console.error("Error fetching products:", error);
-      $("#recent-product").hide(); 
+      $("#recent-product").hide();
     }
   });
 }
@@ -666,14 +626,15 @@ fetchRecentlyViewedProducts();
 let currentData = [];
 
 const loadProductCart = async () => {
-  let userId = localStorage.getItem("userId");
+  // let userId = localStorage.getItem("userId");
+
 
   await $.ajax({
     url: API_URL,
     method: "POST",
-    data: { type: "loadProductCart", userId: userId },
+    data: { type: "loadProductCart" },
     success: function (response) {
-      
+
       console.log(response)
       if (response.status !== false) {
         currentData = response;
@@ -704,7 +665,7 @@ const renderBestSellerProducts = (data) => {
     let isWishlist = "";
     let iconLabel = "";
 
-const mendata= data.filter((item)=> item.gender === "men");
+    const mendata = data.filter((item) => item.gender === "men");
 
     mendata.map((item) => {
       if (item.is_wishlisted == 1) {
@@ -728,7 +689,7 @@ const mendata= data.filter((item)=> item.gender === "men");
       <p class="selling-price">₹${parseInt(item.selling_price)}</p> 
 <p class="mrp">₹${parseInt(item.mrp)}</p>
 
-      <p class="discount">${((item.mrp - item.selling_price)/ item.mrp).toFixed(1) * 100}% OFF</p>
+      <p class="discount">${((item.mrp - item.selling_price) / item.mrp).toFixed(1) * 100}% OFF</p>
     </div>
     <div class="wishlist-icons ${isWishlist}" onclick="addToWishlist(${item.id})">
 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -765,19 +726,19 @@ const mendata= data.filter((item)=> item.gender === "men");
 // 1
 const fetchprodaccordtotittle = () => {
 
-    let userId = localStorage.getItem('userId');
+  let userId = localStorage.getItem('userId');
 
   $.ajax({
-    url: API_URL, 
+    url: API_URL,
     type: "POST",
-    data: { type: "fetchprodaccordtotittle1" , userId: userId }, 
+    data: { type: "fetchprodaccordtotittle1", userId: userId },
     dataType: "json",
     success: function (response) {
       console.log(response);
 
       if (response && response.length > 0) {
 
-        const men_title1= response.filter((item)=> item.gender === "men");
+        const men_title1 = response.filter((item) => item.gender === "men");
 
         // Set the title dynamically
         $(".title-section h2").text(response[0].title_name);
@@ -841,9 +802,8 @@ const fetchprodaccordtotittle = () => {
 
            
 
- <button class="add-to-cart" onclick="addToCartProcess(${
-                              item.id
-                            })"> <i class="fa-solid fa-cart-shopping"></i>Add to Cart</button>         </div> </div>
+ <button class="add-to-cart" onclick="addToCartProcess(${item.id
+            })"> <i class="fa-solid fa-cart-shopping"></i>Add to Cart</button>         </div> </div>
                     
                     `;
 
@@ -865,11 +825,11 @@ const fetchprodaccordtotittle = () => {
 
 // 2
 const Productfetchaccodtotiitles2 = () => {
-    let userId = localStorage.getItem('userId');
+  let userId = localStorage.getItem('userId');
   $.ajax({
-    url: API_URL, 
+    url: API_URL,
     type: "POST",
-    data: { type: "fetchprodaccordtotittle2", userId: userId}, 
+    data: { type: "fetchprodaccordtotittle2", userId: userId },
     dataType: "json",
     success: function (response) {
 
@@ -880,7 +840,7 @@ const Productfetchaccodtotiitles2 = () => {
 
         let html = "";
 
-        const men_title2= response.filter((item)=> item.gender === "men");
+        const men_title2 = response.filter((item) => item.gender === "men");
         men_title2.map((item) => {
           let discount = ((item.mrp - item.selling_price) / item.mrp) * 100;
           // Declare variables
@@ -937,12 +897,11 @@ const Productfetchaccodtotiitles2 = () => {
 
            
 
- <button class="add-to-cart" onclick="addToCartProcess(${
-                              item.id
-                            })"> <i class="fa-solid fa-cart-shopping"></i>Add to Cart</button>         </div> </div>
+ <button class="add-to-cart" onclick="addToCartProcess(${item.id
+            })"> <i class="fa-solid fa-cart-shopping"></i>Add to Cart</button>         </div> </div>
                     `;
 
-           
+
         });
 
         // Render products
@@ -967,7 +926,7 @@ const fetchnothreeprodsaccordtotittle = () => {
   $.ajax({
     url: API_URL,
     type: "POST",
-    data: { type: "fetchprodaccordtotittle3" , userId: userId},
+    data: { type: "fetchprodaccordtotittle3", userId: userId },
     dataType: "json",
     success: function (response) {
 
@@ -975,8 +934,8 @@ const fetchnothreeprodsaccordtotittle = () => {
 
         $(".section_tittle_3 h2").text(response[0].title_name);
 
-          let html = "";
-        const men_title3= response.filter((item)=> item.gender === "men");
+        let html = "";
+        const men_title3 = response.filter((item) => item.gender === "men");
         men_title3.map((item) => {
           let discount = ((item.mrp - item.selling_price) / item.mrp) * 100;
 
@@ -1034,9 +993,8 @@ const fetchnothreeprodsaccordtotittle = () => {
 
            
 
- <button class="add-to-cart" onclick="addToCartProcess(${
-                              item.id
-                            })"> <i class="fa-solid fa-cart-shopping"></i>Add to Cart</button>         </div> </div>
+ <button class="add-to-cart" onclick="addToCartProcess(${item.id
+            })"> <i class="fa-solid fa-cart-shopping"></i>Add to Cart</button>         </div> </div>
                     
                     `;
         });
@@ -1055,3 +1013,4 @@ const fetchnothreeprodsaccordtotittle = () => {
 fetchprodaccordtotittle();
 Productfetchaccodtotiitles2();
 fetchnothreeprodsaccordtotittle();
+

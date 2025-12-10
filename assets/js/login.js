@@ -14,37 +14,6 @@ $(".k_eye_icon").click(function () {
 });
 
 
-const warningAlert = (msg) => {
-  Swal.fire({
-    title: false,
-    text: msg,
-    icon: "warning",
-    showConfirmButton: false,
-    customClass: {
-      icon: "swal-custom-icon",
-      htmlContainer: "swal-custom-text",
-      container: "my-swal-warning-container",
-    },
-    timer: 1000,
-  });
-};
-
-
-
-const successAlert = (msg) => {
-  Swal.fire({
-    title: "",
-    text: msg,
-    icon: "success",
-    showConfirmButton: false,
-    customClass: {
-      icon: "swal-custom-icon",
-      htmlContainer: "swal-custom-text",
-      container: "my-swal-success-container",
-    },
-    timer: 1500,
-  });
-};
 
 
 const signin = (event) => {
@@ -86,6 +55,7 @@ else if (password.length < 3) {
           localStorage.setItem("name", response.fullname);
           localStorage.setItem("userId", response.id);
           localStorage.setItem("phone", response.phone);
+         localStorage.setItem("email", response.email);
           $(".profile--hint-box-content").attr("area-label", "Account");
         successAlert("Login successful!");
 setTimeout(() => {

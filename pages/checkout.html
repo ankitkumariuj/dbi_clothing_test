@@ -104,6 +104,8 @@
       </div>
       <div class="address-actions">
         <button class="btn-outline edit-btn-forcheckout">Edit</button>
+                              <!-- Manage Addresses Button --> 
+ <button id="manageAddressBtn" class="btn-primary">Manage Addresses</button>
       </div>
     </div>
     <div class="address-bottom">
@@ -113,8 +115,7 @@
     </div>
   </div>
    </section>
-                      <!-- Manage Addresses Button -->
-  <!-- <button id="manageAddressBtn" class="btn-primary">Manage Addresses</button> -->
+
        
 <div class="location_section">
 <div class="l_box" id="addNewAddressBtn">
@@ -145,7 +146,7 @@
 </div>
 
 <!-- Address List Modal -->
-<div id="addressListModal" class="addressmodal">
+<div id="addressListModal" class="addressmodals" onclick="showsaveadd()">
   <div class="modal-content">
     <span class="close-btn" id="closeAddressList">&times;</span>
     <h2>Saved Addresses</h2>
@@ -337,7 +338,7 @@
           </div>
     
    <div class="input_select">
-  <input type="radio" name="payment" id="cod" value="Cash On Delivery">
+  <input type="radio" name="payment" id="cod" value="C.O.D">
   <label for="cod">Cash On Delivery</label>
 </div>
 
@@ -595,9 +596,9 @@
 
     
     </script>
-
     <!-- jQuery FIRST -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 
     <script src="../assets/js/script.js"></script>
     <script src="../assets/js/header.js"></script>
@@ -619,12 +620,13 @@
 <script>
 $(document).ready(function(){
 
-  // Open Address List Modal
+
+   // Open Address List Modal
   $("#manageAddressBtn").on("click", function(){
     $("#addressListModal").css("display", "flex");
   });
 
-  // Close Address List Modal
+
   $("#closeAddressList").on("click", function(){
     $("#addressListModal").hide();
   });
@@ -635,12 +637,12 @@ $(document).ready(function(){
     $("#addAddressModal").css("display", "flex");
   });
 
-  // Close Add New Address Modal
+
   $("#closeAddAddress").on("click", function(){
     $("#addAddressModal").hide();
   });
 
-  // Close Modals on Outside Click
+
   $(window).on("click", function(e){
     if ($(e.target).is("#addressListModal")) {
       $("#addressListModal").hide();

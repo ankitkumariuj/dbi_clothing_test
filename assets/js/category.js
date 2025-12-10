@@ -77,7 +77,7 @@ async function GetSubCategory(subId) {
     res.map((item) => {
       console.log(item)
       PrintSubCate += ` 
-      <a href="category.html?subCat_id=${item.id}&cate_id=${item.category_id}"><div class="Category-Box">
+      <a href="category.html?subCat_id=${item.id}"><div class="Category-Box">
       <h6>${item.name}</h6>
       </div></a>`;
     });
@@ -111,12 +111,12 @@ document.addEventListener("click", function (e) {
     }
   }
 
-  // Color selection (event delegation)
+
   if (e.target.closest(".color-circle")) {
     e.target.closest(".color-circle").classList.toggle("active");
   }
 
-  // Size button toggle (event delegation)
+
   if (e.target.closest(".filter-button")) {
     e.target.closest(".filter-button").classList.toggle("active");
   }
@@ -682,23 +682,3 @@ const SingalProduct = async () => {
 
 
 
- window.addEventListener("DOMContentLoaded", () => {
-    const price = localStorage.getItem("total_price");
-
-    if (price) {
-      document.getElementById("t_price").textContent = `Checkout ₹${price}`;
-    } else {
-      document.getElementById("t_price").textContent = "Checkout";
-      console.log("No price found in localStorage");
-    }
-  });
-
-
-
-$("#product-all-ratings").hide();
-
-
-function saveDiscount(discount){
-  localStorage.setItem("Discount save" , discount)
-  
-}

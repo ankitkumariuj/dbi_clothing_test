@@ -1,106 +1,35 @@
 
 
 const o_userId = localStorage.getItem("userId");
-const login_status = localStorage.getItem('login_status');
-
-if (login_status) {
-  $("#filterBtn").show();
-}
-else{
-    $("#filterBtn").hide();
-}
 
 
-
-const loadOrderDetails =  () => {
-  const k_gpt_thank_you = $(".k_gpt_thank-you");
-  const order_address = $("#order_address");
-  const order_details = $("#order_details");
-
-
-  let o_total = 0;
-  let productData = '';
-
-   $.ajax({
+const loadOrderDetails = () => {
+  $.ajax({
     url: API_URL,
     method: 'POST',
     data: { type: 'loadOrderDetails', userId: o_userId },
     success: function (response) {
-        console.log(response);
+      console.log("Full response:", response);
 
-
-      if (response.status && Array.isArray(response.data)) {
-        response.data.forEach((item) => {
-          //  use display_price for total
-          const itemTotal = parseInt(item.quantity) * parseFloat(item.display_price || 0);
-          o_total += itemTotal;
-
-          // show size & color if variant exists
-          let displayName = item.product_name;
-          if (item.variant_id && item.variant_id !== "0") {
-            let sizeTxt = item.size ? `, Size: ${item.size}` : "";
-            let colorTxt = item.color ? `, Color: ${item.color}` : "";
-            displayName = `${item.product_name} (${sizeTxt}${colorTxt})`;
-          }
-
-          
-          let imagePath = image_url + "product/main/" + item.display_image;
-          if (item.variant_id && item.variant_id !== "0") {
-            imagePath = image_url + "variant/main/" + item.display_image;
-          }
-
-     
-          productData += `
-            <tr>
-              <td>
-                <img src="${imagePath}" 
-                     style="width:50px; height:50px; object-fit:cover; margin-right:8px;" />
-                ${displayName} × ${item.quantity}
-              </td>
-              <td>₹${itemTotal.toFixed(2)}</td>
-            </tr>
-          `;
-        });
-
-        order_details.html(`
-          <tr><th>Product</th><th>Total</th></tr>
-          ${productData}
-          <tr><td class="k_gpt_bold">Subtotal:</td><td>₹${o_total.toFixed(2)}</td></tr>
-          <tr><td class="k_gpt_bold">Shipping:</td><td>Free</td></tr>
-          <tr><td class="k_gpt_bold">Payment method:</td><td>Cash on delivery</td></tr>
-          <tr><td class="k_gpt_bold">Total:</td><td>₹${o_total.toFixed(2)}</td></tr>
-        `);
-
-        
-        const firstOrder = response.data[0];
-        k_gpt_thank_you.html(`
-          <p style="color: green">Thank you. Your order has been received.</p>
-          <p><strong>Order number:</strong> ${firstOrder.order_id}</p>
-          <p><strong>Date:</strong> ${firstOrder.date || new Date().toLocaleDateString()}</p>
-          <p><strong>Total:</strong> ₹${o_total.toFixed(2)}</p>
-          <p><strong>Payment method:</strong> Cash on delivery</p>
-        `);
-
-       
-        order_address.html(`
-          <div class="k_gpt_section">
-            <h2>Billing address</h2>
-            <p>${firstOrder.company_name || ''}</p>
-            <p>${firstOrder.fullname || ''}</p>
-            <p>${firstOrder.email || ''}</p>
-            <p>${firstOrder.address || ''}</p>
-            <p>${firstOrder.city || ''} ${firstOrder.pincode || ''}</p>
-            <p>${firstOrder.state || ''}</p>
-            <p>+91${firstOrder.phone || ''}</p>
-          </div>
-        `);
-      } else {
-        order_details.html("<tr><td colspan='2'>No orders found</td></tr>");
+      if (!response || response.length === 0) {
+        console.error("No order details found");
+        return;
       }
+
+      let lastItem = response.data[0];
+      console.log("last item:", lastItem);
+
+      $('#viewOrderBtn').off('click').on('click', function () {
+        window.location.href = `/pages/order_detail.html?order_id=${lastItem.order_id}`;
+      });
     }
   });
 };
 
+
+
+
+loadOrderDetails();
 
 
 
@@ -155,6 +84,7 @@ function renderOrders(orders) {
         order_status: item.order_status,
         order_date: item.order_date,
         payment_type: item.payment_type,
+        id : item.id,
         items: [],
       };
     }
@@ -204,7 +134,7 @@ else if (status === "processing") statusClass = "status-processing";
 else if (status === "onway" || status === "on the way") statusClass = "status-onway"; 
 else if (status === "shipped") statusClass = "status-shipped";
     orderHistoryHtml += `
-      <div class="kb_history-box" onclick="window.location.href='/pages/order_detail.html?order_id=${order.order_id}'">
+<div class="kb_history-box" onclick="window.location.href='/pages/order_detail.html?order_id=${order.order_id}&id=${order.id}'">
         <div class="kb_history-items kb_history-items51 ">
           <div class="kb_order_history_container kb_order_history_container51">
 
@@ -257,8 +187,8 @@ else if (status === "shipped") statusClass = "status-shipped";
     `;
   });
 
-  orderHistoryContainer.innerHTML = orderHistoryHtml;
-  orderinvoice.innerHTML = orderinvoicehtml;
+  orderHistoryContainer.innerHTML =orderHistoryHtml;
+  orderinvoice.innerHTML= orderinvoicehtml;
 }
 
 

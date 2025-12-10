@@ -1,32 +1,4 @@
-const warningAlert = (msg) => {
-  Swal.fire({
-    title: false,
-    text: msg,
-    icon: "warning",
-    showConfirmButton: false,
-    customClass: {
-      icon: "swal-custom-icon",
-      htmlContainer: "swal-custom-text",
-      container: "my-swal-warning-container",
-    },
-    timer: 1000,
-  });
-};
 
-const successAlert = (msg) => {
-  Swal.fire({
-    title: "",
-    text: msg,
-    icon: "success",
-    showConfirmButton: false,
-    customClass: {
-      icon: "swal-custom-icon",
-      htmlContainer: "swal-custom-text",
-      container: "my-swal-success-container",
-    },
-    timer: 1500,
-  });
-};
 
 $(".k_eye_icon").click(function () {
   const input = $("#login_password_input");
@@ -148,3 +120,5 @@ if (password.value.length === 0) {
   togglePassword.style.display = "none";
 
 }
+
+

@@ -20,7 +20,7 @@ function addToWishlist(pid) {
     },
     success: function (response) {
       if (response.status) {
-
+ 
         // ⭐ Toggle active icon instantly
         let icon = $(`.wishlist-icon[onclick="addToWishlist(${pid})"]`);
          let icons = $(`.wishlist-icons[onclick="addToWishlist(${pid})"]`);
@@ -34,7 +34,7 @@ function addToWishlist(pid) {
 
         icon.attr("title", newLabel);
         
-window.location.reload();
+// window.location.reload();
       } else {
         warningAlert(response.message);
       }
@@ -44,43 +44,6 @@ window.location.reload();
 
 
 
-// const addRating = async (pid) => {
-    
-//     let userId = localStorage.getItem("userId");
-    
-//   let rating = localStorage.getItem("product_rating");
-//   let comment = $(".star-modal-textarea-input").val();
-
-//   if (login_status != "true") {
-//     warningAlert("Please login first");
-//     openModal();
-//     return;
-//   }
-
-//   if (rating == null) {
-//     warningAlert("Please select at least one star");
-//     return;
-//   }
-
-//   await $.ajax({
-//     url: API_URL,
-//     method: "POST",
-//     data: {
-//       type: "addRating",
-//       userId: userId,
-//       pid: pid,
-//       rating: rating,
-//       comment: comment,
-//     },
-//     success: function (response) {
-//       if (response.status == true) {
-//         console.log(response);
-//         localStorage.removeItem("product_rating");
-//         location.reload();
-//       }
-//     },
-//   });
-// };
 
 
 
@@ -116,12 +79,14 @@ function quickViewChangeImg(action) {
 // fetch category_priority
 
 const fetchCategoryPriority = async () => {
+
+
   await $.ajax({
     url: API_URL,
     method: "POST",
     data: { type: "fetchCategoryPriority" },
     success: function (response) {
-      // console.log(response)
+      console.log("priority" + response)
       if (response.status !== false) {
         let sub_name_data = [];
 
@@ -251,11 +216,13 @@ function filterBySubcategory(subId, catId, showContainer) {
 
         $(`#${showContainer}`).html(productHtml);
       } else {
-        $(`#${showContainer}`).html(emptyHtml);
+        $(`#${showContainer}`).html(productHtml);
       }
     },
   });
 }
+
+
 
 const topProductsByCategory = (cat_id, showContainer) => {
 
@@ -329,12 +296,12 @@ const topProductsByCategory = (cat_id, showContainer) => {
 
     $(`#${showContainer}`).html(productHtml);
   } else {
-    $(`#${showContainer}`).html(emptyHtml);
+    $(`#${showContainer}`).html(productHtml);
   }
 };
 
 
-
+// add the new code for extra
 
 const discountFtech = () => {
     $.ajax({
@@ -393,7 +360,7 @@ let trendHtml= "";
              
             });
 
-            attachEditListeners();
+            // attachEditListeners();
         }
     });
 };
@@ -416,6 +383,7 @@ function renderStars(rating) {
 
   return html;
 }
+
 
 
 

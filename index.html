@@ -28,13 +28,22 @@
 <div class="imgs">
   <img src="assets/images/logo.png" alt="" height="200px"  width="200px">
 </div>
+<script>
+  window.addEventListener('load', () => {
+    // First time to show, second time not show
+    const hasSeenOnboarding = localStorage.getItem('hasSeenOnboarding');
 
- <script>
-  setTimeout(() => {
-    location.href = 'pages/home.html';
-  }, 1000); 
-  se
+
+    setTimeout(() => {
+      if (hasSeenOnboarding !== 'true') {
+        window.location.href = '../pages/start.html';
+      } else {
+        window.location.href = '../pages/home.html';
+      }
+    }, 1000); 
+  });
 </script>
+
 
 
 </body>

@@ -1,34 +1,5 @@
 
 
-const successAlert = (msg) => {
-  Swal.fire({
-    title: "",
-    text: msg,
-    icon: "success",
-    showConfirmButton: false,
-    customClass: {
-      icon: "swal-custom-icon",
-      htmlContainer: "swal-custom-text",
-      container: "my-swal-success-container",
-    },
-    timer: 1500,
-  });
-};
-
-const warningAlert = (msg) => {
-  Swal.fire({
-    title: "",
-    text: msg,
-    icon: "warning",
-    showConfirmButton: false,
-    customClass: {
-      icon: "swal-custom-icon",
-      htmlContainer: "swal-custom-text",
-      container: "my-swal-warning-container",
-    },
-    timer: 1000,
-  });
-};
 let total_amount = 0;
 
 
@@ -265,6 +236,7 @@ const delivertoaddress = () => {
                 <p>${res.address_line}</p>
                 <p>${res.city}, ${res.state} - ${res.pincode}</p>
                 <p>Mobile: <strong>${res.phone_no}</strong></p>
+             
               </div>
               <div class="address-actions">
               <button class="btn-outline edit-btn-forcheckout" data-uid="${res.user_id}" 
@@ -285,6 +257,7 @@ const delivertoaddress = () => {
                 Deliver to this address: <h4>${res.full_name}, ${res.pincode}</h4>
               </label>
             </div>
+            
           </div>
         `;
 

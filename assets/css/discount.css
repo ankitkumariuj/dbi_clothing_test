@@ -36,8 +36,6 @@
     .discount-container {
         display: flex;
 
-        background: url('/assets/images/white.png');
-
         background: url('/assets/images/white\ bg.png');
 
         padding: 15px 30px;

@@ -179,9 +179,13 @@ input[type='number']::-webkit-inner-spin-button {
 }
 
 .right-checkout-content .k-cart-row {
-    border-top: 1px solid #eee;
+  border-top: 1px solid #eee;
     border-bottom: none;
     padding-inline: 2%;
+    display: flex;
+    justify-content: space-between;
+    /* margin-top: 14px; */
+    padding-block: 2%;
 }
 
 .right-checkout-content .k-cart-total-price {
@@ -204,7 +208,9 @@ input[type='number']::-webkit-inner-spin-button {
     padding-inline: 2%;
    
 }
-
+.k_form_col_order_track_input_content_k_gap_8{
+  width: 100%;
+}
 .input_select{
   padding-inline: 2%;
 }
@@ -387,6 +393,10 @@ input[type='number']::-webkit-inner-spin-button {
   box-shadow: 0 0 10px rgba(255, 63, 108, 0.1);
 }
 
+#addressListModal{
+  display: none;
+}
+
 
  /*====== ADDRESS CONTENT ====== */
 .address-top {
@@ -427,7 +437,7 @@ input[type='number']::-webkit-inner-spin-button {
 }
 
 .btn-outline:hover {
-  background: #8a1344;
+  background: rgba(31, 136, 226, 1);
   color: #fff;
 }
 
@@ -479,7 +489,7 @@ input[type='number']::-webkit-inner-spin-button {
 
   .address-actions {
     width: 100%;
-    justify-content: flex-start;
+           justify-content: space-between;
   }
 
   .btn-outline {
@@ -543,7 +553,7 @@ input[type='number']::-webkit-inner-spin-button {
 .modal-content h3 {
   margin-top: 0;
   margin-bottom: 15px;
-  color: #8a1344;
+  color: #000;
 }
 
 .modal-content label {
@@ -564,7 +574,7 @@ input[type='number']::-webkit-inner-spin-button {
 }
 
 .btn-save {
-  background-color: #8a1344;
+  background-color: #000;
   color: #fff;
   padding: 10px 16px;
   border: none;
@@ -614,14 +624,17 @@ input[type='number']::-webkit-inner-spin-button {
   transition: all 0.3s ease;
 }
 .btn-primary {
-    font-size: 19px;
-  background: #fff5f7;;
-  color: #333;
-   border:1px solid  #8a1344;
+   font-size: 13px;
+    background: black;
+    color: white;
+    padding: 5px 13px;
+    border: 1px solid white;
 }
-.btn-primary:hover {
-  background: #0056b3;
+
+.address-card selected-address{
+  border: 1px solid black;
 }
+
 .btn-secondary {
   background: #f1f1f1;
   color: #333;

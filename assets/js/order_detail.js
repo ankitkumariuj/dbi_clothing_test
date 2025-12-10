@@ -1,40 +1,8 @@
-const warningAlert = (msg) => {
-  Swal.fire({
-    title: false,
-    text: msg,
-    icon: "warning",
-    showConfirmButton: false,
-    customClass: {
-      icon: "swal-custom-icon",
-      htmlContainer: "swal-custom-text",
-      container: "my-swal-warning-container",
-    },
-    timer: 1000,
-  });
-};
-
-
-
-const successAlert = (msg) => {
-  Swal.fire({
-    title: "",
-    text: msg,
-    icon: "success",
-    showConfirmButton: false,
-    customClass: {
-      icon: "swal-custom-icon",
-      htmlContainer: "swal-custom-text",
-      container: "my-swal-success-container",
-    },
-    timer: 1500,
-  });
-};
 
 
 const o_userId = localStorage.getItem("userId");
-const login_status = localStorage.getItem('login_status');
 const username = localStorage.getItem('name');
-const email = localStorage.getItem('email_id');
+const email = localStorage.getItem('email');
 const phone = localStorage.getItem('phone');
 
 const orderHistoryContainer = document.querySelector(".receipt-container");
@@ -46,6 +14,13 @@ let allOrders = [];
 
 const urlParams = new URLSearchParams(window.location.search);
 const order_id = urlParams.get("order_id");
+const pid = urlParams.get("id");
+
+
+let userId = localStorage.getItem('userId');
+
+console.log("order_id:", order_id);
+console.log("pid:", pid);
 
 function fetchOrderHistory() {
 
@@ -53,31 +28,24 @@ function fetchOrderHistory() {
     url: API_URL,
     method: "POST",
     data: { 
-      type: "fetchAllOrdersDetails",
-      user_id: o_userId, 
+      type: "combineordersreviews",
+      user_id: userId, 
       order_id: order_id,
-      // id: id,
+      product_id: pid   // add this
     },
 
     success: function (response) {
       console.log("API Response:", response);
 
       if (response && response.length > 0) {
-        allOrders = response;
-        renderOrders(allOrders);
-      } else {
-        orderHistoryContainer.innerHTML = `
-          <div class="empty-cart-messages">
-            <div class="empty-cart-icon">
-              <img src="../assets/images/empty-wishlist-img.png" width="350" height="307" alt="Cart empty">
-              <center><h2>Your cart is currently empty.</h2></center>
-              <center><p>You may check out all the available products and buy some in the shop.</p></center>
-            </div>
-          </div>`;
-      }
-    },
+        // sirf iss order ka data aayega
+        let filtered = response.filter(item => item.order_id == order_id);
+        renderOrders(filtered);
+    }
+  }
   });
 }
+
 
 fetchOrderHistory();
 
@@ -90,6 +58,7 @@ function renderOrders(orders) {
     orderinvoice.innerHTML = "";
     return;
   }
+  
 
   const groupedOrders = {};
   orders.forEach((item) => {
@@ -97,13 +66,18 @@ function renderOrders(orders) {
       groupedOrders[item.order_id] = {
         order_id: item.order_id,
         order_status: item.order_status,
-        order_date: item.order_date,
+        date: item.date,
         payment_type: item.payment_type,
         user_address : item.address,
         city: item.city,
         state: item.state,
         pincode: item.pincode,
+        fullname: item.fullname,
+        email_id: item.email,
+        mobile: item.phone,
         id: item.id,
+        comment: item.comment,
+        rating: item.rating,
         items: [],
       };
     }
@@ -116,9 +90,19 @@ function renderOrders(orders) {
     let totalAmount = 0;
     let itemsHtml = "";
 
-    // Generate all product items
-    order.items.forEach((item) => {
-      const itemTotal = item.selling_price * item.order_quantity;
+   let mergedItems = {};
+
+order.items.forEach(item => {
+  if (!mergedItems[item.product_id]) {
+    mergedItems[item.product_id] = { ...item, total_qty: Number(item.quantity) };
+  } else {
+    mergedItems[item.product_id].total_qty += Number(item.quantity);
+  }
+});
+
+Object.values(mergedItems).forEach(item => {
+      const itemTotal = item.selling_price * item.quantity;
+      // console.log("item total price" + itemTotal)
       totalAmount += itemTotal;
 
       itemsHtml += `
@@ -126,10 +110,10 @@ function renderOrders(orders) {
         <div class="item-row">
 
           <div class="img_box">
-           <span class="item-name">${item.name} (${item.brand}) x${item.order_quantity}</span>
+           <span class="item-name">${item.name} (${item.brand}) x${item.quantity}</span>
             <img src="${image_url}product/main/${item.main_image}" alt="${item.name}" />
             </div>
-             <div class="item-price">₹${item.selling_price}</div>
+             <div class="item-price">₹${itemTotal}</div>
     
             
            </div>
@@ -151,25 +135,32 @@ else statusClass = "status-pending";
 setTimeout(() => {
   const btn = document.getElementById(`rate_btn_${order.id}`);
 
-  if (status === "delivered") {
-    btn.style.display = "block";
-  } else {
+  if (status !== "delivered") {
     btn.style.display = "none";
+  $('#rated').css("display", "none");
+
+    return;
   }
+
+
+  if (order.comment && order.comment.trim() !== "") {
+    btn.style.display = "none";
+      $('#rated').css("display", "block");
+  } else {
+    btn.style.display = "block";
+      $('#rated').css("display", "none");
+  }
+
 }, 100);
 
-function rating(status) {
-  const btn = $(`#rate_btn_${order.id}`);
 
-  if (status === "delivered") {
-    btn.show();
-  } else {
-    btn.hide();
-  }
-}
 
-rating();
-
+// rating();
+const formattedDates = new Date(order.date).toLocaleDateString("en-GB", {
+  day: "2-digit",
+  month: "short",
+  year: "numeric"
+});
 
 
 
@@ -182,16 +173,16 @@ rating();
     </div>
     
     <div class="receipt-details">
-        <div class="detail-line">Order Date: ${new Date(order.order_date).toLocaleDateString("en-GB")}</div>
+        <div class="detail-line">Order Date: ${formattedDates}</div>
         <div class="detail-line">
             <span class="detail-label">Delivered to</span>
             <span class="detail-value">${order.user_address} ${order.city}, ${order.state}, ${order.pincode}</span>
         </div>
          <div class="detail-line">
           <span class="detail-label"> Customer Details :</span>
-          <h4>Name:  ${username}</h4>
-            <h4>Phone No:  ${phone}</h4>
-            <h4>Email Id:  ${email}</h4>
+          <h4>Name:  ${order.fullname}</h4>
+            <h4>Phone No:  ${order.mobile}</h4>
+            <h4>Email Id:  ${order.email_id}</h4>
          </div>
 
         <div class="detail-line payment-method">Payment Method</div>
@@ -229,8 +220,9 @@ rating();
 
            <i class="star" style="font-style: normal; ">★</i> Rate the Product
           </button>
-
-            </div>
+          </div>
+          
+                    <p id="rated">You rated this product ⭐ ${order.rating}/5</p>
                </div>
 
           
@@ -378,6 +370,10 @@ rating();
 
 
    });
+
+
+
+
 $(document).ready(() => {
     const stars = document.querySelectorAll('.svg-star');
     let rating = localStorage.getItem("product_rating");
@@ -413,7 +409,6 @@ $(document).ready(() => {
 
 
 
-fetchOrderHistory();
 
 
 function printOrderBill(order_id) {
@@ -527,91 +522,6 @@ console.log("Filtered order items:", orderItems);
 
 
 
-
-
-
-
-
-// const addRating = async (id) => {
-
-
-//   const userId = localStorage.getItem("userId");
-//   const rating = localStorage.getItem("product_rating");
-//   const comment = $(".star-modal-textarea-input").val()?.trim() || "";
-//   const image = $('#fileInput')[0].files[0];
-//   console.log(image);
-  
-
-
-//   // Check login
-//   if (login_status !== "true") {
-//     warningAlert("Please login first");
-//     openModal();
-//     return;
-//   }
-
-
-//   if (!rating) {
-//     warningAlert("Please select at least one star");
-//     return;
-//   }
-
- 
-//   if (comment.length === 0) {
-//     warningAlert("Please enter text");
-//     return;
-//   }
-
-//   try {
-//     const response = await $.ajax({
-//       url: API_URL,
-//       method: "POST",
-//       data: {
-//         type: "addRating",
-//         userId,
-//         id,
-//         rating,
-//         comment,
-//         image,
-//       },
-//     });
-
-//     console.log("RAW Response:", response);
-
-//     let res = response;
-//     if (typeof res === "string") {
-//       res = JSON.parse(res);
-//     }
-
-//     console.log("Parsed Response:", res);
-
-//   if (res.status == true) {
-
-//   successAlert("Rating Saved Successfully!");
-
-//   setTimeout(() => {
-//     $(".rating_review_popup_container").removeClass("active");
-//     $(".wrapper-overlay").removeClass("active");
-//     $("body").css("overflow", "auto");
-
-//     $(".star-modal-textarea-input").val("");
-//     localStorage.removeItem("product_rating");
-
-
-//   }, 1500);
-
-// } else {
-//   warningAlert(res.message || "Something went wrong");
-// }
-
-
-//   } catch (error) {
-//     console.error("Rating error:", error);
-//     warningAlert("Unable to submit rating. Try again!");
-//   }
-// };
-
-
 const addRating = async (id) => {
     const userId = localStorage.getItem("userId");
     const rating = localStorage.getItem("product_rating");
@@ -619,12 +529,12 @@ const addRating = async (id) => {
     const fileInput = $('#fileInput')[0];
     const image = fileInput.files[0];
 
-    // Validation
-    if (login_status !== "true") {
-        warningAlert("Please login first");
-        openModal();
-        return;
-    }
+
+
+
+
+
+
     if (!rating) {
         warningAlert("Please select at least one star");
         return;
@@ -662,6 +572,7 @@ const addRating = async (id) => {
                 $("body").css("overflow", "auto"); 
                 $(".star-modal-textarea-input").val(""); 
                 localStorage.removeItem("product_rating"); }, 1500);
+                window.location.reload();
         } else {
             warningAlert(response.message || "Something went wrong");
         }
@@ -670,8 +581,6 @@ const addRating = async (id) => {
         warningAlert("Unable to submit rating. Try again!");
     }
 };
-
-
 
 function previewImage(event) {
     const preview = document.getElementById('preview');
@@ -688,4 +597,4 @@ function previewImage(event) {
 
 
 
-      
+

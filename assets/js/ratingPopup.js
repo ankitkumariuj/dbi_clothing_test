@@ -9,7 +9,7 @@ function openRatingPopup(id) {
 
     // Restore previous rating
     const stars = document.querySelectorAll('.svg-star');
-    let rating = localStorage.getItem("product_rating");
+    // let rating = localStorage.getItem("product_rating");
 
     if (rating != null) {
       let clickedIndex = rating - 1;

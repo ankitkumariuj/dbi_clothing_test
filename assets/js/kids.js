@@ -1,35 +1,5 @@
 
 
-const successAlert = (msg) => {
-  Swal.fire({
-    title: "",
-    text: msg,
-    icon: "success",
-    showConfirmButton: false,
-    customClass: {
-      icon: "swal-custom-icon",
-      htmlContainer: "swal-custom-text",
-      container: "my-swal-success-container",
-    },
-    timer: 1500,
-  });
-};
-
-const warningAlert = (msg) => {
-  Swal.fire({
-    title: "",
-    text: msg,
-    icon: "warning",
-    showConfirmButton: false,
-    customClass: {
-      icon: "swal-custom-icon",
-      htmlContainer: "swal-custom-text",
-      container: "my-swal-warning-container",
-    },
-    timer: 1000,
-  });
-};
-
 const input = document.getElementById("animated-placeholder");
 const placeholders = [
   "Search for products...",
@@ -597,6 +567,7 @@ const fetchTodayBestDeal = () => {
     error: function () {
       console.error("Error fetching best deals");
       $("#PrintSubCate").hide();
+        $('.trending_title h2').hide();
     },
   });
 };
@@ -643,7 +614,9 @@ async function GetMainCategory() {
 
 
 function fetchRecentlyViewedProducts() {
-  const viewed = JSON.parse(localStorage.getItem("recentlyViewed")) || [];
+  const viewed = JSON.parse(localStorage.getItem("recentlyViewedProduct")) || [];
+
+
 
 
   $("#recent-product").hide();
@@ -687,8 +660,8 @@ function fetchRecentlyViewedProducts() {
 
         html += `
 
-            <div class="product_card1" ${item.id}>
- <img src="${image_url + "/product/main/" + item.main_image}" alt="">
+          <div class="product_card1" >
+ <img src="${image_url + "/product/main/" + item.main_image}" alt="" onclick="location.href='singlep.html?pid=${item.id}'">
   <div class="product_info1">
     <h4>${item.description}</h4>
     <div class="price-con">

@@ -1,14 +1,3 @@
-
-window.addEventListener("DOMContentLoaded", () => {
-  const price = localStorage.getItem("total_price");
-
-  document.getElementById("t_price").textContent =
-    price ? `₹${price}` : "Checkout";
-
-   
-
-});
-
 const cartData = {};
 const cartDrawer = document.getElementById('bd-cartDrawer');
 const cartOverlay = document.getElementById('bd-cartOverlay');
@@ -17,84 +6,8 @@ const subtotalEl = document.getElementById('bd-subtotal');
 const totalEl = document.getElementById('bd-total');
 const cartFooter = document.getElementById('bd-cartFooter');
 const body = document.querySelector("body");
-function openCart() {
 
-  if (window.location.pathname.includes('checkout.html')) {
-    window.location.href = "view-cart.html";
-    return;
-  }
 
-  cartDrawer.classList.add('open');
-  cartOverlay.style.display = 'block';
-  body.style.overflow = 'hidden';
-}
-
-function closeCart() {
-  cartDrawer.classList.remove('open');
-  cartOverlay.style.display = 'none';
-  body.style.overflow = 'auto';
-}
-
-document.querySelectorAll('.add-to-cart').forEach(button => {
-  button.addEventListener('click', () => {
-    const id = button.dataset.id;
-    const title = button.dataset.title;
-    const price = button.dataset.price;
-    const img = button.dataset.img;
-
-    if (cartData[id]) {
-      cartData[id].qty += 1;
-    } else {
-      cartData[id] = { title, price, img, qty: 1 };
-    }
-
-    updateCartDrawer();
-    openCart();
-  });
-});
-
-function updateCartDrawer() {
-  cartBody.innerHTML = '';
-
-  if (Object.keys(cartData).length == 1) {
-    cartBody.innerHTML = `
-      <img src="https://cdn-icons-png.flaticon.com/512/2038/2038854.png" alt="Empty Cart" class="bd-empty-cart-img" />
-      <h3>Your cart is currently empty.</h3>
-      <p>You may check out all the available products and buy some in the shop.</p>
-      <button onclick="window.location.href='shop.html'" class="bd-cart-btn">Return to shop</button>
-    `;
-    cartFooter.style.display = 'none'; // Hide footer
-    return;
-  }
-
-  let total = 0;  
-
-  for (let id in cartData) {
-    const item = cartData[id];
-    const subtotal = item.qty * parseFloat(item.price);
-    total += subtotal;
-
-    cartBody.innerHTML += `
-      <div class="bd-cart-item">
-        <img src="${item.img}" alt="${item.title}" />
-        <div>
-          <h4>${item.title}</h4>
-          <p>₹${item.price}</p>
-          <div>
-            <button onclick="changeQty('${id}', -1)">-</button>
-            ${item.qty}
-            <button onclick="changeQty('${id}', 1)">+</button>
-            <a href="#" onclick="removeFromCart('${id}')">Remove</a>
-          </div>
-        </div>
-      </div>
-    `;
-  }
-
-  subtotalEl.textContent = `₹${total.toFixed(2)}`;
-  totalEl.textContent = `₹${total.toFixed(2)}`;
-  cartFooter.style.display = 'block'; // Show footer
-}
 
 function changeQty(id, delta) {
   cartData[id].qty += delta;
@@ -133,49 +46,7 @@ let total = 0;
 
 
 
-const addToCartProcess = (itemId, vid = null, btn = null) => {
-  let qty = 1;
 
-  if (btn && btn instanceof HTMLElement) {
-    const qtyBox = btn.closest(".cart-item-quantity")?.querySelector(".quantity-input");
-    if (qtyBox) {
-      const parsedQty = parseInt(qtyBox.value, 10);
-      qty = isNaN(parsedQty) ? 1 : parsedQty;
-    }
-  }
-let login_status = localStorage.getItem('login_status');
-  if (login_status !== "true") {
-    warningAlert("Login first");
-    openModal();
-    return;
-  }
-
-  setTimeout(() => openCart(), 100);
-
-  let idfr = window.localStorage.getItem("idfr");
-  if (!idfr) {
-    idfr = Date.now();
-    window.localStorage.setItem("idfr", idfr);
-  }
-
-  $.ajax({
-    url: API_URL,
-    method: "POST",
-    data: {
-      type: "addToCart",
-      userId: Iduser,
-      pid: itemId,
-      vid: vid,
-      idfr: idfr,
-      qty: qty
-    },
-    success: function (response) {
-      if (response?.status === true) {
-        loadAddToCart();
-      }
-    }
-  });
-};
 
 
 
@@ -231,7 +102,8 @@ const loadAddToCart = async () => {
 
     const price = (parseInt(item.quantity) * priceEach).toFixed(2);
     subTotal += parseFloat(price);
-    total += parseFloat(price);
+  total += parseFloat(price);
+
 
     const image = isVariant && item.variant_image
         ? image_url + "variant/main/" + item.variant_image
@@ -241,7 +113,10 @@ const loadAddToCart = async () => {
     if (isVariant) {
         title += ` (${item.variant_size || ""} )`;
     }
+
     
+      // document.getElementById("t_price").textContent = "₹" + `${parseInt(total)}`;
+      // console.log(total)
 
     cartHtml += `
         <div class="cart-container" id="cart-container${item.cart_id}">
@@ -262,14 +137,30 @@ const loadAddToCart = async () => {
                 </div>
                 <p>${isVariant ? item.variant_color : item.product_color || 'N/A'}</p>
             </div>
+
+            
             <div class="cart_product_info">
-                <h4>${isVariant ? item.variant_size.length : item.product_size.length} Pcs per size set</h4>
+                <h4>${item.quantity} Pcs per size set</h4>
                 <div class="size_discount">
-                    <p>${isVariant ? item.variant_size.split("").join(" / ") : item.product_size.split("").join(" / ")}</p>
+                
+                    <p>${item.size.split(",").join(" / ")}</p>
+                    
                     <div class="discount-label">${((parseFloat(item.mrp - item.selling_price)/ item.mrp) * 100).toFixed(0)}% Margin</div>
                 </div>
+  
+<div class="cart-quantity-input-box">
+                    <button class="decrease" onclick="cartDec(${item.cart_id} )">
+                      <i class="fa-solid fa-minus"></i>
+                    </button>
+                      <input type="number" class="quantity-input cartNop${item.cart_id}" value="${item.quantity}" readonly="">
+                  <button class="increase" onclick="cartInc(${item.cart_id})">
+
+                      <i class="fa-solid fa-plus"></i>
+                    </button>
+                  </div>
                 <div class="size_discount">
-                    <h3>₹${price}/Pcs</h3>
+                   <h3>₹${price}/Pcs</h3>
+
                     <h3>₹${isVariant ? item.variant_mrp : item.mrp} <svg width="2" height="25" viewBox="0 0 2 25" fill="none">
                         <line x1="1" y1="24.02" x2="1" y2="0" stroke="#7E7979" stroke-width="2"/>
                     </svg> ${item.quantity}Pcs</h3>
@@ -288,6 +179,7 @@ const loadAddToCart = async () => {
     $(this).css("background-color", color);
 });
         $(".k-cart-subtotal h4").html("₹" + subTotal.toFixed(2));
+        $("#t_price").html("₹" + subTotal.toFixed(2));
         $(".k-cart-total-price h4").html("₹" + total.toFixed(2));
         loadCartCount();
 
@@ -309,7 +201,7 @@ const loadAddToCart = async () => {
 };
 loadAddToCart();
 
-  
+
 
 
 
@@ -342,6 +234,7 @@ const loadCartCount = async () => {
 
             $(".place_order").hide();
             $(".check_btn").hide();
+            
           } else {
             // When cart has items
             $(".bd-icon-badge").html(totalItems);
@@ -366,10 +259,40 @@ loadCartCount();
 
 const cartInc = async (cart_id, selling_price) => {
 
-  let nop = $(`.cartNop${cart_id}`).val();
-  nop = parseInt(nop);
+  let nop = parseInt($(`.cartNop${cart_id}`).val());
   nop++;
 
+  $.ajax({
+    url: API_URL,
+    type: 'POST',
+    data: { type: 'cartInc', cart_id: cart_id, nop: nop },
+    success: function (response) {
+      if (response.status === true) {
+
+
+        $(`.cartNop${cart_id}`).val(nop);
+
+
+        $(`.cartPrice${cart_id}`).html(`₹${(selling_price * nop).toFixed(2)}`);
+
+
+        loadAddToCart();  
+      }
+    }
+  });
+};
+
+
+const cartDec = async (cart_id, selling_price) => {
+
+  let nop = parseInt($(`.cartNop${cart_id}`).val());
+  nop--;
+
+
+  if(nop === 0){
+     deleteCartItem(cart_id , selling_price);
+     return;
+  }
 
 
   $.ajax({
@@ -378,66 +301,19 @@ const cartInc = async (cart_id, selling_price) => {
     data: { type: 'cartInc', cart_id: cart_id, nop: nop },
     success: function (response) {
       if (response.status === true) {
-        $(`.cartPrice${cart_id}`).html(`₹${(selling_price * nop).toFixed(2)}`);
+
+
         $(`.cartNop${cart_id}`).val(nop);
 
-        total = total + parseInt(selling_price);
 
-        $(".k-cart-subtotal h4").html('₹' + parseInt(total).toFixed(2));
-        $(".k-cart-total-price h4").html('₹' + parseInt(total).toFixed(2));
+        $(`.cartPrice${cart_id}`).html(`₹${(selling_price * nop).toFixed(2)}`);
+
+
+        loadAddToCart();  
       }
     }
-  })
-
-
-
-}
-
-const cartDec = async (cart_id, selling_price) => {
-
-  let nop = $(`.cartNop${cart_id}`).val();
-  nop = parseInt(nop);
-  nop--;
-
-
-  // return;
-
-  if (nop >= 1) {
-    $.ajax({
-      url: API_URL,
-      type: 'POST',
-      data: { type: 'cartInc', cart_id: cart_id, nop: nop },
-      success: function (response) {
-        if (response.status === true) {
-          $(`.cartPrice${cart_id}`).html(`₹${(selling_price * nop).toFixed(2)}`);
-          $(`.cartNop${cart_id}`).val(nop);
-
-          total = total - parseInt(selling_price);
-
-          $(".k-cart-subtotal h4").html('₹' + parseInt(total).toFixed(2));
-          $(".k-cart-total-price h4").html('₹' + parseInt(total).toFixed(2));
-        }
-      }
-    })
-  } else {
-    $.ajax({
-      url: API_URL,
-      type: 'POST',
-      data: { type: 'cartDelete', cart_id: cart_id },
-      success: function (response) {
-        if (response.status === true) {
-          window.onload();
-          loadCartCount();    // refresh list immediately
-               loadAddToCartItem();
-               cartDelete();
-          
-        }
-      }
-    })
-  }
-
-
-}
+  });
+};
 const deleteCartItem = async (cart_id, selling_price) => {
 
   let nop = $(`.cartNop${cart_id}`).val() || 1;

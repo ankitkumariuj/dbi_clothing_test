@@ -51,7 +51,9 @@ position: relative;
         left: 6%;
 }
 
-
+#product3{
+  padding-bottom: 80px;
+}
     /* new product card */
     .product_section {
         display: flex;
@@ -62,6 +64,7 @@ position: relative;
             width: 100%;
     overflow: hidden;
     overflow-x: auto;
+    padding-right: 1%;
     justify-content: flex-start;
     }
 
@@ -138,7 +141,7 @@ svg{
         z-index: 32;
         top: 2%;
         left: 80%;
-        padding: 5px 4%;
+        padding: 5px 3%;
         border-radius: 50%;
         display: flex;
         align-items: center;
@@ -179,6 +182,7 @@ overflow: scroll;
         background: #fff;
         padding: unset;
         border-radius: 5px;
+                max-width: 150px;
     }
 
 

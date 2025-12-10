@@ -41,6 +41,7 @@
     font-weight: 400;
     color: white;
     margin-top: 25px;
+    border: none;
 }
 
 .log{
@@ -49,4 +50,9 @@
     align-items: center;
     gap: 10px;
     padding-block: 5%;
+}
+
+img{
+        width: 100%;
+    object-fit: cover;
 }

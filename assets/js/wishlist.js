@@ -74,7 +74,7 @@ console.log(response)
   <img src="${imageSrc}" alt="${name}" onclick="location.href='singlep.html?pid=${item.product_id}'">
   <div class="color-box" data-color='${item.product_color}'></div>
   </div>
-  <p>Red</p>
+  <p>${item.product_color}</p>
 </div>
 
 <div class="cart_product_info">

@@ -12,22 +12,9 @@
     />
 
     <link rel="stylesheet" href="../assets/css/style.css" />
-
-    <!-- == ye header css sb me comman hoga navbar ke liye == -->
     <link rel="stylesheet" href="../assets/css/header.css" />
-
-    <link rel="stylesheet" href="../assets/css/home.css" />
     <link rel="stylesheet" href="../assets/css/k_style.css" />
-
-    <!-- == ye supportandfooter css sb me comman hoga footer part ke liye == -->
-    <link rel="stylesheet" href="../assets/css/supportandfooter.css" />
-
-    <!-- <link rel="stylesheet" href="../assets/css/wishlist.css"> -->
     <link rel="stylesheet" href="../assets/css/profile.css" />
-    <link rel="stylesheet" href="../assets/css/prev-page-link.css" />
-    <link rel="stylesheet" href="../assets/css/bd-cart-drawer.css" />
-
-    <link rel="stylesheet" href="../assets/css/mobileFooter.css" />
     <link
       href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
       rel="stylesheet"
@@ -268,104 +255,13 @@
     </div>
   </div>
 
-    <!-- support section  -->
-    <div class="support">
-      <div class="info-strip-section">
-        <div class="info-strip-container">
-          <div class="info-item">
-            <i class="fas fa-box info-icon"></i>
-            <div class="info-text">
-              Fast, free delivery &<span>assembly</span>
-            </div>
-          </div>
-          <div class="info-item">
-            <!-- <i class="fas fa-dollar-sign info-icon"></i> -->
-            <div class="info-item-logo-img">
-              <img src="../assets/images/megamog_box_02.png" alt="" />
-            </div>
-            <div class="info-text">
-              Money guarantee within<span>30 days</span>
-            </div>
-          </div>
-          <div class="info-item">
-            <i class="fas fa-headset info-icon"></i>
-            <div class="info-text">
-              Online support available<span>24/7</span>
-            </div>
-          </div>
-          <div class="info-item">
-            <i class="fas fa-credit-card info-icon"></i>
-            <div class="info-text">Pay with<span>Multiple Cards</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <!-- ===== Footer Start ===== -->
-    <footer class="bs-footer">
-      <div class="bs-footer-container">
-        <!-- Logo & Social -->
-        <div class="bs-footer-logo">
-          <img src="../assets/images/logo.png" alt="Street Pulse Logo" />
-          <h2>Follow Us</h2>
-          <div class="bs-social-icons">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
-          </div>
-        </div>
-
-        <!-- Quick Links -->
-        <div class="bs-footer-links">
-          <h2>Quick Links</h2>
-          <ul>
-            <!--<li><a href="track-order.html">Track Order</a></li>-->
-            <li><a href="privacy.html">Privacy Policy</a></li>
-            <li><a href="shipping-policy.html">Shipping Policy</a></li>
-            <li><a href="refund-returns.html">Return & Refund Policy</a></li>
-            <li><a href="terms-condition.html">Terms & Conditions</a></li>
-          </ul>
-        </div>
-
-        <!-- Contact -->
-        <div class="bs-footer-contact">
-          <h2>Contact</h2>
-          <p>
-            <a href="mailto:mayza@gmail.com" class="bs-email-link">
-              <i class="fas fa-envelope"></i> mayza@gmail.com
-            </a>
-          </p>
-        </div>
-      </div>
-    </footer>
-    <!-- ===== Footer End ===== -->
-
-    <section class="cprt-footer">
-      <!-- footer  -->
-      <div class="footer">
-        <div class="leftfooter">© 2024 Mayza. All Rights Reserved.</div>
-
-        <div class="rightfooter">
-          <!-- <img src="../assets/images/amex - Google Search_files/amex-card-logo-6D352AA0A4-seeklogo.com.png" alt="">
-                        <img src="../assets/images/amex - Google Search_files/24px.svg" alt="">
-                        <img src="../assets/images/amex - Google Search_files/faviconV2(2)" alt="">
-                        <img src="../assets/images/amex - Google Search_files/faviconV2(12)" alt=""> -->
-          <img src="../assets/images/payment.png" alt="" />
-        </div>
-      </div>
-    </section>
 
  
 
     <script>
         
-      function copyToClipboard() {
-        const text = document.getElementById("wishlistLink").textContent.trim();
-        navigator.clipboard.writeText(text).then(() => {
-          alert("Link copied to clipboard!");
-        });
-      }
+   
 
       const loginStatus = localStorage.getItem("login_status");
 
@@ -377,30 +273,16 @@
     <!-- jQuery FIRST -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../assets/js/script.js"></script>
-    <script src="../assets/js/header.js"></script>
-    <script src="../assets/js/header.js"></script>
-    <script src="../assets/js/login.js"></script>
-    <script src="../assets/js/api.js"></script>
+
     <script src="../assets/js/profile.js"></script>
-    <script src="../assets/js/bd-cart-drawer.js"></script>
+    
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script>
       async function initializeApp() {
         $(".loader").show().fadeIn(300);
 
         try {
-          await loadBanner();
-          await fetchTodayBestDeal();
-          await loadProductCart();
-          await fetchCategory();
-          await fetchCategoryPriority();
-           loadProductsByCategory();
-           await loadProductsByCategorys();
-           await banner();
-           await fetchProductRating();
-           await banners();
-           await bannerkids();
-           await loadProductsByCategorykids();
+         
         } catch (error) {
           console.error("Error loading data:", error);
         } finally {
@@ -413,26 +295,8 @@
          searchcategory();
       });
 
-// ✅ Run automatically when the home page loads
-$(document).ready(function () {
-  fetchUserData();
-});
 
 
-$(document).ready(function(){
-  $(".owl-carousel").owlCarousel({
-    loop: true,            // infinite loop
-    margin: 10 ,            // gap between items
-    nav: false,             // next/prev buttons
-    autoplay: true,        // auto scroll
-    autoplayTimeout: 3000, // delay between scrolls
-    responsive: {
-      0: { items: 1 },     // mobile view
-      700: { items: 2 },   // tablet view
-      1000: { items: 3 }   // desktop view
-    }
-  });
-});
 </script>
   </body>
 </html>

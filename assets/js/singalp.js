@@ -1,13 +1,12 @@
 function initMainCarousel() {
   const $carousel = $("#main_banner_carousel");
 
-  // Destroy if already initialized
   if ($carousel.hasClass("owl-loaded")) {
     $carousel.trigger("destroy.owl.carousel");
-    $carousel.html($carousel.find('.owl-stage-outer').html()); // cleanup
+    $carousel.html($carousel.find('.owl-stage-outer').html()); 
   }
 
-  // Re-Initialize
+
   $carousel.owlCarousel({
     items: 1,
     loop: true,
@@ -23,17 +22,7 @@ function initMainCarousel() {
 
 
 
-document.querySelectorAll('.size-item').forEach(item => {
-  item.addEventListener('click', function () {
 
-    document.querySelectorAll('.size-item').forEach(i => i.classList.remove('selected'));
-
-
-    this.classList.add('selected');
-
-    console.log('Selected Size:', this.getAttribute('data-size'));
-  });
-});
 
 
 
@@ -74,7 +63,7 @@ const loadSingalProduct = async () => {
       if (response && response.status !== false) {
         loadHighlight(response);
         renderSinglaProduct(response);
-         globalResponse = response;
+        globalResponse = response;
       }
     },
     error: function (xhr, status, error) {
@@ -124,103 +113,103 @@ const loadHighlight = (product) => {
 };
 
 const renderSinglaProduct = (response) => {
-    const productWrapper = $(".product-details");
-    const data = response.data;
+  const productWrapper = $(".product-details");
+  const data = response.data;
 
-    if (!data) {
-        console.error("No product data found");
-        return;
-    }
+  if (!data) {
+    console.error("No product data found");
+    return;
+  }
 
-    let sliderHtml = "";
+  let sliderHtml = "";
 
-  
-    // MAIN IMAGE
-    if (data.main_image) {
-        sliderHtml += `
+
+  // MAIN IMAGE
+  if (data.main_image) {
+    sliderHtml += `
             <div class="item">
                 <div class="card">
                     <img src="${image_url + "product/main/" + data.main_image}" alt="Main Image">
                 </div>
             </div>`;
-    }
+  }
 
-    // MULTIPLE IMAGES
-    if (data.images && data.images.length > 0) {
-        data.images.forEach(img => {
-            sliderHtml += `
+  // MULTIPLE IMAGES
+  if (data.images && data.images.length > 0) {
+    data.images.forEach(img => {
+      sliderHtml += `
                 <div class="item">
                     <div class="card">
                         <img src="${image_url + "product/multiple/" + img}" alt="Product Image">
                     </div>
                 </div>`;
-        });
-    }
+    });
+  }
 
-    $("#main_banner_carousel").html(sliderHtml);
-    initMainCarousel(); 
+  $("#main_banner_carousel").html(sliderHtml);
+  initMainCarousel();
 
 
-    const variants = data.variants || [];
-    let variantHTML = "";
-    let variantsizeHTML = ""; 
+  const variants = data.variants || [];
+  let variantHTML = "";
+  let variantsizeHTML = "";
 
-    const uniqueColors = new Set();
-    const uniqueSizes = new Set();
-    const allVariants = [];
+  const uniqueColors = new Set();
+  const uniqueSizes = new Set();
+  const allVariants = [];
 
-   
-    if (data.color && data.size) {
-        allVariants.push({
-            id: data.id, 
-            color: data.color,
-            color_name : data.color_name,
-            size: data.size,
-            mrp: data.mrp,
-            selling_price: data.selling_price,
-            single_image: data.main_image, 
-            isMainProduct: true 
-        });
-    }
-    
 
-    allVariants.push(...variants);
-console.log(allVariants.length)
+  if (data.color && data.size) {
+    allVariants.push({
+      id: data.id,
+      color: data.color,
+      color_name: data.color_name,
+      size: data.size,
+      mrp: data.mrp,
+      selling_price: data.selling_price,
+      single_image: data.main_image,
+      isMainProduct: true
+    });
+  }
 
-    if (allVariants.length === 0) {
-       
-        $(".color_container").css("display", "none");
-        $(".selector-title").css("display", "none"); 
-    } else {
-        $("#variantContainer").css("display", "block");
 
-        allVariants.forEach(v => {
-        
-            if (v.size) {
-               const sizeList = v.size.split(",").map(s => s.trim());
-            sizeList.forEach(s => uniqueSizes.add(s));
-                
-            }
+  allVariants.push(...variants);
+  console.log(allVariants.length)
 
-           
-            if (v.color && !uniqueColors.has(v.color)) {
-                
+  if (allVariants.length === 0) {
 
-                let imageSource = v.single_image;
-                if (v.isMainProduct) {
-                    imageSource = "product/main/" + v.single_image;
-                } else {
-                    imageSource = "variant/main/" + v.single_image;
-                }
+    $(".color_container").css("display", "none");
+    $(".selector-title").css("display", "none");
+  } else {
+    $("#variantContainer").css("display", "block");
 
-                variantHTML += `
+    allVariants.forEach(v => {
+
+      if (v.size) {
+    const sizeList = v.size.split(",").map(s => s.trim());
+        sizeList.forEach(s => uniqueSizes.add(s));
+
+      }
+
+
+      if (v.color && !uniqueColors.has(v.color)) {
+
+
+        let imageSource = v.single_image;
+        if (v.isMainProduct) {
+          imageSource = "product/main/" + v.single_image;
+        } else {
+          imageSource = "variant/main/" + v.single_image;
+        }
+
+        variantHTML += `
                 <div class="color_main">
                     <div class="color-item" data-color="${v.color}" id="variant-${v.id}"onclick="loadvariant(globalResponse, ${v.id})" >
                         <div class="color-box">
                             ${imageSource
-                                ? `<img src="${image_url + imageSource}" alt="${v.color} Variant Image">`
-                                : `<div style="background:${v.color}; width:30px; height:30px; border-radius:50%;"></div>`
-                            }
+            ? `<img src="${image_url + imageSource}" alt="${v.color} Variant Image">`
+            : `<div style="background:${v.color}; width:30px; height:30px; border-radius:50%;"></div>`
+          }
                             <i class="fas fa-check check-icon" style="display: none;"></i>
                         </div>
                         
@@ -228,35 +217,41 @@ console.log(allVariants.length)
                         <div class="color-name">${v.color_name ? v.color_name : v.color}</div>
                          </div>
                         `;
-                uniqueColors.add(v.color); 
-            }
+        uniqueColors.add(v.color);
+      }
 
-        });
-
-
-        uniqueSizes.forEach(size => {
-            variantsizeHTML += `<div class="size-item">${size}</div>`;
-        });
-
-        $("#variantContainer").html(variantHTML);
-        $("#sizeContainer").html(variantsizeHTML); 
-    }
+    });
 
 
-    if(response.pid == true){
-        cat_id = data.category;
-    }
-    
-    let isWishlist = data.is_wishlisted == 1 ? "active" : "";
-    let star = "";
-    for (let i = 1; i <= Math.round(data.average_rating || 0); i++) { 
-        star += '<i class="star" style="font-style: normal; color: rgba(39, 39, 39, 1); font-size: 17px;" >★</i>';
-    }
-    
-    let productInfoHtml = `
+   uniqueSizes.forEach(size => {
+  variantsizeHTML += `
+    <div class="size-item" data-size="${size}">${size}</div>
+  `;
+});
+
+
+    $("#variantContainer").html(variantHTML);
+    $("#sizeContainer").html(variantsizeHTML);
+  }
+
+
+  if (response.pid == true) {
+    cat_id = data.category;
+  }
+
+  let isWishlist = data.is_wishlisted == 1 ? "active" : "";
+  let star = "";
+  for (let i = 1; i <= Math.round(data.average_rating || 0); i++) {
+    star += '<i class="star" style="font-style: normal; color: rgba(39, 39, 39, 1); font-size: 17px;" >★</i>';
+  }
+
+
+
+
+  let productInfoHtml = `
      <div class="icon_container">
             <div class="svg-box">
-                <div id="svg" onclick="window.location.href='/pages/view-cart.html'">
+                <div id="svg" onclick="opencart()">
                     <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M5.23999 5.11334V4.46667C5.23999 2.96667 6.50458 1.49334 8.07658 1.35334C9.949 1.18001 11.528 2.58667 11.528 4.34001V5.26001" stroke="#272727" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M10.4799 14.6667C13.2886 14.6667 13.7916 13.5933 13.9383 12.2867L14.4623 8.28667C14.651 6.66 14.1619 5.33334 11.1786 5.33334H5.58925C2.60594 5.33334 2.11687 6.66 2.30551 8.28667L2.82951 12.2867C2.97623 13.5933 3.47927 14.6667 6.28791 14.6667H10.4799Z" stroke="#272727" stroke-linecap="round" stroke-linejoin="round"/>
@@ -343,7 +338,7 @@ console.log(allVariants.length)
                     </svg>
                 </button>
                 <button class="add-to-cart-btn" id="addToCartBtn"
-                    data-product-id="${data.id}"
+                    data-product-id="${data.id}" 
                     onclick="addToCartHandler(this)">
                     <i class="fas fa-shopping-cart"></i>
                     <span id="addcart">Add to cart</span>
@@ -401,55 +396,136 @@ console.log(allVariants.length)
         </div>
     `;
 
-    productWrapper.html(productInfoHtml);
+  productWrapper.html(productInfoHtml);
 
- document.querySelectorAll('.color-item').forEach(item => {
-  const color = item.getAttribute('data-color');
-  if (color) {
-
-    item.style.backgroundColor = color;
-    console.warn('Invalid color in data-color:', color);
-  }
-
-
+ document.querySelectorAll('.size-item').forEach(item => {
   item.addEventListener('click', function () {
 
-    document.querySelectorAll('.color-item').forEach(i => i.classList.remove('selected'));
-    document.querySelectorAll('.check-icon').forEach(icon => icon.remove());
-    this.classList.add('selected');
-    const checkIcon = document.createElement('i');
-    checkIcon.classList.add('fas', 'fa-check', 'check-icon');
-    this.querySelector('.color-box').appendChild(checkIcon);
-  });
-}); 
-    document.querySelectorAll(".collapsible").forEach(col => {
-        col.addEventListener("click", function () {
-            this.classList.toggle("active");
-            const content = document.getElementById(this.dataset.contentId);
+    // Remove selected class from all
+    document.querySelectorAll('.size-item').forEach(i => i.classList.remove('selected'));
 
-            if (content.style.display === "block") {
-                content.style.display = "none";
-            } else {
-                content.style.display = "block";
-            }
-        });
+    // Add class to clicked one
+    this.classList.add('selected');
+
+    // Get selected size
+    let selectedSize = this.getAttribute('data-size');
+    console.log('Selected Size:', selectedSize);
+
+    // ✅ Now update button data-size attribute
+    $("#addToCartBtn").attr("data-size", selectedSize);
+  });
+});
+
+ 
+  document.querySelectorAll('.color-item').forEach(item => {
+    const color = item.getAttribute('data-color');
+    if (color) {
+
+      item.style.backgroundColor = color;
+      console.warn('Invalid color in data-color:', color);
+    }
+
+
+    item.addEventListener('click', function () {
+
+      document.querySelectorAll('.color-item').forEach(i => i.classList.remove('selected'));
+      document.querySelectorAll('.check-icon').forEach(icon => icon.remove());
+      this.classList.add('selected');
+      const checkIcon = document.createElement('i');
+      checkIcon.classList.add('fas', 'fa-check', 'check-icon');
+      this.querySelector('.color-box').appendChild(checkIcon);
     });
+  });
+  document.querySelectorAll(".collapsible").forEach(col => {
+    col.addEventListener("click", function () {
+      this.classList.toggle("active");
+      const content = document.getElementById(this.dataset.contentId);
+
+      if (content.style.display === "block") {
+        content.style.display = "none";
+      } else {
+        content.style.display = "block";
+      }
+    });
+  });
 }
 
 
 
 function addToCartHandler(btn) {
+  let userId = localStorage.getItem("userId");
+
+  if (userId == null) {
+    warningAlert("Please login first");
+    return;
+  }
+
   const productId = $(btn).attr("data-product-id");
   const variantId = $(btn).attr("data-variant-id") || null;
-loadAddToCart();
-  addToCartProcess(productId, variantId, btn);
-  showConfetti();
-  $('#addcart').text("Add to cart Done");
+  let size = $(btn).attr("data-size");
 
+  if (!size || size === "") {
+    warningAlert("Please select a size first");
+    return;
+  }
+
+  console.log("Selected Size:", size);
+
+  loadAddToCart();
+
+
+  addToCartProcess(productId, variantId, btn, size);
 }
 
 
+const addToCartProcess = (itemId, vid = null, btn = null, size = null) => {
+  let qty = 1;
 
+  if (btn && btn instanceof HTMLElement) {
+    const qtyBox = btn.closest(".cart-item-quantity")?.querySelector(".quantity-input");
+    if (qtyBox) {
+      const parsedQty = parseInt(qtyBox.value, 10);
+      qty = isNaN(parsedQty) ? 1 : parsedQty;
+    }
+  }
+
+  let login_status = localStorage.getItem('login_status');
+  if (login_status !== "true") {
+    warningAlert("Login first");
+    openModal();
+    return;
+  }
+
+  setTimeout(() => openCart(), 100);
+
+  let idfr = window.localStorage.getItem("idfr");
+  if (!idfr) {
+    idfr = Date.now();
+    window.localStorage.setItem("idfr", idfr);
+  }
+
+
+
+  $.ajax({
+    url: API_URL,
+    method: "POST",
+    data: {
+      type: "addToCart",
+      userId: Iduser,
+      pid: itemId,
+      vid: vid,
+      size: size,   // ✔ size correct
+      idfr: idfr,
+      qty: qty
+    },
+    success: function (response) {
+      if (response?.status === true) {
+        loadAddToCart();
+
+      }
+    }
+  });
+};
 
 
 
@@ -467,13 +543,14 @@ const addToWishlist = async (pid) => {
     data: { type: "addToWishlist", userId: userId, pid: pid },
     success: function (response) {
       if (response.status == true) {
-       loadWishlistCount();
+        loadWishlistCount();
         loadSingalProduct();
         loadCartCount();
+        loadRelativeProduct(); 
         // window.location.reload();
       } else {
         alert(response.msg);
-        
+
       }
     },
   });
@@ -560,11 +637,42 @@ const loadRelativeProduct = async () => {
 
 
 
-function fetchRecentlyViewedProducts() {
-  const viewed = JSON.parse(localStorage.getItem("recentlyViewed")) || [];
+function saveViewedProduct(id) {
+  let raw = localStorage.getItem("recentlyViewedProduct");
 
-  if (viewed.length === 0) {
+  let viewed;
+  try {
+    viewed = raw ? JSON.parse(raw) : [];
+  } catch (e) {
+    viewed = [];
+  }
+
+ 
+  viewed = [...new Set([...viewed, id])];
+
+  localStorage.setItem("recentlyViewedProduct", JSON.stringify(viewed));
+}
+
+
+saveViewedProduct(pid);
+
+
+function fetchRecentlyViewedProducts() {
+  let raw = localStorage.getItem("recentlyViewedProduct");
+
+  let viewed;
+  try {
+    viewed = raw ? JSON.parse(raw) : [];
+  } catch (e) {
+    viewed = [];
+  }
+
+
+  const uniqueIds = [...new Set(viewed)];
+
+  if (uniqueIds.length === 0) {
     console.log("No recently viewed products");
+    $(".similar-products-lists").hide();
     return;
   }
 
@@ -573,11 +681,13 @@ function fetchRecentlyViewedProducts() {
     method: "POST",
     data: {
       type: "getProductsByIds",
-      ids: JSON.stringify(viewed)
+      ids: JSON.stringify(uniqueIds)
     },
-    success: function (response) {
+    dataType: "json",
 
+    success: function (response) {
       console.log("Fetched Products:", response);
+
       if (!response.status) {
         console.error("Error:", response.message);
         return;
@@ -586,56 +696,47 @@ function fetchRecentlyViewedProducts() {
       let html = "";
       let products = response.data;
 
-
       products.forEach((item) => {
-        // console.log(item.main_image)
-
         let discount = ((item.mrp - item.selling_price) / item.mrp) * 100;
 
-        let isWishlist = item.is_wishlisted == 1 ? "active" : "";
-        let iconLabel = item.is_wishlisted == 1 ? "Remove From Wishlist" : "Add To Wishlist";
-
         html += `
-            <div class="product">
-                <a class="product-img" href="singlep.html?pid=${item.id}">
-                  <img src="${image_url}product/main/${item.main_image}" alt="">
-                </a>
-                <div class="product_info" style="padding-inline: 3%">
-                    <p>${item.description}</p>
-                    <div class="price-container">
-                        <div class="price">
-                            <span class="new-pricebpcs">₹${item.selling_price}/Pcs</span>
-                        </div>
-                        <span class="old-pricepcs">MRP ₹${item.mrp} | MOQ: ${item.stock}Pcs</span>
-                        <div class="discount-label">${Math.round(discount)}% Margin</div>
-<div class="wishlist-icon ${isWishlist}" onclick="addToWishlist(${item.id})">
+        <div class="product">
+            <a class="product-img" href="singlep.html?pid=${item.id}">
+              <img src="${image_url}product/main/${item.main_image}" alt="">
+            </a>
 
-    
-<svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0_814_338)">
-<path d="M20.8401 4.60987C20.3294 4.09888 19.7229 3.69352 19.0555 3.41696C18.388 3.14039 17.6726 2.99805 16.9501 2.99805C16.2276 2.99805 15.5122 3.14039 14.8448 3.41696C14.1773 3.69352 13.5709 4.09888 13.0601 4.60987L12.0001 5.66987L10.9401 4.60987C9.90843 3.57818 8.50915 2.99858 7.05012 2.99858C5.59109 2.99858 4.19181 3.57818 3.16012 4.60987C2.12843 5.64156 1.54883 7.04084 1.54883 8.49987C1.54883 9.95891 2.12843 11.3582 3.16012 12.3899L4.22012 13.4499L12.0001 21.2299L19.7801 13.4499L20.8401 12.3899C21.3511 11.8791 21.7565 11.2727 22.033 10.6052C22.3096 9.93777 22.4519 9.22236 22.4519 8.49987C22.4519 7.77738 22.3096 7.06198 22.033 6.39452C21.7565 5.72706 21.3511 5.12063 20.8401 4.60987V4.60987Z" stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-</g>
-<defs>
-<clipPath id="clip0_814_338">
-<rect width="24" height="24" fill="white"></rect>
-</clipPath>
-</defs>
-</svg>
+            <div class="product_info" style="padding-inline: 3%">
+                <p>${item.description}</p>
 
-  
-
-             
-            </div>
-                        
+                <div class="price-container">
+                    <div class="price">
+                        <span class="new-pricebpcs">₹${item.selling_price}/Pcs</span>
                     </div>
-                    
-                </div>
-            </div>`;
 
+                    <span class="old-pricepcs">MRP ₹${item.mrp} | MOQ: ${item.stock}Pcs</span>
+                    <div class="discount-label">${Math.round(discount)}% Margin</div>
+
+                    <div class="wishlist-icon" onclick="addToWishlist(${item.id})">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_814_338)">
+                          <path d="M20.8401 4.60987C20.3294 4.09888 19.7229 3.69352 19.0555 3.41696C18.388 3.14039 17.6726 2.99805 16.9501 2.99805C16.2276 2.99805 15.5122 3.14039 14.8448 3.41696C14.1773 3.69352 13.5709 4.09888 13.0601 4.60987L12.0001 5.66987L10.9401 4.60987C9.90843 3.57818 8.50915 2.99858 7.05012 2.99858C5.59109 2.99858 4.19181 3.57818 3.16012 4.60987C2.12843 5.64156 1.54883 7.04084 1.54883 8.49987C1.54883 9.95891 2.12843 11.3582 3.16012 12.3899L4.22012 13.4499L12.0001 21.2299L19.7801 13.4499L20.8401 12.3899C21.3511 11.8791 21.7565 11.2727 22.033 10.6052C22.3096 9.93777 22.4519 9.22236 22.4519 8.49987C22.4519 7.77738 22.3096 7.06198 22.033 6.39452C21.7565 5.72706 21.3511 5.12063 20.8401 4.60987Z" 
+                            stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </g>
+                        <defs>
+                          <clipPath id="clip0_814_338">
+                            <rect width="24" height="24" fill="white"></rect>
+                          </clipPath>
+                        </defs>
+                      </svg>
+                    </div>
+                </div>
+            </div>
+        </div>`;
       });
 
-      $(".similar-products-lists").html(html);
+      $(".similar-products-lists").html(html).show();
     },
+
     error: function (xhr, status, error) {
       console.error("Error fetching products:", error);
     }
@@ -643,6 +744,7 @@ function fetchRecentlyViewedProducts() {
 }
 
 fetchRecentlyViewedProducts();
+
 
 
 
@@ -657,15 +759,15 @@ const fetchProductRating = async () => {
     success: function (response) {
       console.log(response);
 
-       const imageArray = response.map(item => item.image);
-    console.log(imageArray);
+      const imageArray = response.map(item => item.image);
+      console.log(imageArray);
       const container = $(".all_review_img");
 
-    imageArray.forEach(imgSrc => {
-     const img = `<img src="${review_image}/images/reviews/${imgSrc}" alt="Review Image"/>`;
-container.append(img);
+      imageArray.forEach(imgSrc => {
+        const img = `<img src="${review_image}/images/reviews/${imgSrc}" alt="Review Image"/>`;
+        container.append(img);
 
-    });
+      });
 
       if (response != false) {
         let ratingCount = 0;
@@ -755,12 +857,13 @@ container.append(img);
 
         productAllRatings.html(reviewHtml);
         $("#show-review").html(`Reviews (${len})`);
-           $('.rating_count').show();  
+        $('.rating_count').show();
         $('#ratingBreakdown').show();
       } else {
         productAllRatings.html("Not Any reviews");
-        $('.rating_count').hide();  
+        $('.rating_count').hide();
         $('#ratingBreakdown').hide();
+        $('.review_images').hide();
       }
     },
   });
@@ -788,7 +891,7 @@ const loadvariant = (response, id) => {
 
     $(".mrp").text(`MRP ₹${product.mrp}`);
     $(".current-price").text(`₹${product.selling_price}/Pcs`);
-    $('.discount-badge').text(`${Math.round(((product.mrp - product.selling_price ) / product.mrp) * 100)}% Margin`)
+    $('.discount-badge').text(`${Math.round(((product.mrp - product.selling_price) / product.mrp) * 100)}% Margin`)
 
     let sliderHtml = "";
 
@@ -817,7 +920,55 @@ const loadvariant = (response, id) => {
     $("#main_banner_carousel").html(sliderHtml);
     initMainCarousel();
 
-    $("#sizeContainer").html(`<div class="size-item">${product.size}</div>`);
+    let size = product.size || "N/A";
+
+
+let sizeArray = [];
+
+
+if (Array.isArray(size)) {
+  sizeArray = size;
+}
+
+else if (typeof size === "string" && size.includes(",")) {
+  sizeArray = size.split(",").map(s => s.trim());
+}
+
+else if (size && size !== "N/A") {
+  sizeArray = [size];
+}
+
+
+let sizeHTML = "";
+
+
+if (sizeArray.length > 0) {
+  sizeArray.forEach(s => {
+    sizeHTML += `<div class="size-item" data-size="${s}">${s}</div>`;
+  });
+} else {
+  sizeHTML = `<div class="sp-size-box disabled">N/A</div>`;
+}
+
+$("#sizeContainer").html(sizeHTML);
+document.querySelectorAll('.size-item').forEach(item => {
+  item.addEventListener('click', function () {
+
+    // Remove selected class from all
+    document.querySelectorAll('.size-item').forEach(i => i.classList.remove('selected'));
+
+    // Add class to clicked one
+    this.classList.add('selected');
+
+    // Get selected size
+    let selectedSize = this.getAttribute('data-size');
+    console.log('Selected Size:', selectedSize);
+
+    // ✅ Now update button data-size attribute
+    $("#addToCartBtn").attr("data-size", selectedSize);
+  });
+});
+
 
     return;
   }
@@ -853,47 +1004,89 @@ const loadvariant = (response, id) => {
   $("#main_banner_carousel").html(sliderHtml);
   initMainCarousel();
 
-let discount = 0;
+  let discount = 0;
 
-// Variant available → use variant discount
-if (variant && variant.mrp && variant.selling_price) {
+  if (variant && variant.mrp && variant.selling_price) {
     const vMrp = parseFloat(variant.mrp);
     const vSell = parseFloat(variant.selling_price);
 
     if (vMrp > 0) {
-        discount = ((vMrp - vSell) / vMrp) * 100;
+      discount = ((vMrp - vSell) / vMrp) * 100;
     }
-}
+  }
 
-// Variant NOT available → use product discount
-else {
+  // Variant NOT available -> use product discount
+  else {
     const pMrp = parseFloat(data.mrp);
     const pSell = parseFloat(data.selling_price);
 
     if (pMrp > 0) {
-        discount = ((pMrp - pSell) / pMrp) * 100;
+      discount = ((pMrp - pSell) / pMrp) * 100;
     }
-}
-
-// Final rounded %
-let finalDiscount = Math.round(discount);
-
-// Update HTML
-$(".discount-badge").html(`${finalDiscount}% Margin`);
+  }
 
   
-  const size = variant.size || product.size || "N/A";
+  let finalDiscount = Math.round(discount);
 
-  const sizeHTML =
-    size !== "disabled"
-      ? `<div class="size-item">${size}</div>`
-      : `<div class="sp-size-box disabled">N/A</div>`;
+  
+  $(".discount-badge").html(`${finalDiscount}% Margin`);
 
-  $("#sizeContainer").html(sizeHTML);
+
+let size = variant.size || product.size || "N/A";
+
+
+let sizeArray = [];
+
+
+if (Array.isArray(size)) {
+  sizeArray = size;
+}
+
+else if (typeof size === "string" && size.includes(",")) {
+  sizeArray = size.split(",").map(s => s.trim());
+}
+
+else if (size && size !== "N/A") {
+  sizeArray = [size];
+}
+
+
+let sizeHTML = "";
+
+if (sizeArray.length > 0) {
+  sizeArray.forEach(s => {
+    sizeHTML += `<div class="size-item" data-size="${s}">${s}</div>`;
+  });
+} else {
+  sizeHTML = `<div class="sp-size-box disabled">N/A</div>`;
+}
+
+$("#sizeContainer").html(sizeHTML);
+document.querySelectorAll('.size-item').forEach(item => {
+  item.addEventListener('click', function () {
+
+    // Remove selected class from all
+    document.querySelectorAll('.size-item').forEach(i => i.classList.remove('selected'));
+
+    // Add class to clicked one
+    this.classList.add('selected');
+
+    // Get selected size
+    let selectedSize = this.getAttribute('data-size');
+    console.log('Selected Size:', selectedSize);
+
+    // ✅ Now update button data-size attribute
+    $("#addToCartBtn").attr("data-size", selectedSize);
+  });
+});
+
+
+
 
   $("#addToCartBtn")
     .attr("data-product-id", product.id)
-    .attr("data-variant-id", variant.id);
+    .attr("data-variant-id", variant.id)
+    .attr("data-size", selectedSize);
 };
 
 
