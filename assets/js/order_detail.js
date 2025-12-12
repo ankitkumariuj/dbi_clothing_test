@@ -37,6 +37,8 @@ function fetchOrderHistory() {
     success: function (response) {
       console.log("API Response:", response);
 
+      // console.log("item" , response.item_size[0]);
+
       if (response && response.length > 0) {
         // sirf iss order ka data aayega
         let filtered = response.filter(item => item.order_id == order_id);
@@ -78,6 +80,8 @@ function renderOrders(orders) {
         id: item.id,
         comment: item.comment,
         rating: item.rating,
+        size : item.item_size,
+        quantityno: item.quantity,
         items: [],
       };
     }
@@ -102,7 +106,7 @@ order.items.forEach(item => {
 
 Object.values(mergedItems).forEach(item => {
       const itemTotal = item.selling_price * item.quantity;
-      // console.log("item total price" + itemTotal)
+      console.log("item total price" + item.size)
       totalAmount += itemTotal;
 
       itemsHtml += `
@@ -111,6 +115,8 @@ Object.values(mergedItems).forEach(item => {
 
           <div class="img_box">
            <span class="item-name">${item.name} (${item.brand}) x${item.quantity}</span>
+        <h4>Item Size:  ${order.size}</h4>
+        <h3>Item Quantity : ${order.quantityno}</h3>
             <img src="${image_url}product/main/${item.main_image}" alt="${item.name}" />
             </div>
              <div class="item-price">₹${itemTotal}</div>
@@ -187,6 +193,7 @@ const formattedDates = new Date(order.date).toLocaleDateString("en-GB", {
 
         <div class="detail-line payment-method">Payment Method</div>
         <div class="detail-line detail-value">${order.payment_type}</div>
+
     </div>
     
     <div class="item-list">
@@ -206,6 +213,7 @@ const formattedDates = new Date(order.date).toLocaleDateString("en-GB", {
         <div class="summary-row total-paid">
             <div class="summary-label">Paid</div>
             <div class="item-price">₹${totalAmount}</div>
+            
         </div>
     </div>
   

@@ -49,7 +49,7 @@ function updateResults(query) {
 
     li.addEventListener("click", () => {
       saveProductName(product.name);
-      window.location.href = `singleproduct.html?pid=${product.id}`;
+      window.location.href = `singlep.html?pid=${product.id}`;
     });
 
     resultsList2.appendChild(li);
@@ -105,7 +105,7 @@ function fetchRecentlyViewedProducts() {
 
       products.forEach((item) => {
         html += `
-          <div class="image_con img" onclick="window.location.href='singleproduct.html?pid=${item.id}'">
+          <div class="image_con img" onclick="window.location.href='singlep.html?pid=${item.id}'">
             <img src="${image_url}/product/main/${item.main_image}" alt="${item.name}">
           </div>
         `;

@@ -344,7 +344,11 @@ const renderSinglaProduct = (response) => {
                     <span id="addcart">Add to cart</span>
                 </button>
             </div>
-
+  <div class="success"style="display: none";>
+        <div class="success_box"> 
+        <p>Item successfully added to cart.</p>
+        </div>
+              </div>
             <hr style="border:0; border-top: 1px solid transparent; margin: 15px 0;">
             <div class="collapsible" data-content-id="product-details-content">
                 Product Details <i class="fas fa-chevron-down arrow"></i> 
@@ -394,7 +398,10 @@ const renderSinglaProduct = (response) => {
                 </div>
             </div>
         </div>
+
+      
     `;
+
 
   productWrapper.html(productInfoHtml);
 
@@ -473,6 +480,12 @@ function addToCartHandler(btn) {
 
   loadAddToCart();
 
+$(".success").css("display", "flex");
+
+setTimeout(() => {
+  $(".success").css("display", "none");
+}, 2000);
+
 
   addToCartProcess(productId, variantId, btn, size);
 }
@@ -489,14 +502,14 @@ const addToCartProcess = (itemId, vid = null, btn = null, size = null) => {
     }
   }
 
-  let login_status = localStorage.getItem('login_status');
-  if (login_status !== "true") {
-    warningAlert("Login first");
-    openModal();
-    return;
-  }
+  // let login_status = localStorage.getItem('login_status');
+  // if (login_status !== "true") {
+  //   warningAlert("Login first");
+  //   opencart();
+  //   return;
+  // }
 
-  setTimeout(() => openCart(), 100);
+  // setTimeout(() => opencart(), 100);
 
   let idfr = window.localStorage.getItem("idfr");
   if (!idfr) {
@@ -514,7 +527,7 @@ const addToCartProcess = (itemId, vid = null, btn = null, size = null) => {
       userId: Iduser,
       pid: itemId,
       vid: vid,
-      size: size,   // ✔ size correct
+      item_size: size,  
       idfr: idfr,
       qty: qty
     },
@@ -636,41 +649,26 @@ const loadRelativeProduct = async () => {
 };
 
 
+function updateRecentlyViewed(pid) {
+  let viewed = JSON.parse(localStorage.getItem("recentlyViewed")) || [];
 
-function saveViewedProduct(id) {
-  let raw = localStorage.getItem("recentlyViewedProduct");
+  viewed = viewed.filter(v => v !== pid);
+  viewed.unshift(pid);
 
-  let viewed;
-  try {
-    viewed = raw ? JSON.parse(raw) : [];
-  } catch (e) {
-    viewed = [];
-  }
+  if (viewed.length > 12) viewed.pop();
 
- 
-  viewed = [...new Set([...viewed, id])];
-
-  localStorage.setItem("recentlyViewedProduct", JSON.stringify(viewed));
+  localStorage.setItem("recentlyViewed", JSON.stringify(viewed));
 }
+updateRecentlyViewed(pid);
 
 
-saveViewedProduct(pid);
 
 
 function fetchRecentlyViewedProducts() {
-  let raw = localStorage.getItem("recentlyViewedProduct");
-
-  let viewed;
-  try {
-    viewed = raw ? JSON.parse(raw) : [];
-  } catch (e) {
-    viewed = [];
-  }
+ const viewed = JSON.parse(localStorage.getItem("recentlyViewed")) || [];
 
 
-  const uniqueIds = [...new Set(viewed)];
-
-  if (uniqueIds.length === 0) {
+  if (viewed.length === 0) {
     console.log("No recently viewed products");
     $(".similar-products-lists").hide();
     return;
@@ -681,7 +679,7 @@ function fetchRecentlyViewedProducts() {
     method: "POST",
     data: {
       type: "getProductsByIds",
-      ids: JSON.stringify(uniqueIds)
+      ids: JSON.stringify(viewed)
     },
     dataType: "json",
 

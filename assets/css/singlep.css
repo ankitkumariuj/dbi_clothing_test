@@ -29,7 +29,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  animation: fadein 2s ease-in;
+
   gap: 20px;
 }
 .loader-logo {
@@ -37,11 +37,6 @@
   animation: pulse 2s infinite;
 }
 
-@keyframes pulse {
-  0% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.1); opacity: 0.8; }
-  100% { transform: scale(1); opacity: 1; }
-}
 
 .loader p{
   font-size: 22px;
@@ -122,6 +117,7 @@
     border-radius: 12px;
     object-fit: cover;
     object-position: top;
+      z-index: 333;
 }
 
 .all_review_img img:hover{
@@ -130,6 +126,7 @@
         object-fit: cover;
         position: absolute;
         width: 92%;
+      background-color: #0000009a;
 }
 
 .rating-left{
@@ -488,7 +485,7 @@
         overflow-y: hidden;
         display: flex;
         align-items: center;
-                height: 117px;
+                height: 130px;
 }
         .selected .check-icon {
                position: absolute;
@@ -529,6 +526,32 @@
             justify-content: space-between;
             align-items: center;
             margin-bottom: 10px;
+        }
+
+        /* success box code */
+
+        .success_box{
+                height: 35px;
+    width: 95%;
+    background-color: #18ae18;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-inline: 2px;
+    position: fixed;
+    bottom: 4%;
+    color: white;
+    border-radius: 5px;
+    z-index: 56;
+        }
+
+        .success_box p{
+            font-size: 15px;
+        }
+
+        .success{
+                display: flex;
+    justify-content: center;
         }
 
         /*  Collapsible Sections  */

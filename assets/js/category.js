@@ -66,26 +66,41 @@ function toggleCategory() {
 
 
 async function GetSubCategory(subId) {
-  formdata = new FormData();
+
+
+  const urlParams = new URLSearchParams(window.location.search);
+  const subCatId = urlParams.get("subCat_id");
+
+
+  if (subCatId) {
+    document.getElementById("PrintSubCate").style.display = "none";
+    return; 
+  }
+
+  let formdata = new FormData();
   formdata.append("type", "SubcaregoryList");
   formdata.append("subId", subId);
-  req = await fetch(API_URL, { method: "POST", body: formdata });
-  res = await req.json();
+
+  let req = await fetch(API_URL, { method: "POST", body: formdata });
+  let res = await req.json();
   let PrintSubCate = "";
 
   if (res.length > 0) {
     res.map((item) => {
-      console.log(item)
       PrintSubCate += ` 
-      <a href="category.html?subCat_id=${item.id}"><div class="Category-Box">
-      <h6>${item.name}</h6>
-      </div></a>`;
+      <a href="category.html?subCat_id=${item.id}">
+        <div class="Category-Box">
+          <h6>${item.name}</h6>
+        </div>
+      </a>`;
     });
   } else {
     PrintSubCate = "No Sub Category Found";
   }
+
   $("#PrintSubCate").html(PrintSubCate);
 }
+
 async function GetMainCategory() {
   formdata = new FormData();
   formdata.append("type", "MainaregoryList");

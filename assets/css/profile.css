@@ -109,11 +109,10 @@
 }
 
 .log-out-btn{
-    width: 100%;
-    position: fixed;
-    left: 50%;
+    width: 97%;
+   
     transform: translateX(-50%);
-    bottom: 40px;
+
     padding: 12px;
     background: var(--normal-txt-color);
     border-radius: 8px;
@@ -245,13 +244,14 @@
         max-width: 600px;
         margin-inline: auto;
          padding-inline: 2%;
+             height: 100%;
     }
     .log-out-btn {
         max-width:450px;
         margin-inline: auto;
-        position: unset;
+
         transform: translate(0);
-        margin-block: 20px;
+
     }
 
     .log-out-btn button {
@@ -305,5 +305,11 @@ margin: 0px !important;
 } */
     .profile-title h3{
         font-size: var(--txt-font-mobile);
+    }
+ }
+
+ @media screen and (max-width: 360px) {
+    .log-out-btn{
+        bottom: 2%;
     }
  }

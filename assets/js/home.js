@@ -508,29 +508,14 @@ async function GetMainCategory() {
   return res;
 }
 
-function updateRecentlyViewed(currentProductId) {
-  let viewed = JSON.parse(localStorage.getItem("recentlyViewed")) || [];
-
-  viewed = viewed.filter((id) => id !== currentProductId);
-  viewed.unshift(currentProductId);
-
-  if (viewed.length > 12) viewed.pop();
-
-  localStorage.setItem("recentlyViewed", JSON.stringify(viewed));
-}
-
 
 function fetchRecentlyViewedProducts() {
-  const viewed = JSON.parse(localStorage.getItem("recentlyViewedProduct")) || [];
+ const viewed = JSON.parse(localStorage.getItem("recentlyViewed")) || [];
 
-
-
-
-  $("#recent-product").hide();
-  $(".product-relative").hide();
 
   if (viewed.length === 0) {
     console.log("No recently viewed products");
+    $("#recent-product").hide();
     return;
   }
 
@@ -541,19 +526,13 @@ function fetchRecentlyViewedProducts() {
       type: "getProductsByIds",
       ids: JSON.stringify(viewed)
     },
-
-    beforeSend: function () {
-
-      $("#recent-product").hide();
-      $(".product-relative").hide();
-    },
+    dataType: "json",
 
     success: function (response) {
-      // console.log("Fetched Products:", response);
+      console.log("Fetched Products:", response);
+
       if (!response.status) {
         console.error("Error:", response.message);
-        $("#recent-product").hide();
-        $(".product-relative").hide();
         return;
       }
 
@@ -562,56 +541,47 @@ function fetchRecentlyViewedProducts() {
 
       products.forEach((item) => {
         let discount = ((item.mrp - item.selling_price) / item.mrp) * 100;
-        let isWishlist = item.is_wishlisted == 1 ? "active" : "";
-        let iconLabel = item.is_wishlisted == 1 ? "Remove From Wishlist" : "Add To Wishlist";
 
         html += `
+        <div class="product">
+            <a class="product-img" href="singlep.html?pid=${item.id}">
+              <img src="${image_url}product/main/${item.main_image}" alt="">
+            </a>
 
-            <div class="product_card1">
- <img src="${image_url + "/product/main/" + item.main_image}" alt=""  onclick="location.href='singlep.html?pid=${item.id}'">
-  <div class="product_info1">
-    <h4>${item.description}</h4>
-    <div class="price-con">
-      <div class="price-box">
-      <p class="selling-price">₹${parseInt(item.selling_price)}</p> 
-<p class="mrp">₹${parseInt(item.mrp)}</p>
+            <div class="product_info" style="padding-inline: 3%">
+                <p>${item.description}</p>
 
-      <p class="discount">${((item.mrp - item.selling_price) / item.mrp).toFixed(1) * 100}% OFF</p>
-    </div>
-    <div class="wishlist-icons " onclick="addToWishlist(${item.id})">
-    
-<svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0_814_338)">
-<path d="M20.8401 4.60987C20.3294 4.09888 19.7229 3.69352 19.0555 3.41696C18.388 3.14039 17.6726 2.99805 16.9501 2.99805C16.2276 2.99805 15.5122 3.14039 14.8448 3.41696C14.1773 3.69352 13.5709 4.09888 13.0601 4.60987L12.0001 5.66987L10.9401 4.60987C9.90843 3.57818 8.50915 2.99858 7.05012 2.99858C5.59109 2.99858 4.19181 3.57818 3.16012 4.60987C2.12843 5.64156 1.54883 7.04084 1.54883 8.49987C1.54883 9.95891 2.12843 11.3582 3.16012 12.3899L4.22012 13.4499L12.0001 21.2299L19.7801 13.4499L20.8401 12.3899C21.3511 11.8791 21.7565 11.2727 22.033 10.6052C22.3096 9.93777 22.4519 9.22236 22.4519 8.49987C22.4519 7.77738 22.3096 7.06198 22.033 6.39452C21.7565 5.72706 21.3511 5.12063 20.8401 4.60987V4.60987Z" stroke="#979C9E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-</g>
-<defs>
-<clipPath id="clip0_814_338">
-<rect width="24" height="24" fill="white"></rect>
-</clipPath>
-</defs>
-</svg>
+                <div class="price-container">
+                    <div class="price">
+                        <span class="new-pricebpcs">₹${item.selling_price}/Pcs</span>
+                    </div>
 
-    </div>
-    </div>
-  </div>
-</div>
+                    <span class="old-pricepcs">MRP ₹${item.mrp} | MOQ: ${item.stock}Pcs</span>
+                    <div class="discount-label">${Math.round(discount)}% Margin</div>
 
-
-
-         
-        `;
+                    <div class="wishlist-icon" onclick="addToWishlist(${item.id})">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g clip-path="url(#clip0_814_338)">
+                          <path d="M20.8401 4.60987C20.3294 4.09888 19.7229 3.69352 19.0555 3.41696C18.388 3.14039 17.6726 2.99805 16.9501 2.99805C16.2276 2.99805 15.5122 3.14039 14.8448 3.41696C14.1773 3.69352 13.5709 4.09888 13.0601 4.60987L12.0001 5.66987L10.9401 4.60987C9.90843 3.57818 8.50915 2.99858 7.05012 2.99858C5.59109 2.99858 4.19181 3.57818 3.16012 4.60987C2.12843 5.64156 1.54883 7.04084 1.54883 8.49987C1.54883 9.95891 2.12843 11.3582 3.16012 12.3899L4.22012 13.4499L12.0001 21.2299L19.7801 13.4499L20.8401 12.3899C21.3511 11.8791 21.7565 11.2727 22.033 10.6052C22.3096 9.93777 22.4519 9.22236 22.4519 8.49987C22.4519 7.77738 22.3096 7.06198 22.033 6.39452C21.7565 5.72706 21.3511 5.12063 20.8401 4.60987Z" 
+                            stroke="#000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </g>
+                        <defs>
+                          <clipPath id="clip0_814_338">
+                            <rect width="24" height="24" fill="white"></rect>
+                          </clipPath>
+                        </defs>
+                      </svg>
+                    </div>
+                </div>
+            </div>
+        </div>`;
       });
 
-      $("#recent-product").html(html);
-
-
-      $("#recent-product").show();
-      $(".product-relative").show();
+      $("#recent-product").html(html).show();
     },
 
     error: function (xhr, status, error) {
       console.error("Error fetching products:", error);
-      $("#recent-product").hide();
     }
   });
 }
@@ -620,19 +590,16 @@ fetchRecentlyViewedProducts();
 
 
 
-
-
-
 let currentData = [];
 
 const loadProductCart = async () => {
-  // let userId = localStorage.getItem("userId");
+  let userId = localStorage.getItem("userId");
 
 
   await $.ajax({
     url: API_URL,
     method: "POST",
-    data: { type: "loadProductCart" },
+    data: { type: "loadProductCart" , userId: userId },
     success: function (response) {
 
       console.log(response)
@@ -736,9 +703,12 @@ const fetchprodaccordtotittle = () => {
     success: function (response) {
       console.log(response);
 
+      console.log("our picks count on t1" , response.length);
+
       if (response && response.length > 0) {
 
         const men_title1 = response.filter((item) => item.gender === "men");
+
 
         // Set the title dynamically
         $(".title-section h2").text(response[0].title_name);
@@ -746,6 +716,8 @@ const fetchprodaccordtotittle = () => {
         let html = "";
 
         men_title1.map((item) => {
+ console.log("mens count " , men_title1.length);
+
           let discount = ((item.mrp - item.selling_price) / item.mrp) * 100;
 
           // Declare variables

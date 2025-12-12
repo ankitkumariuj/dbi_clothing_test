@@ -1,6 +1,14 @@
+// function updateRecentlyViewed(pid) {
+//   let viewed = JSON.parse(localStorage.getItem("recentlyViewed")) || [];
 
+//   viewed = viewed.filter(v => v !== pid);
+//   viewed.unshift(pid);
 
+//   if (viewed.length > 12) viewed.pop();
 
+//   localStorage.setItem("recentlyViewed", JSON.stringify(viewed));
+// }
+// updateRecentlyViewed(pid);
 
 function addToWishlist(pid) {
   let userId = localStorage.getItem("userId");
@@ -86,7 +94,7 @@ const fetchCategoryPriority = async () => {
     method: "POST",
     data: { type: "fetchCategoryPriority" },
     success: function (response) {
-      console.log("priority" + response)
+      // console.log("priority" + response)
       if (response.status !== false) {
         let sub_name_data = [];
 
@@ -383,7 +391,6 @@ function renderStars(rating) {
 
   return html;
 }
-
 
 
 

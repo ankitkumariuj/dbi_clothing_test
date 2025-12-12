@@ -555,6 +555,7 @@ border: 1px solid #000;
         gap: 10px;
         display: flex;
         flex-direction: column;
+                padding-bottom: 15px;
     }
 
     .kb_cart-box {

@@ -608,7 +608,7 @@ async function GetMainCategory() {
 
 
 function fetchRecentlyViewedProducts() {
-  const viewed = JSON.parse(localStorage.getItem("recentlyViewedProduct")) || [];
+  const viewed = JSON.parse(localStorage.getItem("recentlyViewed")) || [];
 
 
 

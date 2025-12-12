@@ -56,6 +56,7 @@ const loadOrderSummary = async () => {
                                 <h3>₹${price}</h3>
                             </div>
                         </div>
+                        
                     `;
 
                     cartIdStr += `${item.cart_id} `;
@@ -105,7 +106,7 @@ const fillform = () => {
     url: API_URL,
     method: "POST",
     data: {
-      type: "fetchforform",
+      type: "fetchdelivertoaddress",
       userId: userId
     },
     success: function (res) {

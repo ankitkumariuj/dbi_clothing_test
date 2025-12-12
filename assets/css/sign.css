@@ -17,8 +17,10 @@
     transition: all 0.25s 
 ease-in-out;
     z-index: 1006;
-    top: 16%;
+    /* top: 10%; */
+    bottom: 27%;
     width: 100%;
+    height: auto;
 }
 
 .login_modal_title p {
@@ -31,7 +33,13 @@ ease-in-out;
 }
 
 .login_btn{
-        margin-top: 18px;
+                margin-top: 18px;
+        position: fixed;
+        width: 100%;
+        left: 0%;
+        right: 0%;
+        padding-inline: 2%;
+        bottom: 2%;
 
 }
 
@@ -93,6 +101,7 @@ ease-in-out;
     outline: none;
     transition: all 0.55s 
 ease-in-out;
+background-color: transparent;
         width: 100%;
 }
 

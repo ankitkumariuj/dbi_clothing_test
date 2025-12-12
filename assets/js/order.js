@@ -51,7 +51,7 @@ function fetchOrderHistory() {
       if (response && response.length > 0) {
         allOrders = response;
         renderOrders(allOrders);
-      
+      console.log(response.length)
       } else {
         orderHistoryContainer.innerHTML = `
           <div class="empty-cart-messages">

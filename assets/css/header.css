@@ -18,6 +18,9 @@
     align-items: center;
 }
 
+.cate_box_group::-webkit-scrollbar {
+    display: none; /* hides scrollbar in Webkit browsers */
+}
 .svg_menuicon h3{
 font-size: 25px;
 font-weight: 700;

@@ -143,7 +143,7 @@ const loadAddToCart = async () => {
                 <h4>${item.quantity} Pcs per size set</h4>
                 <div class="size_discount">
                 
-                    <p>${item.size.split(",").join(" / ")}</p>
+                    <p>${item.item_size.split(",").join(" / ")}</p>
                     
                     <div class="discount-label">${((parseFloat(item.mrp - item.selling_price)/ item.mrp) * 100).toFixed(0)}% Margin</div>
                 </div>

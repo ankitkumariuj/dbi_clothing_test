@@ -130,7 +130,7 @@
 
 <div class="l_line"></div>
 
-<div class="l_box">
+<div class="l_box" onclick="getCurrentLocation()">
   <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_1_2318)">
 <path d="M10.8335 0.833344L10.8343 3.38502C13.8495 3.76139 16.2392 6.15137 16.6152 9.16668H19.1668V10.8333L16.6152 10.8342C16.2388 13.8491 13.8492 16.2387 10.8343 16.615L10.8335 19.1667H9.16683V16.6151C6.15152 16.2391 3.76154 13.8493 3.38517 10.8342L0.833496 10.8333V9.16668H3.38507C3.7611 6.15109 6.15124 3.76094 9.16683 3.38492V0.833344H10.8335ZM10.0002 5.00001C7.23874 5.00001 5.00016 7.23859 5.00016 10C5.00016 12.7614 7.23874 15 10.0002 15C12.7616 15 15.0002 12.7614 15.0002 10C15.0002 7.23859 12.7616 5.00001 10.0002 5.00001ZM10.0002 8.33334C10.9207 8.33334 11.6668 9.07951 11.6668 10C11.6668 10.9205 10.9207 11.6667 10.0002 11.6667C9.07966 11.6667 8.3335 10.9205 8.3335 10C8.3335 9.07951 9.07966 8.33334 10.0002 8.33334Z" fill="#1F88E2"/>
@@ -653,6 +653,60 @@ $(document).ready(function(){
   });
 
 });
+
+// function getCurrentLocation() {
+//   if (navigator.geolocation) {
+//     navigator.geolocation.getCurrentPosition(showPosition, showError);
+//   } else {
+//     alert("Your browser does not support geolocation");
+//   }
+// }
+
+// function showPosition(position) {
+//   let lat = position.coords.latitude;
+//   let lon = position.coords.longitude;
+
+//   console.log("Latitude:", lat);
+//   console.log("Longitude:", lon);
+
+//   // Save to localStorage (Correct)
+//   localStorage.setItem("lat", lat);
+//   localStorage.setItem("lon", lon);
+
+//   // After saving, call Reverse API
+//   fetchReverseGeocoding(lat, lon);
+// }
+
+// function showError(error) {
+//   switch(error.code) {
+//     case error.PERMISSION_DENIED:
+//       alert("Please enable location access");
+//       break;
+//     case error.POSITION_UNAVAILABLE:
+//       alert("Location info unavailable");
+//       break;
+//     case error.TIMEOUT:
+//       alert("Request timed out");
+//       break;
+//     default:
+//       alert("Unknown error");
+//   }
+// }
+
+// function fetchReverseGeocoding(lat, lon) {
+//   var requestOptions = {
+//     method: 'GET',
+//   };
+
+//   fetch(`https://api.geoapify.com/v1/geocode/reverse?lat=${lat}&lon=${lon}&apiKey=410b792f472447349b8d888f901031e5`, requestOptions)
+//     .then(response => response.json())
+//     .then(result => {
+//       console.log("Reverse Geocode:", result);
+//     })
+//     .catch(error => console.log('error', error));
+// }
+
+
 </script>
 
   </body>

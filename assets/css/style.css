@@ -8,6 +8,17 @@
 
 
 
+body::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;
+     scrollbar-width: none; /* Firefox */
+}
+
+/* Hide scrollbar for Firefox */
+body {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE 10+ */
+}
 
 
 
@@ -114,7 +125,7 @@ html {
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  animation: fadein 2s ease-in;
+  
   gap: 20px;
 }
 
@@ -134,14 +145,9 @@ html {
 
 .loader-logo {
   width: 100px;
-  animation: pulse 2s infinite;
+
 }
 
-@keyframes pulse {
-  0% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.1); opacity: 0.8; }
-  100% { transform: scale(1); opacity: 1; }
-}
 
 .loader p{
   font-size: 22px;

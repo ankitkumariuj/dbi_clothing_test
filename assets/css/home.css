@@ -10,6 +10,12 @@
     border-radius: 5px;
     color: var(--main-clr);
 }
+
+::-webkit-scrollbar html{
+  display: none;
+  scrollbar-width: none;
+}
+
 .filter{
   display: flex;
   gap: 10px;

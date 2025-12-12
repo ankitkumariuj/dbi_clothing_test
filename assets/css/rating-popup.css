@@ -11,7 +11,7 @@
     align-items: center;
     z-index: 10005;
     height: 100%;
-    transition: all 0.4s ease-in-out;
+    transition: all 0.5s ease-in-out;
 }
 
 .rating_review_popup_container.active {
