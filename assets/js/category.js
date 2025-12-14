@@ -138,13 +138,29 @@ document.addEventListener("click", function (e) {
 });
 
 
-$("#category-list , .color-circle , .filter-button").click(() =>{
-   $(".sidebar").removeClass("active");
+// $("#category-list , .color-circle , .filter-button").click(() =>{
+//    $(".sidebar").removeClass("active");
+//   $(".wrapper-overlay").removeClass("active");
+//   $("body").css("overflow", "auto");
+// });
+
+$("#filltertwo").click(() =>{
+   $(".sidebars").addClass("active");
+  $(".wrapper-overlay").addClass("active");
+  $("body").css("overflow", "hidden");
+});
+
+$(".close-filter-sidebar, .wrapper-overlay").click(() => {
+  // alert('alrt')
+  $(".sidebars").removeClass("active");
   $(".wrapper-overlay").removeClass("active");
   $("body").css("overflow", "auto");
 });
 
-$(".sidebar-filter-open").click(() => {
+
+
+
+$("#fillter").click(() => {
   $(".sidebar").addClass("active");
   $(".wrapper-overlay").addClass("active");
   $("body").css("overflow", "hidden");
@@ -530,7 +546,29 @@ const cat_filter = (type, action) => {
     let data = currentData.filter((a) => a.color == action);
     renderProduct(data);
   }
-};
+   if (type === "az") {
+    let data = [...currentData].sort((a, b) => {
+      return a.name.toLowerCase().localeCompare(
+        b.name.toLowerCase()
+      );
+    });
+
+    renderProduct(data);
+  }
+
+   if (type === "za") {
+    let data = [...currentData].sort((a, b) => {
+      return b.name.toLowerCase().localeCompare(
+        a.name.toLowerCase()
+      );
+    });
+
+    renderProduct(data);
+  }
+
+
+
+}
 
 const addProductRating = (total_rating, ratingCount, pid) => {
   if (total_rating != 0 && ratingCount != 0) {

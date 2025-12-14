@@ -451,6 +451,13 @@ form textarea {
 }
 }
 
+.input-box{
+  display: flex;
+    align-items: center;
+    gap: 18px;
+    font-size: 18px;
+}
+
 .sidebar-filter-open {
   display: flex;
   background-color: #fff;
@@ -520,14 +527,43 @@ ease-in-out;
   }
 
 
+  .sidebars{
+            position: fixed;
+        width: 100%;
+        border-top-right-radius: 20px;
+        border-top-left-radius: 20px;
+        background-color: white;
+        height: 100%;
+        left: 0;
+        height: 34%;
+        bottom: 0%;
+        visibility: hidden;
+        z-index: 1111;
+        transform: translateY(100%);
+        transition: all 0.9s ease-in-out;
+        padding: 50px 5%;
+  }
+
+  .sidebars.active {
+    transform: translateY(0);
+    visibility: visible;
+                  border-top-right-radius: 20px;
+        border-top-left-radius: 20px;
+  }
 
   .sidebar.active {
     transform: translateY(0);
     visibility: visible;
-            border-top-right-radius: 20px;
-                    border-bottom-right-radius: 20px;
+                 border-top-right-radius: 20px;
+        border-top-left-radius: 20px;
   }
 
+  .Popular{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding-block: 9%;
+  }
   .close-filter-sidebar {
     display: flex;
   }

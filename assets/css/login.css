@@ -130,10 +130,10 @@ h1 {
 }
 
 .action_button{
-         position: fixed;
-    bottom: 2px;
+      position: absolute;
     width: 100%;
     padding: 0px 3%;
     left: 0px;
+    top: 121%;
 }
 
