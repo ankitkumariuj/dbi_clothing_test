@@ -1110,3 +1110,45 @@ const mendata= data.filter((item)=> item.gender === "kids");
   }
 };
 
+const fetchbrands = () => {
+
+    $.ajax({
+        url: API_URL,
+        type: "POST",
+        data: { type: "fetchbrands" },
+        dataType: "json",
+        success: function (response) {
+            console.log("fetch brands", response);
+
+            let html = "";
+
+            response.forEach(item => {
+
+                if (item.status == "1") {
+                    html += `
+                        <div class="brand_box">
+                            <img src="${image_url}${item.brands_logo}" alt="${item.brands_name}">
+                            <div class="image_overlay"></div>
+                            <p>${item.brands_name}</p>
+                        </div>
+                    `;
+                }
+            });
+
+         
+            if (html !== "") {
+                $(".brand_section").html(html).show();
+            } else {
+     
+                $(".brand_section").hide();
+            }
+        },
+        error: function (err) {
+            console.error("AJAX Error:", err);
+            $(".brand_section").hide();
+        }
+    });
+
+};
+
+fetchbrands();

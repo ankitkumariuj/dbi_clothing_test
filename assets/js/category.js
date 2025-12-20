@@ -182,6 +182,7 @@ const loadProductsByCategory = async (h_cat_id, sideurl = "") => {
   const subCat_id = urlParams.get("subCat_id");
   const urlcat_id = urlParams.get("cate_id");
     let userId = localStorage.getItem("userId");
+    const brand_id = urlParams.get("brands_id");
 
   if (!subCat_id) {
     if (h_cat_id === undefined) {
@@ -231,6 +232,7 @@ const loadProductsByCategory = async (h_cat_id, sideurl = "") => {
       type: "loadProductsByCategory",
       cat_id: cat_id,
       subCat_id: subCat_id,
+       brand_id: brand_id,
       userId: userId,
     },
     success: function (response) {

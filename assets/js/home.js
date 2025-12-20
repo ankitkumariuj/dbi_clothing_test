@@ -986,3 +986,47 @@ fetchprodaccordtotittle();
 Productfetchaccodtotiitles2();
 fetchnothreeprodsaccordtotittle();
 
+
+const fetchbrands = () => {
+
+    $.ajax({
+        url: API_URL,
+        type: "POST",
+        data: { type: "fetchbrands" },
+        dataType: "json",
+        success: function (response) {
+            console.log("fetch brands", response);
+
+            let html = "";
+
+           
+
+                response.forEach(item => {
+            if (item.status == "1") {
+                    html += `
+                        <div class="brand_box" onclick="window.location.href='category.html?brands_id=${item.id}'">
+                            <img src="${image_url}${item.brands_logo}" alt="${item.brands_logo}">
+                            <div class="image_overlay"></div>
+                            <p>${item.brands_name}</p>
+                        </div>
+                    `;
+                  }
+                });
+                $(".brand_section").html(html);
+
+            if (html !== "") {
+                $(".brand_section").html(html).show();
+            } else {
+     
+                $(".brand_section").hide();
+            }
+        },
+        error: function (err) {
+            console.error("AJAX Error:", err);
+            $(".brand_section").hide();
+        }
+    });
+
+};
+
+fetchbrands();

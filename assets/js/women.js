@@ -1093,3 +1093,46 @@ womendata.reverse().forEach((item) => {
 };
 
 
+const fetchbrands = () => {
+
+    $.ajax({
+        url: API_URL,
+        type: "POST",
+        data: { type: "fetchbrands" },
+        dataType: "json",
+        success: function (response) {
+            console.log("fetch brands", response);
+
+            let html = "";
+
+           
+
+                response.forEach(item => {
+            if (item.status == "1") {
+                    html += `
+                        <div class="brand_box">
+                            <img src="${image_url}${item.brands_logo}" alt="${item.brands_logo}">
+                            <div class="image_overlays"></div>
+                            <p>${item.brands_name}</p>
+                        </div>
+                    `;
+                  }
+                });
+                $(".brand_section").html(html);
+
+            if (html !== "") {
+                $(".brand_section").html(html).show();
+            } else {
+     
+                $(".brand_section").hide();
+            }
+        },
+        error: function (err) {
+            console.error("AJAX Error:", err);
+            $(".brand_section").hide();
+        }
+    });
+
+};
+
+fetchbrands();

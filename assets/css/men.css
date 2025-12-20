@@ -204,7 +204,7 @@ height: 100%;
         width: 134px;
         height: 159px;
         border-radius: 8px;
-        object-fit: cover;
+        object-fit: fill;
         object-position: top;
     }
 

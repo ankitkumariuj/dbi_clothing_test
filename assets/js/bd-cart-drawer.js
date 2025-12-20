@@ -135,7 +135,7 @@ const loadAddToCart = async () => {
                     <img src="${image}" alt="" onclick="location.href='singlep.html?pid=${item.product_id}'"/>
                     <div class="color-box" data-color="${isVariant ? item.variant_color : item.product_color}"></div>
                 </div>
-                <p>${isVariant ? item.variant_color : item.product_color || 'N/A'}</p>
+                <p>${isVariant ? item.variant_color_name : item.color_name|| isVariant ? item.variant_color : item.product_color}</p>
             </div>
 
             
