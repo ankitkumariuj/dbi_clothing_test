@@ -374,11 +374,11 @@
         font-family: var(--lato-font);
 }
 
-.offer-text {
+.offer_name {
   font-size: 19px;
   color: #333;
   font-weight: 600;
-  line-height: 1.2;
+  line-height: 0.9;
 }
 
 .off-banner{
@@ -697,7 +697,7 @@
     gap: calc(100px - 94px);
 }
 
-.offer-text P{
+.offer-text .offer_desc{
     font-size: 12px;
     /* width: 256px; */
     line-height: 2px;
@@ -737,7 +737,7 @@
 
 @media screen and (max-width: 413px) {
 
-    .offer-text{
+    .offer_name{
         font-size: 14px;
     }
 
@@ -749,7 +749,7 @@
 
 @media screen and (max-width: 382px) {
 
-    .offer-text{
+    .offer_name{
         font-size: 15px;
         /* padding-left: 1%;
         padding-right: 1%; */

@@ -111,14 +111,15 @@
             fill="#EFEFEF" stroke="#838383" />
         </svg>
 
-        <div class="banner">
-          <div class="offer-text">
-            <i class="fas fa-fire" style="color:#ff9800;"></i> Best offer for you 🔥<br>
-            <P>Minimum order value ₹5,000.0</P>
-          </div>
-          <button class="offer-button">Upto 65% Margin</button>
+      <div class="banner">
+    <div class="offer-wrapper">
+        <div class="offer-item">
+            <p class="offer_name"></p>
+            <p class="offer_desc"></p>
+            <button class="offer-button"></button>
         </div>
-      </div>
+    </div>
+</div>
 
 
       <div class="selector-section">
@@ -659,6 +660,7 @@
         await fetchProductRating();
         await loadCartCount();
         await fetchRecentlyViewedProducts();
+        await fetchcoupon();
 
       } catch (error) {
         console.error("Error loading data:", error);

@@ -426,7 +426,7 @@ const placeOrder = () => {
   
 
     let main_price  = localStorage.getItem("main_price");
-    let total_price = localStorage.getItem("total_price");
+    let total_price = localStorage.getItem("final_price");
 
 
     let qty = Math.floor(total_price / main_price);
@@ -656,3 +656,96 @@ window.location.reload();
 });
 
 }
+
+
+function openCouponPopup() {
+    $(".coupon-overlay").show();
+    $(".coupon-popup").addClass("active");
+}
+
+function closeCouponPopup() {
+    $(".coupon-overlay").hide();
+    $(".coupon-popup").removeClass("active");
+}
+
+
+function loadCoupons() {
+    $.ajax({
+        url: API_URL,
+        type: "POST",
+        data: { type: "fetchcoupon" },
+        success: function (res) {
+            let coupons = typeof res === "string" ? JSON.parse(res) : res;
+
+            let html = `<option value="">-- Select Coupon --</option>`;
+
+            coupons.forEach(coupon => {
+                if (coupon.status == "1") {
+                    html += `
+                        <option 
+                            value="${coupon.code}" 
+                            data-type="${coupon.discount_type}"
+                            data-value="${coupon.discount_value}"
+                            data-min="${coupon.min_amount}">
+                            ${coupon.name} - ${coupon.description}
+                        </option>
+                    `;
+                }
+            });
+
+            $("#couponSelect").html(html);
+        }
+    });
+}
+
+loadCoupons();
+
+
+function applyCoupon() {
+    let userid = localStorage.getItem("userId");
+    let cartTotal = parseFloat(localStorage.getItem("total_price")) || 0;
+    let selected = $("#couponSelect option:selected");
+
+    if (!selected.val()) {
+        $("#couponMsg").text("Please select a coupon").css("color", "red");
+        return;
+    }
+
+    let couponId = selected.data("id");
+    let discountType = selected.data("type");
+    let discountValue = parseFloat(selected.data("value"));
+    let minAmount = parseFloat(selected.data("min"));
+
+    if (cartTotal < minAmount) {
+        $("#couponMsg").text("Minimum order ₹" + minAmount + " required").css("color", "red");
+        return;
+    }
+
+    let discount = (discountType === "percent")
+        ? (cartTotal * discountValue) / 100
+        : discountValue;
+
+    let finalAmount = cartTotal - discount;
+    if (finalAmount < 0) finalAmount = 0;
+
+    $("#discount").text("- ₹" + discount.toFixed(2));
+    $("#finalAmount").text("₹" + finalAmount.toFixed(2));
+    $("#couponMsg").text("Coupon applied successfully 🎉").css("color", "green");
+
+    localStorage.setItem("final_price", finalAmount);
+    localStorage.setItem("discount_price", discount);
+
+    // 🔥 coupon usage save
+    $.ajax({
+        url: API_URL,
+        type: "POST",
+        data: {
+            type: "saveCouponUsage",
+            coupon_id: couponId,
+            userid: userid,
+            order_id: localStorage.getItem("order_id") // ya koi static id
+        }
+    });
+}
+
+

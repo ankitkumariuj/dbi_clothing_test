@@ -294,6 +294,8 @@ const renderSinglaProduct = (response) => {
                 </div>
                 <div class="qty-box">MOQ: ${data.stock} Pcs</div>
             </div>
+<div class="coupon-container">
+
             <div class="off-banner">
                 <div class="offer-banner">
                     <svg width="350" height="67" viewBox="0 0 350 67" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -301,13 +303,32 @@ const renderSinglaProduct = (response) => {
                     </svg>
                     <div class="banner">
                         <div class="offer-text">
-                            <i class="fas fa-fire" style="color:#ff9800;"></i> Best offer for you 🔥<br>
-                            <P>Minimum order value ₹5,000.0</P>
+                          <p class="offer_name">Best offer for you<p>
+                            <P class="offer_desc">Minimum order value ₹5,000.0</P>
                         </div>
                         <button class="offer-button">Upto 65% Margin</button>
                     </div>
                 </div>
             </div>
+
+
+               <div class="off-banner">
+                <div class="offer-banner">
+                    <svg width="350" height="67" viewBox="0 0 350 67" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M342.971 0C346.853 0 350 3.147 350 7.029V26.8C344.247 26.8 339.584 29.8 339.584 33.5C339.584 37.085 343.96 40.012 349.464 40.191L350 40.2V59.971C350 63.853 346.853 67 342.971 67H7.029C3.147 67 0 63.853 0 59.971V40.2C5.753 40.2 10.417 37.2 10.417 33.5C10.417 29.8 5.753 26.8 0 26.8V7.029C0 3.147 3.147 0 7.029 0H342.971Z" fill="#EFEFEF" stroke="#838383"/>
+                    </svg>
+                    <div class="banner">
+                        <div class="offer-text">
+                          <p class="offer_name">Best offer for you<p>
+                            <P class="offer_desc">Minimum order value ₹5,000.0</P>
+                        </div>
+                        <button class="offer-button">Upto 65% Margin</button>
+                    </div>
+                </div>
+            </div>
+            </div>
+
+
             <div class="selector-section">
                 <div class="selector-title">
                     Available Colors 
@@ -1088,7 +1109,60 @@ document.querySelectorAll('.size-item').forEach(item => {
 };
 
 
+function fetchcoupon() {
+    $.ajax({
+        url: API_URL,
+        method: "POST",
+        data: { type: "fetchcoupon" },
+        success: function (res) {
 
+            // Parse response
+            let coupons = typeof res === "string" ? JSON.parse(res) : res;
+            console.log(coupons);
+
+            if (Array.isArray(coupons) && coupons.length > 0) {
+
+                // Build HTML for all coupons
+                let html = "";
+
+                coupons.forEach(coupon => {
+                    html += `
+                    <div class="off-banner">
+                        <div class="offer-banner">
+                            <svg width="350" height="67" viewBox="0 0 350 67" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M342.971 0C346.853 0 350 3.147 350 7.029V26.8C344.247 26.8 339.584 29.8 339.584 33.5C339.584 37.085 343.96 40.012 349.464 40.191L350 40.2V59.971C350 63.853 346.853 67 342.971 67H7.029C3.147 67 0 63.853 0 59.971V40.2C5.753 40.2 10.417 37.2 10.417 33.5C10.417 29.8 5.753 26.8 0 26.8V7.029C0 3.147 3.147 0 7.029 0H342.971Z" fill="#EFEFEF" stroke="#838383"/>
+                            </svg>
+                            <div class="banner">
+                                <div class="offer-text">
+                                    <p class="offer_name"> ${"🔥" + coupon.name + "🔥"}</p>
+                                    <p class="offer_desc">${coupon.description}</p>
+                                </div>
+                                <button class="offer-button">${coupon.discount_value ? "Upto ₹" + coupon.discount_value + " OFF" : "Check Offer"}</button>
+                            </div>
+                        </div>
+                    </div>
+                    `;
+                });
+
+                // Inject all coupons into the container
+                $(".coupon-container").html(html);
+
+            } else {
+                // No coupons at all
+                $(".coupon-container").html(`
+                    <p class="offer_name">No active offers</p>
+                `);
+            }
+        }
+    });
+}
+
+fetchcoupon();
+
+
+
+
+ 
 
 
 

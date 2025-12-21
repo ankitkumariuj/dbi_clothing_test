@@ -328,10 +328,39 @@
           <h3>Shipping</h3>
           <h4>Free shipping</h4>
         </div>
+         <div class="k-cart-row k-cart-discount-price">
+          <h3>Discount</h3>
+          <h4 id="discount"><span>-  ₹</span>0</h4>
+        </div>
         <div class="k-cart-row k-cart-total-price">
           <h3>Total</h3>
-          <h2><span>₹</span>998</h2>
+          <h2 id="finalAmount"><span>₹</span>0</h2>
         </div>
+<!-- Apply Coupon Button -->
+<button class="open-coupon" onclick="openCouponPopup()">Apply Coupon</button>
+
+<p id="couponMsg"></p>
+
+<!-- Bottom Coupon Popup -->
+<div class="coupon-overlay" onclick="closeCouponPopup()"></div>
+
+<div class="coupon-popup">
+    <div class="popup-header">
+        <h3>Select Coupon</h3>
+        <span onclick="closeCouponPopup()">✕</span>
+    </div>
+
+    <select id="couponSelect">
+        <option value="">-- Select Coupon --</option>
+    </select>
+
+    <button class="apply-btn" onclick="applyCoupon()">Apply Coupon</button>
+</div>
+
+<input type="hidden" id="cartTotal">
+
+
+
         <div class="paytment-info-box">
           <div class="checkout-payment-info-heading">
             <h3>Choose Payment Options</h3>
