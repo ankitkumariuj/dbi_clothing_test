@@ -82,6 +82,7 @@ function renderOrders(orders) {
         rating: item.rating,
         size : item.item_size,
         quantityno: item.quantity,
+        total: item.total_amount,
         items: [],
       };
     }
@@ -212,7 +213,8 @@ const formattedDates = new Date(order.date).toLocaleDateString("en-GB", {
         
         <div class="summary-row total-paid">
             <div class="summary-label">Paid</div>
-            <div class="item-price">₹${totalAmount}</div>
+
+            <div class="item-price">₹${order.total}</div>
             
         </div>
     </div>
@@ -240,7 +242,7 @@ const formattedDates = new Date(order.date).toLocaleDateString("en-GB", {
         <div class="kb_order_view_details">
           <div class="kb_total_paid_box">
             <h3>Total Paid Amount</h3>
-            <h4>₹${totalAmount}</h4>
+            <h4>₹${order.total}</h4>
           </div>
         </div>
       </div>

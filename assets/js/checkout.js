@@ -405,6 +405,8 @@ const placeOrder = () => {
     
     const uid = localStorage.getItem("forupdatadduser");
 
+    const coupon_id = localStorage.getItem("coupon_id");
+
 
     let idfr = localStorage.getItem("idfr");
 
@@ -444,26 +446,23 @@ const placeOrder = () => {
     url: API_URL,
     method: 'POST',
     dataType: "json",  
-    data: {
-        type: 'placeOrder',
-        userId: checkUserId,
-        total_amount: total_price,
-        first_name: first_name,
-        last_name: last_name,
-        phone: phone,
-        email: email,
-        address: address,
-        streetAdd_1A: streetAdd_1A,
-        streetAdd_1B: streetAdd_1B,
-        city: city,
-        state: state,
-        pincode: pincode,
-        idfr: idfr,
-        paymentType: paymentType,
-        main_price: main_price,
-        total_price: total_price,
-        qty: qty
-    },
+   data: {
+    type: 'placeOrder',
+    userId: checkUserId,
+    total_amount: total_price,
+    coupon_id: coupon_id,   // 🔥 ADD THIS
+    first_name: first_name,
+    last_name: last_name,
+    phone: phone,
+    email: email,
+    address: address,
+    city: city,
+    state: state,
+    pincode: pincode,
+    idfr: idfr,
+    paymentType: paymentType
+}
+,
     beforeSend: function () {
         Swal.fire({
             title: 'Placing your order...',
@@ -673,24 +672,26 @@ function loadCoupons() {
     $.ajax({
         url: API_URL,
         type: "POST",
-        data: { type: "fetchcoupon" },
+        data: { 
+            type: "fetchcoupon",
+            userId: localStorage.getItem("userId") // ✅ must
+        },
         success: function (res) {
             let coupons = typeof res === "string" ? JSON.parse(res) : res;
 
             let html = `<option value="">-- Select Coupon --</option>`;
 
             coupons.forEach(coupon => {
-                if (coupon.status == "1") {
-                    html += `
-                        <option 
-                            value="${coupon.code}" 
-                            data-type="${coupon.discount_type}"
-                            data-value="${coupon.discount_value}"
-                            data-min="${coupon.min_amount}">
-                            ${coupon.name} - ${coupon.description}
-                        </option>
-                    `;
-                }
+                html += `
+                    <option 
+                        value="${coupon.code}"
+                        data-id="${coupon.id}"
+                        data-type="${coupon.discount_type}"
+                        data-value="${coupon.discount_value}"
+                        data-min="${coupon.min_amount}">
+                        ${coupon.name} - ${coupon.description}
+                    </option>
+                `;
             });
 
             $("#couponSelect").html(html);
@@ -698,11 +699,12 @@ function loadCoupons() {
     });
 }
 
+
 loadCoupons();
 
 
 function applyCoupon() {
-    let userid = localStorage.getItem("userId");
+
     let cartTotal = parseFloat(localStorage.getItem("total_price")) || 0;
     let selected = $("#couponSelect option:selected");
 
@@ -717,7 +719,9 @@ function applyCoupon() {
     let minAmount = parseFloat(selected.data("min"));
 
     if (cartTotal < minAmount) {
-        $("#couponMsg").text("Minimum order ₹" + minAmount + " required").css("color", "red");
+        $("#couponMsg")
+            .text("Minimum order ₹" + minAmount + " required")
+            .css("color", "red");
         return;
     }
 
@@ -730,22 +734,15 @@ function applyCoupon() {
 
     $("#discount").text("- ₹" + discount.toFixed(2));
     $("#finalAmount").text("₹" + finalAmount.toFixed(2));
-    $("#couponMsg").text("Coupon applied successfully 🎉").css("color", "green");
+    $("#couponMsg")
+        .text("Coupon applied successfully 🎉")
+        .css("color", "green");
 
+    // 🔥 STORE ONLY (NO DB INSERT HERE)
     localStorage.setItem("final_price", finalAmount);
     localStorage.setItem("discount_price", discount);
-
-    // 🔥 coupon usage save
-    $.ajax({
-        url: API_URL,
-        type: "POST",
-        data: {
-            type: "saveCouponUsage",
-            coupon_id: couponId,
-            userid: userid,
-            order_id: localStorage.getItem("order_id") // ya koi static id
-        }
-    });
+    localStorage.setItem("coupon_id", couponId);
 }
+
 
 
