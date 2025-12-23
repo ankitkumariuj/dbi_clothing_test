@@ -775,7 +775,9 @@ function applyCoupon(code, discountType, discountValue, minAmount, couponId) {
     if (finalAmount < 0) finalAmount = 0;
 
    
-    $("#discount").text("- ₹" + discount.toFixed(2));
+    $("#discount")
+  .text("- ₹" + discount.toFixed(2))
+  .css("color", "green");
     $("#finalAmount").text("₹" + finalAmount.toFixed(2));
     $("#couponMsg")
         .text("Coupon " + code + " applied successfully 🎉")
