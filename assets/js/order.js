@@ -20,7 +20,7 @@ const loadOrderDetails = () => {
       console.log("last item:", lastItem);
 
       $('#viewOrderBtn').off('click').on('click', function () {
-        window.location.href = `/pages/order_detail.html?order_id=${lastItem.order_id}`;
+        window.location.href = `../pages/order_detail.html?order_id=${lastItem.order_id}`;
       });
     }
   });
@@ -134,7 +134,7 @@ else if (status === "processing") statusClass = "status-processing";
 else if (status === "onway" || status === "on the way") statusClass = "status-onway"; 
 else if (status === "shipped") statusClass = "status-shipped";
     orderHistoryHtml += `
-<div class="kb_history-box" onclick="window.location.href='/pages/order_detail.html?order_id=${order.order_id}&id=${order.id}'">
+<div class="kb_history-box" onclick="window.location.href='../pages/order_detail.html?order_id=${order.order_id}&id=${order.id}'">
         <div class="kb_history-items kb_history-items51 ">
           <div class="kb_order_history_container kb_order_history_container51">
 
@@ -142,7 +142,7 @@ else if (status === "shipped") statusClass = "status-shipped";
             <div class="product_toogle" style="display: flex;
     justify-content: space-between;">
               <p class="kb_delevery-status">Delivery Charges : Free</p>
-          <i class="fa-solid fa-angle-right" onclick="window.location.href='/pages/order_detail.html?order_id=${order.order_id}'"></i>
+          <i class="fa-solid fa-angle-right" onclick="window.location.href='../pages/order_detail.html?order_id=${order.order_id}'"></i>
               </div>
               <p class="kb_order_id">Order ID: ${order.order_id}</p>
               <p>Payment Type: ${order.payment_type}</p>
