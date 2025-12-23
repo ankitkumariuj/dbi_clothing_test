@@ -21,7 +21,7 @@
     <link rel="stylesheet" href="../assets/css/k_style.css" />
 
     <!-- == ye supportandfooter css sb me comman hoga footer part ke liye == -->
-    <link rel="stylesheet" href="../assets/css/supportandfooter.css" />
+    <!--  -->
 
     <link rel="stylesheet" href="../assets/css/wishlist.css" />
     <link rel="stylesheet" href="../assets/css/track-order.css" />
@@ -346,15 +346,43 @@
 
 <div class="coupon-popup">
     <div class="popup-header">
-        <h3>Select Coupon</h3>
+        <h3>Apply Coupon</h3>
         <span onclick="closeCouponPopup()">✕</span>
     </div>
 
-    <select id="couponSelect">
-        <option value="">-- Select Coupon --</option>
+      
+    <div  id="couponCards">
+        <div class="coupon-left">
+            <span class="coupon-title">Dhamaka Offer</span>
+            <div class="coupon-code-wrapper">
+                <span class="coupon-code" id="code">RKD100</span>
+                <button class="copy-btn" onclick="copyCode()">COPY</button>
+            </div>
+            <p class="coupon-desc">Bachat ka mauka! Get flat ₹20 off on your next purchase above ₹1000.</p>
+            
+            <div class="coupon-info-grid">
+                <div class="info-item">
+                    <label>Min Purchase</label>
+                    <span>₹ 1000</span>
+                </div>
+                <div class="info-item">
+                    <label>Expires On</label>
+                    <span>21 Nov 2025</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="coupon-right">
+            <button class="close-btn" onclick="closeCoupon()">&times;</button>
+            <div class="discount-label">
+                <span class="amount">₹20</span>
+                <span class="text">OFF</span>
+            </div>
+        </div>
+    </div>
     </select>
 
-    <button class="apply-btn" onclick="applyCoupon()">Apply Coupon</button>
+    <!-- <button class="apply-btn" onclick="applyCoupon()">Apply Coupon</button> -->
 </div>
 
 <input type="hidden" id="cartTotal">
@@ -384,97 +412,7 @@
       </div>
     </div>
 
-    <!-- support section  -->
-    <div class="support">
-      <div class="info-strip-section">
-        <div class="info-strip-container">
-          <div class="info-item">
-            <i class="fas fa-box info-icon"></i>
-            <div class="info-text">
-              Fast, free delivery &<span>assembly</span>
-            </div>
-          </div>
-          <div class="info-item">
-            <!-- <i class="fas fa-dollar-sign info-icon"></i> -->
-            <div class="info-item-logo-img">
-              <img src="../assets/images/megamog_box_02.png" alt="" />
-            </div>
-            <div class="info-text">
-              Money guarantee within<span>30 days</span>
-            </div>
-          </div>
-          <div class="info-item">
-            <i class="fas fa-headset info-icon"></i>
-            <div class="info-text">
-              Online support available<span>24/7</span>
-            </div>
-          </div>
-          <div class="info-item">
-            <i class="fas fa-credit-card info-icon"></i>
-            <div class="info-text">Pay with<span>Multiple Cards</span></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ===== Footer Start ===== -->
-    <footer class="bs-footer">
-      <div class="bs-footer-container">
-        <!-- Logo & Social -->
-        <div class="bs-footer-logo">
-          <img src="../assets/images/logo.png" alt="Street Pulse Logo" />
-        </div>
-
-        <!-- Quick Links -->
-        <div class="bs-footer-links">
-          <h2>Quick Links</h2>
-          <ul>
-            <li><a href="track-order.html">Track Order</a></li>
-            <li><a href="privacy.html">Privacy Policy</a></li>
-            <li><a href="shipping-policy.html">Shipping Policy</a></li>
-            <li><a href="refund-returns.html">Return & Refund Policy</a></li>
-            <li><a href="terms-condition.html">Terms & Conditions</a></li>
-          </ul>
-        </div>
-
-        <!-- Contact -->
-        <div class="bs-footer-contact">
-          <h2>Contact</h2>
-          <p>
-            <a href="mailto:Ledove@gmail.com" class="bs-email-link">
-              <i class="fas fa-envelope"></i> Ledove@gmail.com
-            </a>
-          </p>
-        </div>
-        
-        <div class="bs-footer-logo">
-             <h2>Follow Us</h2>
-          <div class="bs-social-icons">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-youtube"></i></a>
-          </div>
-        </div>
-      </div>
-    </footer>
-    <!-- ===== Footer End ===== -->
-
-    <section class="cprt-footer">
-      <!-- footer  -->
-      <div class="footer">
-        <div class="leftfooter">© 2024 Ledove. All Rights Reserved.</div>
-
-        <div class="rightfooter">
-          <!-- <img src="../assets/images/amex - Google Search_files/amex-card-logo-6D352AA0A4-seeklogo.com.png" alt="">
-                        <img src="../assets/images/amex - Google Search_files/24px.svg" alt="">
-                        <img src="../assets/images/amex - Google Search_files/faviconV2(2)" alt="">
-                        <img src="../assets/images/amex - Google Search_files/faviconV2(12)" alt=""> -->
-          <img src="../assets/images/payment.png" alt="" />
-        </div>
-      </div>
-    </section>
-
+ 
     <!-- <div id="page-mobile-tabs" class="k-mobile-footer">
       <div class="mobile-footer-link-content">
         <a href="home.html" class="mobile-tab-link" aria-label="Home">

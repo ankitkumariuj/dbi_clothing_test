@@ -667,56 +667,98 @@ function closeCouponPopup() {
     $(".coupon-popup").removeClass("active");
 }
 
-
 function loadCoupons() {
     $.ajax({
         url: API_URL,
         type: "POST",
         data: { 
             type: "fetchcoupon",
-            userId: localStorage.getItem("userId") // ✅ must
+            userId: localStorage.getItem("userId") 
         },
         success: function (res) {
+
             let coupons = typeof res === "string" ? JSON.parse(res) : res;
+            let html = '';
 
-            let html = `<option value="">-- Select Coupon --</option>`;
+            if (Array.isArray(coupons) && coupons.length > 0) {
 
-            coupons.forEach(coupon => {
-                html += `
-                    <option 
-                        value="${coupon.code}"
-                        data-id="${coupon.id}"
-                        data-type="${coupon.discount_type}"
-                        data-value="${coupon.discount_value}"
-                        data-min="${coupon.min_amount}">
-                        ${coupon.name} - ${coupon.description}
-                    </option>
+                coupons.forEach(coupon => {
+
+                    // ✅ DATE FORMAT FIX
+                    let dateStr = coupon.expiry_date; // YYYY-MM-DD
+                    let date = new Date(dateStr);
+
+                    let formatted = date.toLocaleDateString("en-IN", {
+                        day: "2-digit",
+                        month: "short",
+                        year: "numeric"
+                    });
+
+                    html += `
+                    <div class="coupon-card">
+                        <div class="coupon-left">
+                            <span class="coupon-title">${coupon.name}</span>
+
+                            <div class="coupon-code-wrapper">
+                                <span class="coupon-code">${coupon.code}</span>
+                                <button class="copy-btn" onclick="copyCode('${coupon.code}')">COPY</button>
+                            </div>
+
+                            <p class="coupon-desc">${coupon.description}</p>
+
+                            <div class="coupon-info-grid">
+                                <div class="info-item">
+                                    <label>Min Purchase</label>
+                                    <span>₹ ${coupon.min_amount}</span>
+                                </div>
+                                <div class="info-item">
+                                    <label>Expires On</label>
+                                    <span>${formatted}</span>
+                                    <span class="close-btn"
+                                        onclick="applyCoupon(
+                                            '${coupon.code}',
+                                            '${coupon.discount_type}',
+                                            ${coupon.discount_value},
+                                            ${coupon.min_amount},
+                                            ${coupon.id}
+                                        )">
+                                        Apply
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="coupon-right">
+                            <div class="discount-label">
+                                <span class="amount">₹ ${coupon.discount_value} OFF</span>
+                            </div>
+                        </div>
+                    </div>
+                    `;
+                });
+
+            } else {
+                html = `
+                    <div class="no-coupon">
+                        No active coupon found 😔
+                    </div>
                 `;
-            });
+            }
 
-            $("#couponSelect").html(html);
+            $("#couponCards").html(html);
         }
     });
 }
 
 
+
+
 loadCoupons();
 
 
-function applyCoupon() {
+function applyCoupon(code, discountType, discountValue, minAmount, couponId) {
 
     let cartTotal = parseFloat(localStorage.getItem("total_price")) || 0;
-    let selected = $("#couponSelect option:selected");
-
-    if (!selected.val()) {
-        $("#couponMsg").text("Please select a coupon").css("color", "red");
-        return;
-    }
-
-    let couponId = selected.data("id");
-    let discountType = selected.data("type");
-    let discountValue = parseFloat(selected.data("value"));
-    let minAmount = parseFloat(selected.data("min"));
 
     if (cartTotal < minAmount) {
         $("#couponMsg")
@@ -732,17 +774,23 @@ function applyCoupon() {
     let finalAmount = cartTotal - discount;
     if (finalAmount < 0) finalAmount = 0;
 
+   
     $("#discount").text("- ₹" + discount.toFixed(2));
     $("#finalAmount").text("₹" + finalAmount.toFixed(2));
     $("#couponMsg")
-        .text("Coupon applied successfully 🎉")
+        .text("Coupon " + code + " applied successfully 🎉")
         .css("color", "green");
 
-    // 🔥 STORE ONLY (NO DB INSERT HERE)
+
     localStorage.setItem("final_price", finalAmount);
     localStorage.setItem("discount_price", discount);
+    localStorage.setItem("coupon_code", code);
     localStorage.setItem("coupon_id", couponId);
+
+ $(".coupon-overlay").hide();
+    $(".coupon-popup").removeClass("active");
 }
+
 
 
 
