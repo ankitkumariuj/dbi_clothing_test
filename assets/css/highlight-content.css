@@ -1,0 +1,60 @@
+.highlight-content {
+  margin-bottom: 20px;
+  font-family: 'Segoe UI', sans-serif;
+  max-width: 500px;
+}
+
+
+
+.highlight-content h3 {
+  margin: 8px 0 4px;
+  font-size: 1.1rem;
+  color: var(--sec-txt-color);
+  font-weight: 600;
+}
+
+.highlight-content p {
+  margin: 0 0 10px;
+  font-size: 1rem;
+  color: var(--para-color);
+  line-height: 1.5;
+}
+
+.highlight-content ul{
+    list-style: circle;
+}
+.highlight-content ul li{
+  color: var(--para-color);
+
+}
+
+
+
+/* Responsive tweaks */
+@media screen and (max-width: 768px) {
+  .highlight-content {
+    padding: 14px 16px;
+  }
+
+  .highlight-content h3 {
+    font-size: 1rem;
+  }
+
+  .highlight-content p {
+    font-size: 0.95rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .highlight-content {
+    padding: 12px 14px;
+  }
+
+  .highlight-content h3 {
+    font-size: 0.95rem;
+  }
+
+  .highlight-content p {
+    font-size: 0.9rem;
+  }
+}

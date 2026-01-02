@@ -1,0 +1,136 @@
+.k-mobile-footer {
+    position: fixed;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    height: 70px;
+    z-index: 999;
+   box-shadow: 0px -2px 4px 0px rgba(0, 0, 0, 0.25);
+
+    display: none;
+}
+
+.mobile-footer-link-content {
+   
+    display: flex;
+    height: 100%;
+    position: fixed;
+    background: #fff;
+    width: 100%;
+    bottom: 0%;
+    max-height: 72px;
+}
+
+.mobile-tab-link {
+    padding: 5px;
+    width: calc(100% / 4);
+    height: 80%;
+    gap: 5px;
+    background: white;
+    /* border-right: 1px solid #eee; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.mobile-tab-icon {
+    /* height: 100%; */
+    /* background-color: white; */
+    position: relative;
+}
+
+.mobile-tab-icon.active{
+        /* background-color: #8a1345ab; */
+    width: 54px;
+    position: relative;
+    padding: 5px 0px;
+    border-radius: 50px;
+    display: flex
+;
+    align-items: center;
+    justify-content: center;
+}
+/* 
+.mobile-tab-icon.active svg path{
+    fill: black;
+} */
+
+
+
+.mobile-footer-icon-badge {
+   position: absolute;
+    top: -11px;
+    right: -10px;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+    padding: 0 3px;
+    line-height: 20px;
+    text-align: center;
+    z-index: 2;
+    color: #fff;
+    background: var(--dark-color);
+}
+
+.mobile-tab-link  p{
+    font-size: 13px;
+}
+
+.mobile-tab-link.active {
+color: black;
+    font-weight: 500;
+    gap: 5px;
+}
+
+@media (max-width:768px) {
+.k-mobile-footer {
+    display: block;
+}
+
+}
+
+.place_order{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    background: white;
+    padding: 0px 3%;
+}
+
+.palceorderbtn{
+    background: black;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding-block: 14px;
+    border-radius: 8px;
+  padding-inline: 2%;
+}
+
+.palceorderbtn h5{
+      font-size: 16px;
+    font-weight: 600;
+}
+.subtotal{
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+}
+
+.subtotal h4{
+    font-size: 20px;
+    font-weight: 600;
+    font-family: var(--font-fm2);
+}
+
+.subtotal p{
+    font-size: 10px;
+    font-weight: 500;
+    font-family: var(--font-fm2);
+    color: rgba(119, 119, 119, 1);
+}
+

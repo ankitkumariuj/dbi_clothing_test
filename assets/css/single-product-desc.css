@@ -1,0 +1,54 @@
+.single-product-desc {
+  margin-top: 20px;
+  font-family: var(--main-font-family);
+  max-width: 500px;
+      padding-inline: 5%;
+}
+
+
+
+.single-product-desc h4 {
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+  color: var(--sec-txt-color);
+  position: relative;
+}
+
+.single-product-desc p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--para-color);
+  margin: 0;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 768px) {
+  .single-product-desc {
+           padding: 0px 6%;
+  }
+
+  .single-product-desc h4 {
+    font-size: 1.1rem;
+  }
+
+  .single-product-desc p {
+    font-size: 0.95rem;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .single-product-desc {
+             padding: 0px 6%;
+  }
+
+  .single-product-desc h4 {
+    font-size: 1rem;
+  }
+
+  .single-product-desc p {
+    font-size: 0.9rem;
+  }
+}
+
+
+

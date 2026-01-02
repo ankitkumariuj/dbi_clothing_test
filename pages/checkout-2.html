@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+          <meta name="theme-color" content="#ffff">
+    <title>Checkout</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="../assets/css/style.css" />
+
+    <link rel="stylesheet" href="../assets/css/header.css" />
+
+    <link rel="stylesheet" href="../assets/css/checkout-2.css" />
+
+
+    <link
+      rel="shortcut icon"
+      href="../assets/images/logo.png"
+      type="image/x-icon"
+    />
+  </head>
+
+  <body>
+    <div class="wrapper-overlay"></div>
+
+
+
+
+
+<div class="header_section">
+      <div class="svg_menuicon" onclick="gotobackhome()">
+      <svg width="26" height="24" viewBox="0 0 26 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M10.0293 5.92993L3.66797 11.9999L10.0293 18.0699" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M21.484 12H3.84619" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+
+ <h2>Checkout</h2>
+      </div>
+
+    </div>
+
+
+
+    <div class="k_checkout_main_container">
+      <div class="k_gpt_checkout_top_container">
+        <div  class="k_gpt_thank-you">
+          <p style="color:white;">Thanks ! </p>
+        </div>
+
+      </div>
+    </div>
+
+
+    <div class="k_gpt_checkout-container" id="order_address">
+      <svg viewBox="0 0 1024 1024" height="30vw" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"><path fill="#000000" d="M512 64a448 448 0 1 1 0 896 448 448 0 0 1 0-896zm-55.808 536.384-99.52-99.584a38.4 38.4 0 1 0-54.336 54.336l126.72 126.72a38.272 38.272 0 0 0 54.336 0l262.4-262.464a38.4 38.4 0 1 0-54.272-54.336L456.192 600.384z"></path></g></svg>
+    <h3>Thank You for purchasing.</h3>
+      <p>Your order has been received.</p>
+      <button id="viewOrderBtn">View Order</button>   
+    <a href="../pages/home.html">Back to Home</a>
+    </div>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+   
+
+    <!-- jQuery FIRST -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script src="../assets/js/script.js"></script>
+    <script src="../assets/js/header.js"></script>
+    <script src="../assets/js/order.js"></script>
+    <script>
+      function gotobackhome(){
+        window.location.href='../pages/home.html';
+      }
+    </script>
+
+  </body>
+</html>
