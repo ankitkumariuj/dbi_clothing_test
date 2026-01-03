@@ -93,7 +93,32 @@ function goToCategory(selectEl) {
 }
 
 
+function loadWishlistCount() {
+  const wishlistIconBadge = $(".wishlist-icon-badge");
+  let userId = localStorage.getItem("userId");
 
+  if (userId == null) {
+    wishlistIconBadge.html("0"); // 🚀 clear when no user
+    return;
+  }
+
+  $.ajax({
+    url: API_URL,
+    method: "POST",
+    data: { type: "loadWishlistCount", userId: userId, t: new Date().getTime() },
+    success: function (response) {
+      // 🚀 Ensure response is valid and update count accordingly
+      if (response && response.status !== false && response.total_items > 0) {
+        wishlistIconBadge.html(response.total_items);
+      } else {
+        wishlistIconBadge.html("0"); // 🚀 reset badge if no items
+      }
+    },
+    error: function () {
+      wishlistIconBadge.html("0"); // 🚀 safe fallback on error
+    }
+  });
+}
 
 
 
