@@ -1127,7 +1127,7 @@ const fetchTrendImages = () => {
 
                 res.data.forEach((item) => {
 
-                    if (item.trend_type !== "teen") return;
+                    if (item.trend_type !== "teenagers") return;
 
                     let images = JSON.parse(item.images);
 
